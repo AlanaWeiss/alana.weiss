@@ -25,6 +25,6 @@ public class Saint {
 	}
 
 	public void setGenero(Gênero genero){
-	this.genero=genero;
+
 	}
 }
