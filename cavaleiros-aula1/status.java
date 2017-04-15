@@ -5,7 +5,7 @@
  * @author (your name here)
  * @version (version number or date here)
  */
-public enum status
+public enum Status
 {
     VIVO, MORTO, DESACORDADO
 }
