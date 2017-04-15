@@ -28,13 +28,19 @@ public class SaintTest{
 
     @Test
     public void aoCriarSaintGeneroENaoInformado(){
-    Saint shaka = new Saint("Shaka", new Armadura("Virgem", Categoria.OURO));
-    assertEquals(Gênero.NAO_INFORMADO, shaka.getGenero());
+        Saint shaka = new Saint("Shaka", new Armadura("Virgem", Categoria.OURO));
+        assertEquals(Gênero.NAO_INFORMADO, shaka.getGenero());
     }
     
     @Test 
     public void aoCriarSaintStatusEVivo(){
         Saint dante = new Saint("Dante", new Armadura("Cisne", Categoria.BRONZE));
         assertEquals(Status.VIVO, dante.getStatus());
+    }
+    
+    @Test
+    public void saintsNascemCom100DeVida(){
+        Saint dante = new Saint("Dante", new Armadura("Cisne", Categoria.BRONZE));
+        assertEquals(100, dante.getVida());
     }
 }

@@ -4,11 +4,13 @@ public class Saint {
     private boolean armaduraVestida;
     private Gênero genero = Gênero.NAO_INFORMADO;
     private Status status = Status.VIVO;
-    
+    private int vida;
+     
     //construtor
     public Saint(String nome, Armadura armadura){
         this.nome = nome;
         this.armadura = armadura;
+        vida = 100;
     }
     
     //metodo
@@ -32,7 +34,14 @@ public class Saint {
     public Status getStatus(){
         return this.status;
     }
-        
+    
+    public int getVida(){
+        return this.vida;
+    }
+    
+    /*public double perderVida(){
+    
+    }*/
     /*public void setStatus(Status status){
         this.status = status;
     }*/ //quando precisar ja ta aqui
