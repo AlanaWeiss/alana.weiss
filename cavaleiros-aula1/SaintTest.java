@@ -22,13 +22,19 @@ public class SaintTest{
     
     @Test
     public void naoVestirArmaduraDeixaArmaduraNaoVestida(){
-		Saint hyoga = new Saint("Hyoga", new Armadura("Cisne", Categoria.BRONZE));
-		assertEquals(false, hyoga.getArmaduraVestida());
-	}
+        Saint hyoga = new Saint("Hyoga", new Armadura("Cisne", Categoria.BRONZE));
+        assertEquals(false, hyoga.getArmaduraVestida());
+    }
 
-	@Test
-	public void aoCriarSaintGeneroENaoInformado(){
-	Saint shaka = new Saint("Shaka", new Armadura("Virgem", Categoria.OURO));
-	assertEquals(Gênero.NAO_INFORMADO, shaka.getGenero());
-	}
+    @Test
+    public void aoCriarSaintGeneroENaoInformado(){
+    Saint shaka = new Saint("Shaka", new Armadura("Virgem", Categoria.OURO));
+    assertEquals(Gênero.NAO_INFORMADO, shaka.getGenero());
+    }
+    
+    @Test 
+    public void aoCriarSaintStatusEVivo(){
+        Saint dante = new Saint("Dante", new Armadura("Cisne", Categoria.BRONZE));
+        assertEquals(Status.VIVO, dante.getStatus());
+    }
 }
