@@ -39,9 +39,10 @@ public class Saint {
         return this.vida;
     }
     
-    /*public double perderVida(){
-    
-    }*/
+    public double perderVida(int v){
+        double perdeuVida = vida - v;
+        return perdeuVida;
+    }
     /*public void setStatus(Status status){
         this.status = status;
     }*/ //quando precisar ja ta aqui
