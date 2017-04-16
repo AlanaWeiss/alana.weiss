@@ -1,11 +1,11 @@
 
 /**
- * Enumeration class status - write a description of the enum class here
+ * Enumeration class Status - write a description of the enum class here
  * 
  * @author (your name here)
  * @version (version number or date here)
  */
 public enum Status
 {
-    VIVO, MORTO, DESACORDADO
+   VIVO, MORTO, DESACORDADO;
 }
