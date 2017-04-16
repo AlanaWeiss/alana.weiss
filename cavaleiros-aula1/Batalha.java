@@ -16,6 +16,8 @@ public class Batalha
                   saint1.perderVida(10);
                } else saint2.perderVida(10);
         
+        if(saint1.getVida()<100) saint2.perderVida(10);
+        else saint1.perderVida(10);
         
     }
 }
