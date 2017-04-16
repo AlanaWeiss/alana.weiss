@@ -13,6 +13,9 @@ public class Saint {
         vida = 100;
     }
     
+    public int getValorArmadura(){
+        return this.armadura.getCategoria();
+    }
     //metodo
     public void vestirArmadura(){
         this.armaduraVestida = true;
@@ -43,6 +46,8 @@ public class Saint {
         double perdeuVida = vida - v;
         return perdeuVida;
     }
+    
+    
     /*public void setStatus(Status status){
         this.status = status;
     }*/ //quando precisar ja ta aqui
