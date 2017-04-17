@@ -12,6 +12,12 @@ public class Saint {
         this.nome = nome;
         this.armadura = armadura;
         vida = 100;
+        
+        if(this.armadura.getCategoria() == 2){
+            this.qtdSentidosDespertados = 6;
+        } else if(this.armadura.getCategoria() == 3) {
+              this.qtdSentidosDespertados = 7;   
+        } else  this.qtdSentidosDespertados = 5;
     }
     
     public int getValorArmadura(){

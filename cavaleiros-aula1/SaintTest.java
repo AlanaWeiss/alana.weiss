@@ -85,4 +85,20 @@ public class SaintTest{
         assertEquals(5, dante.getQtdSentidosDespertados());
     }
     
+    @Test
+    public void criarSaintOuroNasceCom7Sentidos(){
+        Saint dante = new Saint("Dante", new Armadura("Cisne", Categoria.OURO));
+        assertEquals(7, dante.getQtdSentidosDespertados());
+    }
+    
+    @Test
+    public void criarSaintPrataNasceCom6Sentidos(){
+        Saint dante = new Saint("Dante", new Armadura("Cisne", Categoria.PRATA));
+        assertEquals(6, dante.getQtdSentidosDespertados());
+    }
+    @Test
+    public void criarSaintBronzeNasceCom5Sentidos(){
+        Saint dante = new Saint("Dante", new Armadura("Cisne", Categoria.BRONZE));
+        assertEquals(5, dante.getQtdSentidosDespertados());
+    }
 }
