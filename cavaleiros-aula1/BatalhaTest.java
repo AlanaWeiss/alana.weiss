@@ -8,8 +8,8 @@ import org.junit.Test;
 public class BatalhaTest
 {
     @Test
-    public void BatalhaPrataEBronze()
-    {
+    public void BatalhaPrataEBronze()throws Exception {
+    
         Saint dante = new Saint("Dante", new Armadura("Cisne", Categoria.PRATA));
         Saint hyoga = new Saint("Hyoga", new Armadura("Capricornio", Categoria.BRONZE));
         Batalha batalha = new Batalha (dante,hyoga);
@@ -19,8 +19,8 @@ public class BatalhaTest
     }
     
     @Test
-    public void BatalhaPrataEPrata()
-    {
+    public void BatalhaPrataEPrata()throws Exception {
+    
         Saint dante = new Saint("Dante", new Armadura("Cisne", Categoria.PRATA));
         Saint hyoga = new Saint("Hyoga", new Armadura("Capricornio", Categoria.PRATA));
         Batalha batalha = new Batalha (dante,hyoga);
@@ -30,8 +30,7 @@ public class BatalhaTest
     }
     
     @Test
-    public void BatalhaBronzeEPrata()
-    {
+    public void BatalhaBronzeEPrata() throws Exception {
         Saint dante = new Saint("Dante", new Armadura("Cisne", Categoria.BRONZE));
         Saint hyoga = new Saint("Hyoga", new Armadura("Capricornio", Categoria.PRATA));
         Batalha batalha = new Batalha (dante,hyoga);
