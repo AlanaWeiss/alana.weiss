@@ -78,4 +78,6 @@ public class SaintTest{
         dante.perderVida(-1000);
         assertEquals(1100,dante.getVida(),0.01);
     }
+    
+    
 }

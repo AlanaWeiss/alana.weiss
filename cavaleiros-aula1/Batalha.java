@@ -20,4 +20,15 @@ public class Batalha
         else saint1.perderVida(10);
         
     }*/
+    
+    public void iniciar(){
+        int valor1 = this.saint1.getValorArmadura();
+        int valor2 = this.saint2.getValorArmadura();
+        
+        if(valor1> valor2){
+            this.saint2.perderVida(10);
+        } else if (valor1 == valor2){
+            this.saint2.perderVida(10);
+        } else this.saint1.perderVida(10);
+    }
 }
