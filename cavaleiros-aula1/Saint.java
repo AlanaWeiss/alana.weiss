@@ -4,7 +4,8 @@ public class Saint {
     private boolean armaduraVestida;
     private Gênero genero = Gênero.NAO_INFORMADO;
     private Status status = Status.VIVO;
-    private int vida;
+    //private int vida;
+    private double vida = 100.0;
      
     //construtor
     public Saint(String nome, Armadura armadura){
@@ -38,11 +39,11 @@ public class Saint {
         return this.status;
     }
     
-    public int getVida(){
+    public double getVida(){
         return this.vida;
     }
     
-    public double perderVida(int v){
+    /*public double perderVida(int v){
         double perdeuVida = vida - v;
         return perdeuVida;
     }

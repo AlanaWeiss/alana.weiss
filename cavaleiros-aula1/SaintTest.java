@@ -41,7 +41,7 @@ public class SaintTest{
     @Test
     public void saintsNascemCom100DeVida(){
         Saint dante = new Saint("Dante", new Armadura("Cisne", Categoria.BRONZE));
-        assertEquals(100, dante.getVida());
+        assertEquals(100.0, dante.getVida(),0.01);
     }
     
     @Test

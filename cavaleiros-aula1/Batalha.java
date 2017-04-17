@@ -9,7 +9,7 @@ public class Batalha
        this.saint2 = saint2;
     }
     
-    public void iniciar(){
+    /*public void iniciar(){
         if(saint1.getValorArmadura()>saint2.getValorArmadura()){
            saint2.perderVida(10);
         } else if(saint1.getValorArmadura()<saint2.getValorArmadura()){
@@ -19,5 +19,5 @@ public class Batalha
         if(saint1.getVida()<100) saint2.perderVida(10);
         else saint1.perderVida(10);
         
-    }
+    }*/
 }
