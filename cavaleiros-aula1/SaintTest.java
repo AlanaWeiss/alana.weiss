@@ -43,4 +43,11 @@ public class SaintTest{
         Saint dante = new Saint("Dante", new Armadura("Cisne", Categoria.BRONZE));
         assertEquals(100, dante.getVida());
     }
+    
+    @Test
+    public void deveSerPossivelAlterarGenero(){
+        Saint jabu = new Saint("Dante", new Armadura("Cisne", Categoria.BRONZE));
+        jabu.setGenero(Gênero.MASCULINO);
+        assertEquals(Gênero.MASCULINO, jabu.getGenero());
+    }
 }
