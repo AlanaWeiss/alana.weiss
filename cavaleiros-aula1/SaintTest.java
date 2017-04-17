@@ -50,4 +50,32 @@ public class SaintTest{
         jabu.setGenero(Gênero.MASCULINO);
         assertEquals(Gênero.MASCULINO, jabu.getGenero());
     }
+    
+    @Test
+    public void perderDanoComValor10(){
+        Saint dante = new Saint("Dante", new Armadura("Cisne", Categoria.BRONZE));
+        dante.perderVida(10);
+        assertEquals(90,dante.getVida(),0.01);
+    }
+    
+    @Test
+    public void perderDanoComValor100(){
+        Saint dante = new Saint("Dante", new Armadura("Cisne", Categoria.BRONZE));
+        dante.perderVida(100);
+        assertEquals(0,dante.getVida(),0.01);
+    }
+    
+    @Test
+    public void perderDanoComValor1000(){
+        Saint dante = new Saint("Dante", new Armadura("Cisne", Categoria.BRONZE));
+        dante.perderVida(1000);
+        assertEquals(-900,dante.getVida(),0.01);
+    }
+    
+     @Test
+    public void perderDanoComValorMenos1000(){
+        Saint dante = new Saint("Dante", new Armadura("Cisne", Categoria.BRONZE));
+        dante.perderVida(-1000);
+        assertEquals(1100,dante.getVida(),0.01);
+    }
 }
