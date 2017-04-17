@@ -4,8 +4,8 @@ public class Saint {
     private boolean armaduraVestida;
     private Gênero genero = Gênero.NAO_INFORMADO;
     private Status status = Status.VIVO;
-    //private int vida;
     private double vida = 100.0;
+    private int qtdSentidosDespertados = 5;
      
     //construtor
     public Saint(String nome, Armadura armadura){
@@ -46,9 +46,8 @@ public class Saint {
     public void perderVida(double dano){
        this.vida -= dano;
     }
-    
-    
-    /*public void setStatus(Status status){
-        this.status = status;
-    }*/ //quando precisar ja ta aqui
+   
+    public int getQtdSentidosDespertados(){
+        return this.qtdSentidosDespertados;
+    }
 }

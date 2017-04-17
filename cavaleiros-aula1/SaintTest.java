@@ -79,5 +79,10 @@ public class SaintTest{
         assertEquals(1100,dante.getVida(),0.01);
     }
     
+    @Test
+    public void criarSaintNasceCom5SentidosDespertados(){
+        Saint dante = new Saint("Dante", new Armadura("Cisne", Categoria.BRONZE));
+        assertEquals(5, dante.getQtdSentidosDespertados());
+    }
     
 }
