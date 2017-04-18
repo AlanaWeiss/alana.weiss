@@ -65,19 +65,19 @@ public class SaintTest{
         assertEquals(0,dante.getVida(),0.01);
     }
     
-    /*@Test
-    /*public void perderDanoComValor1000()throws Exception {
-        Saint dante = new Saint("Dante", new Armadura("Cisne", Categoria.BRONZE));
-        dante.perderVida(1000);
-        assertEquals(-900,dante.getVida(),0.01);
-    }*/
+    ///*@Test(expected=Exception.class)
+    //public void perderDanoComValor1000()throws Exception {
+    //    Saint dante = new Saint("Dante", new Armadura("Cisne", Categoria.BRONZE));
+    //    dante.perderVida(1000);
+   //     assertEquals(-900,dante.getVida(),0.01);
+    //}*/
     
-    /* @Test
+     @Test(expected=Exception.class)
     public void perderDanoComValorMenos1000()throws Exception {
         Saint dante = new Saint("Dante", new Armadura("Cisne", Categoria.BRONZE));
         dante.perderVida(-1000);
         assertEquals(1100,dante.getVida(),0.01);
-    }*/
+    }
     
     @Test
     public void criarSaintNasceCom5SentidosDespertados()throws Exception {
@@ -100,5 +100,12 @@ public class SaintTest{
     public void criarSaintBronzeNasceCom5Sentidos()throws Exception {
         BronzeSaint dante = new BronzeSaint("Dante", new Armadura("Cisne", Categoria.BRONZE));
         assertEquals(5, dante.getQtdSentidosDespertados());
+    }
+    
+    @Test
+    public void perderTodaAVidaDeixaStatusMorto()throws Exception {
+        Saint dante = new Saint("Dante", new Armadura("Virgem", Categoria.OURO));
+        dante.perderVida(100);
+        assertEquals(Status.MORTO,dante.getStatus());
     }
 }
