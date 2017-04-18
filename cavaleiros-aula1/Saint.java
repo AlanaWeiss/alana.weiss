@@ -45,7 +45,9 @@ public class Saint {
     }
     
     public void perderVida(double dano){
-       this.vida -= dano;
+       if(getStatus() != Status.MORTO){
+        this.vida -= dano;
+       }
     }
    
     public int getQtdSentidosDespertados(){
