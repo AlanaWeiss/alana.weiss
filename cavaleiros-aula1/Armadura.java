@@ -1,8 +1,8 @@
 public class Armadura{
-    private Constelacao constelacao;
+    private String constelacao;
     private Categoria categoria;    
 
-    public Armadura(Constelacao constelacao, Categoria categoria){
+    public Armadura(String constelacao, Categoria categoria){
         this.constelacao=constelacao;
         this.categoria = categoria;
     }
@@ -15,7 +15,7 @@ public class Armadura{
         return this.categoria;
     }
     
-    public Constelacao getConstelacao(){
+    public String getConstelacao(){
         return this.constelacao;
     }
 } 
