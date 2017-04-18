@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
+import java.security.InvalidParameterException;
 
 public class SaintTest{
     @Test
@@ -65,14 +65,14 @@ public class SaintTest{
         assertEquals(0,dante.getVida(),0.01);
     }
     
-    ///*@Test(expected=Exception.class)
-    //public void perderDanoComValor1000()throws Exception {
-    //    Saint dante = new Saint("Dante", new Armadura("Cisne", Categoria.BRONZE));
-    //    dante.perderVida(1000);
-   //     assertEquals(-900,dante.getVida(),0.01);
-    //}*/
+    @Test
+   public void perderDanoComValor1000()throws Exception{
+       Saint dante = new Saint("Dante", new Armadura("Cisne", Categoria.BRONZE));
+       dante.perderVida(1000);
+      assertEquals(0,dante.getVida(),0.01);
+   }
     
-     @Test(expected=Exception.class)
+     @Test(expected=InvalidParameterException.class)
     public void perderDanoComValorMenos1000()throws Exception {
         Saint dante = new Saint("Dante", new Armadura("Cisne", Categoria.BRONZE));
         dante.perderVida(-1000);
