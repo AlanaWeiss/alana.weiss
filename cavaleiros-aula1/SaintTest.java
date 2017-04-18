@@ -20,17 +20,8 @@ public class SaintTest {
     }
 
     @Test
-<<<<<<< Updated upstream
     public void naoVestirArmaduraDeixaArmaduraNaoVestida() throws Exception {
         Saint hyoga = new Saint("Hyoga", new Armadura(new Constelacao("Cisne"), Categoria.BRONZE));
-=======
-    public void naoVestirArmaduraDeixaArmaduraNaoVestida()throws Exception {
-<<<<<<< Updated upstream
-        Saint hyoga = new Saint("Hyoga", new Armadura("Cisne", Categoria.BRONZE));
-=======
-        Saint hyoga = new Saint("Hyoga", new Armadura (new Constelacao ("Cisne")), Categoria.BRONZE);
->>>>>>> Stashed changes
->>>>>>> Stashed changes
         assertEquals(false, hyoga.getArmaduraVestida());
     }
 
@@ -113,42 +104,44 @@ public class SaintTest {
         SilverSaint marin = new SilverSaint("Marin", new Armadura(new Constelacao("Águia"), Categoria.PRATA));
         assertEquals(6, marin.getQtdSentidosDespertados());
     }
-    
+
     @Test
     public void criarSaintOuroNasceCom7SentidosDespertados() throws Exception {
         GoldSaint afrodite = new GoldSaint("Afrodite", new Armadura(new Constelacao("Peixes"), Categoria.OURO));
         assertEquals(7, afrodite.getQtdSentidosDespertados());
     }
-    
+
     @Test(expected=Exception.class)
     public void constelacaoInvalidaDeOuroDeveLancarErro() throws Exception {
         new GoldSaint("Bernardo", new Armadura(new Constelacao("Café"), Categoria.OURO));
     }
 
- @Test
+    @Test
     public void aprenderUmGolpe() throws Exception {
         Saint saga = new Saint("Saga", new Armadura(new Constelacao("Gêmeos"), Categoria.OURO));
         Golpe outraDimensao = new Golpe("Outra dimensão", 10);
         saga.aprenderGolpe(new Golpe("Outra dimensão", 10));
-        ArrayList golpes = saga.getGolpes();
-        assertEquals(outraDimensao, golpes(0));
-        assertNull(golpes[1]);
-        assertNull(golpes[2]);
+        ArrayList<Golpe> golpes = new ArrayList<>();
+        golpes = saga.getGolpes();
+        assertEquals(outraDimensao, golpes.get(0));
+        //assertNull(golpes.get(1));
+        //assertNull(golpes.get(2));
         // TODO: assert null
     }
 
-    /*@Test
+    @Test
     public void aprenderDoisGolpes() throws Exception {
         Saint saga = new Saint("Saga", new Armadura(new Constelacao("Gêmeos"), Categoria.OURO));
         Golpe outraDimensao = new Golpe("Outra dimensão", 10);
         Golpe explosaoGalatica = new Golpe("Explosão Galáctica", 11);
         saga.aprenderGolpe(outraDimensao);
         saga.aprenderGolpe(explosaoGalatica);
-         ArrayList golpes = saga.getGolpes();
-        assertEquals(outraDimensao, golpes[0]);
-        assertEquals(explosaoGalatica, golpes[1]);
-        assertNull(golpes[2]);
-    }*/
+        ArrayList<Golpe> golpes = new ArrayList<>();
+        golpes = saga.getGolpes();
+        assertEquals(outraDimensao, golpes.get(0));
+        assertEquals(explosaoGalatica, golpes.get(1));
+       // assertNull(golpes.get(2));
+    }
 
     @Test
     public void aprenderTresGolpes() throws Exception {
@@ -159,13 +152,34 @@ public class SaintTest {
         saga.aprenderGolpe(outraDimensao);
         saga.aprenderGolpe(explosaoGalatica);
         saga.aprenderGolpe(sataImperial);
-        ArrayList golpes = saga.getGolpes();
-        assertEquals(outraDimensao, golpes[0]);
-        assertEquals(explosaoGalatica, golpes[1]);
-        assertEquals(sataImperial, golpes[2]);
+        ArrayList<Golpe> golpes = new ArrayList<>();
+        golpes = saga.getGolpes();
+        assertEquals(outraDimensao, golpes.get(0));
+        assertEquals(explosaoGalatica, golpes.get(1));
+        assertEquals(sataImperial, golpes.get(2));
+    }
+    
+    @Test
+    public void aprenderQuatroGolpes() throws Exception {
+        Saint saga = new Saint("Saga", new Armadura(new Constelacao("Gêmeos"), Categoria.OURO));
+        Golpe outraDimensao = new Golpe("Outra dimensão", 10);
+        Golpe explosaoGalatica = new Golpe("Explosão Galáctica", 11);
+        Golpe sataImperial = new Golpe("Satã Imperial", 42);
+        Golpe cafe = new Golpe("café", 57);
+        saga.aprenderGolpe(outraDimensao);
+        saga.aprenderGolpe(explosaoGalatica);
+        saga.aprenderGolpe(sataImperial);
+        saga.aprenderGolpe(cafe);
+        ArrayList<Golpe> golpes = new ArrayList<>();
+        golpes = saga.getGolpes();
+        assertEquals(outraDimensao, golpes.get(0));
+        assertEquals(explosaoGalatica, golpes.get(1));
+        assertEquals(sataImperial, golpes.get(2));
+        assertEquals(cafe, golpes.get(3));
     }
 
-    @Test(expected=ArrayIndexOutOfBoundsException.class)
+    //QUATRO GOLPES NAO LANCA ERRO 
+    /*@Test(expected=ArrayIndexOutOfBoundsException.class)
     public void aprenderQuatroGolpesLancaErro() throws Exception {
         Saint saga = new Saint("Saga", new Armadura(new Constelacao("Gêmeos"), Categoria.OURO));
         Golpe outraDimensao = new Golpe("Outra dimensão", 10);
@@ -176,7 +190,7 @@ public class SaintTest {
         saga.aprenderGolpe(explosaoGalatica);
         saga.aprenderGolpe(sataImperial);
         saga.aprenderGolpe(rasteira);
-    }
+    }*/
 
     @Test
     public void getProximoGolpeComUm() throws Exception {

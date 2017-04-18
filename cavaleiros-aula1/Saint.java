@@ -77,10 +77,12 @@ public class Saint {
     }
     
      public Golpe getProximoGolpe() {
-        ArrayList golpes = getGolpes();
+        //ArrayList golpes = getGolpes();
+        ArrayList<Golpe> golpes = new ArrayList<>();
+        golpes = getGolpes();
          int posicao = this.acumuladorProximoGolpe % golpes.size();
          this.acumuladorProximoGolpe++;
-         return golpes(posicao);
+         return golpes.get(posicao);
      }
     
     
