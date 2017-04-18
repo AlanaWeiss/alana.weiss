@@ -44,10 +44,17 @@ public class Saint {
         return this.vida;
     }
     
-    public void perderVida(double dano){
-       if(getStatus() != Status.MORTO){
+    public void perderVida(double dano) throws Exception{
+       if (dano<0) {
+           throw new Exception("InvalidParameterException");
+        }
+        if(getStatus() != Status.MORTO){
         this.vida -= dano;
        }
+       if(this.vida<1){
+           this.vida=0;
+           this.status = Status.MORTO;
+        }
     }
    
     public int getQtdSentidosDespertados(){
