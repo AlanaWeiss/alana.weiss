@@ -7,6 +7,7 @@ public class Saint {
     private Status status = Status.VIVO;
     private double vida = 100.0;
     protected int qtdSentidosDespertados; //acesso para a classe e as subclasses
+    private int acumuladorProximoGolpe = 0;
      
     //construtor
     public Saint(String nome, Armadura armadura) throws Exception {
@@ -60,4 +61,25 @@ public class Saint {
     public int getQtdSentidosDespertados(){
         return this.qtdSentidosDespertados;
     }
+    
+    private Constelacao getConstelacao(){
+        return this.armadura.getConstelacao();
+    }
+    
+    public Golpe[] getGolpes(){
+       return this.getConstelacao().getGolpes();
+    }
+    
+    public void aprenderGolpe(Golpe golpe){
+        getConstelacao().adicionarGolpe(golpe);
+    }
+    
+     public Golpe getProximoGolpe() {
+        Golpe[] golpes = getGolpes();
+         int posicao = this.acumuladorProximoGolpe % golpes.length;
+         this.acumuladorProximoGolpe++;
+         return golpes[posicao];
+     }
+    
+    
 }
