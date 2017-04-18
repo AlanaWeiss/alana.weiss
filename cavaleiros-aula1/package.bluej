@@ -3,6 +3,7 @@ dependency1.from=Batalha
 dependency1.to=Saint
 dependency1.type=UsesDependency
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 dependency10.from=BatalhaTest
 dependency10.to=Categoria
 dependency10.type=UsesDependency
@@ -102,6 +103,41 @@ dependency19.type=UsesDependency
 dependency2.from=Armadura
 dependency2.to=Constelacao
 dependency2.type=UsesDependency
+=======
+dependency10.from=SaintTest
+dependency10.to=Constelacao
+dependency10.type=UsesDependency
+dependency11.from=SaintTest
+dependency11.to=Saint
+dependency11.type=UsesDependency
+dependency12.from=SaintTest
+dependency12.to=BronzeSaint
+dependency12.type=UsesDependency
+dependency13.from=SaintTest
+dependency13.to=GoldSaint
+dependency13.type=UsesDependency
+dependency14.from=SaintTest
+dependency14.to=SilverSaint
+dependency14.type=UsesDependency
+dependency15.from=SaintTest
+dependency15.to=Categoria
+dependency15.type=UsesDependency
+dependency16.from=SaintTest
+dependency16.to=G\u00EAnero
+dependency16.type=UsesDependency
+dependency17.from=SaintTest
+dependency17.to=Status
+dependency17.type=UsesDependency
+dependency18.from=Saint
+dependency18.to=Armadura
+dependency18.type=UsesDependency
+dependency19.from=Saint
+dependency19.to=G\u00EAnero
+dependency19.type=UsesDependency
+dependency2.from=Armadura
+dependency2.to=Constelacao
+dependency2.type=UsesDependency
+>>>>>>> Stashed changes
 dependency20.from=Saint
 dependency20.to=Status
 dependency20.type=UsesDependency
@@ -125,12 +161,16 @@ dependency4.to=Saint
 dependency4.type=UsesDependency
 dependency5.from=BatalhaTest
 dependency5.to=Armadura
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 dependency5.type=UsesDependency
 dependency6.from=BatalhaTest
 dependency6.to=Constelacao
 dependency6.type=UsesDependency
 dependency7.from=BatalhaTest
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 dependency7.to=Saint
 dependency7.type=UsesDependency
@@ -165,6 +205,16 @@ dependency8.type=UsesDependency
 dependency9.from=SaintTest
 dependency9.to=Armadura
 dependency9.type=UsesDependency
+=======
+dependency7.to=Batalha
+dependency7.type=UsesDependency
+dependency8.from=BatalhaTest
+dependency8.to=Categoria
+dependency8.type=UsesDependency
+dependency9.from=SaintTest
+dependency9.to=Armadura
+dependency9.type=UsesDependency
+>>>>>>> Stashed changes
 editor.fx.0.height=739
 editor.fx.0.width=816
 editor.fx.0.x=478
@@ -181,6 +231,9 @@ package.frame.height=744
 package.frame.width=1378
 package.numDependencies=24
 package.numTargets=13
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 package.showExtends=true
 package.showUses=true
@@ -197,20 +250,27 @@ target1.type=EnumTarget
 target1.typeParameters=
 target1.width=80
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 target1.x=480
 target1.y=320
 target10.height=50
 target10.name=SilverSaint
 =======
+=======
+>>>>>>> Stashed changes
 target1.x=570
 target1.y=230
 target10.height=50
 target10.name=Armadura
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 target10.showInterface=false
 target10.type=ClassTarget
 target10.typeParameters=
 target10.width=80
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 target10.x=720
 target10.y=250
@@ -288,6 +348,38 @@ target13.y=290
 target2.height=50
 target2.name=GoldSaint
 target2.showInterface=false
+=======
+target10.x=390
+target10.y=410
+target11.height=60
+target11.name=SaintTest
+target11.naviview.expanded=true
+target11.showInterface=false
+target11.type=UnitTestTargetJunit4
+target11.typeParameters=
+target11.width=70
+target11.x=390
+target11.y=70
+target12.height=50
+target12.name=BatalhaTest
+target12.showInterface=false
+target12.type=UnitTestTargetJunit4
+target12.typeParameters=
+target12.width=80
+target12.x=1150
+target12.y=60
+target13.height=50
+target13.name=Saint
+target13.showInterface=false
+target13.type=ClassTarget
+target13.typeParameters=
+target13.width=80
+target13.x=200
+target13.y=290
+target2.height=50
+target2.name=GoldSaint
+target2.showInterface=false
+>>>>>>> Stashed changes
 target2.type=ClassTarget
 target2.typeParameters=
 target2.width=80
@@ -295,26 +387,36 @@ target2.x=100
 target2.y=60
 target3.height=50
 target3.name=Golpe
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 target3.showInterface=false
 target3.type=ClassTarget
 target3.typeParameters=
 target3.width=80
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 target3.x=830
 target3.y=160
 target4.height=50
 target4.name=Golpe
 =======
+=======
+>>>>>>> Stashed changes
 target3.x=820
 target3.y=180
 target4.height=50
 target4.name=Batalha
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 target4.showInterface=false
 target4.type=ClassTarget
 target4.typeParameters=
 target4.width=80
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 target4.x=170
 target4.y=10
@@ -327,10 +429,17 @@ target4.y=320
 target5.height=50
 target5.name=G\u00EAnero
 >>>>>>> Stashed changes
+=======
+target4.x=990
+target4.y=320
+target5.height=50
+target5.name=G\u00EAnero
+>>>>>>> Stashed changes
 target5.showInterface=false
 target5.type=EnumTarget
 target5.typeParameters=
 target5.width=80
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 target5.x=50
 target5.y=90
@@ -351,6 +460,13 @@ target5.y=140
 target6.height=50
 target6.name=BronzeSaint
 target6.showInterface=false
+=======
+target5.x=640
+target5.y=140
+target6.height=50
+target6.name=BronzeSaint
+target6.showInterface=false
+>>>>>>> Stashed changes
 target6.type=ClassTarget
 target6.typeParameters=
 target6.width=90
@@ -358,6 +474,9 @@ target6.x=30
 target6.y=340
 target7.height=50
 target7.name=Categoria
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 target7.showInterface=false
 target7.type=EnumTarget
@@ -403,4 +522,7 @@ target9.typeParameters=
 target9.width=80
 target9.x=10
 target9.y=180
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes

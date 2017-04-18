@@ -20,8 +20,17 @@ public class SaintTest {
     }
 
     @Test
+<<<<<<< Updated upstream
     public void naoVestirArmaduraDeixaArmaduraNaoVestida() throws Exception {
         Saint hyoga = new Saint("Hyoga", new Armadura(new Constelacao("Cisne"), Categoria.BRONZE));
+=======
+    public void naoVestirArmaduraDeixaArmaduraNaoVestida()throws Exception {
+<<<<<<< Updated upstream
+        Saint hyoga = new Saint("Hyoga", new Armadura("Cisne", Categoria.BRONZE));
+=======
+        Saint hyoga = new Saint("Hyoga", new Armadura (new Constelacao ("Cisne")), Categoria.BRONZE);
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
         assertEquals(false, hyoga.getArmaduraVestida());
     }
 
