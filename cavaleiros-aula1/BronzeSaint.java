@@ -1,5 +1,5 @@
 public class BronzeSaint extends Saint{
-    public BronzeSaint(String nome, Armadura armadura)throws Exception {
+    public BronzeSaint(String nome, Armadura armadura )throws Exception {
         super(nome, armadura); //chama o construtor na classe base = Saint
         this.qtdSentidosDespertados = 5;
     }

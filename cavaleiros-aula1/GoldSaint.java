@@ -1,5 +1,5 @@
 public class GoldSaint extends Saint{
-    public GoldSaint(String nome, Armadura armadura) throws Exception{
+    public GoldSaint(String nome, Armadura armadura ) throws Exception{
         super(nome, armadura);
         this.qtdSentidosDespertados = 7;  
              String constelacao = armadura.getConstelacao().getNome();
