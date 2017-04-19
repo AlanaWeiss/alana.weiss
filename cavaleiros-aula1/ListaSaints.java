@@ -79,16 +79,21 @@ public class ListaSaints{
         return saint;
     }
     
-    public void ordenar(){
-        Saint saint = null;   
-            for(int i = 0; i<saints.size(); i++){
-                for(int x = 1; x < saints.size(); x++){
-                    if(saints.get(i).getVida()>saints.get(x).getVida()){
-                        saint = saints.get(i);
-                        saints.add(i, saints.get(x));
-                        saints.add(x, saint);
-                    }
+    public void ordenar() {
+        
+        boolean posicoesSendoTrocadas;
+        do {
+            posicoesSendoTrocadas = false;
+            for (int i = 0; i < this.saints.size() - 1; i++) {
+                Saint atual = this.saints.get(i);
+                Saint proximo = this.saints.get(i + 1);
+                boolean precisaTrocar = atual.getVida() > proximo.getVida();
+                if (precisaTrocar) {
+                    this.saints.set(i, proximo);
+                    this.saints.set(i + 1, atual);
+                    posicoesSendoTrocadas = true;
                 }
             }
-    }
+        } while (posicoesSendoTrocadas);   
+    }   
 }
