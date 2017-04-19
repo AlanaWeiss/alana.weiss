@@ -18,6 +18,9 @@ public class Saint {
         vida = 100;
         } 
     
+    public String getSaint(){
+        return this.nome;
+    }
     
     public int getValorArmadura(){
         return this.armadura.getCategoria();

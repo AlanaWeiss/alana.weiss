@@ -6,11 +6,6 @@ public class ListaSaints{
     public void adicionar(Saint saint){
         saints.add(saint);
     }
-    
-    public void adicionarSaint(Saint saint){
-        saints.add(saint); //golpeS = array
-                           //golpE = parametro        
-    }
      
     public ArrayList todos(){
         return saints;
@@ -21,7 +16,13 @@ public class ListaSaints{
     }
        
     public void remover(Saint saint){
-        int i = saints.indexOf(saint);
-        saints.remove(i);
+       // int i = saints.indexOf(saint);
+       // saints.remove(i);
+        saints.remove(saint);
     }
+    
+    /*public Saint buscaPorNome(String s){
+       
+        return saints.get(7);
+    }*/
 }
