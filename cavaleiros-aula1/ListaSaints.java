@@ -4,46 +4,46 @@ public class ListaSaints{
     private int indice;
     
     public void adicionar(Saint saint){
-        saints.add(saint);
+        this.saints.add(saint);
     }
      
-    public ArrayList todos(){
-        return saints;
+    public ArrayList<Saint> todos(){
+        return this.saints;
     }
     
     public Saint get(int indice){
-        return saints.get(indice);
+        return this.saints.get(indice);
     }
        
     public void remover(Saint saint){
-       // int i = saints.indexOf(saint);
-       // saints.remove(i);
-        saints.remove(saint);
+         this.saints.remove(saint);
     }
     
     public Saint buscaPorNome(String s){
            for(int  i = 0; i<saints.size();i++){
-            Saint test = saints.get(i);
+            Saint test = this.saints.get(i);
             if (test.getSaint().equals(s)) {
                 return test;   
             }
         }
          return null;
+        
     }
     
-    public ArrayList<Saint> buscarPorCategoria(Categoria categoria){
-        ArrayList<Saint> listaPorCategoria = new ArrayList<>();
-        for (int i = 0; i<saints.size();i++){
-            Saint test = saints.get(i);
-            if(test.getCategoriaArmadura() == categoria.getValor()) listaPorCategoria.add(test);
+    public ArrayList<Saint> buscarPorCategoria(Categoria categoria) {
+        ArrayList<Saint> subLista = new ArrayList<Saint>();
+        //
+        for (Saint saint : this.saints) {
+            if (saint.getArmadura().getCat().equals(categoria)) {
+                subLista.add(saint);
+            }
         }
-        return listaPorCategoria;
-    } 
-    
+        return subLista;
+    }
     public ArrayList<Saint> buscarPorStatus(Status status){
         ArrayList<Saint> listaPorStatus = new ArrayList<>();
         for (int i = 0; i<saints.size();i++){
-            Saint test = saints.get(i);
+            Saint test = this.saints.get(i);
             if(test.getStatus().equals(status)) listaPorStatus.add(test);
         }
         return listaPorStatus;

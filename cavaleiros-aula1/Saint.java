@@ -35,6 +35,10 @@ public class Saint {
         return this.armaduraVestida;
     }
 
+	 public Armadura getArmadura() {
+        return this.armadura;
+    }
+
     public Gênero getGenero(){
     return this.genero;
     }
@@ -75,7 +79,7 @@ public class Saint {
         return this.armadura.getConstelacao();
     }
     
-    public ArrayList getGolpes(){
+    public ArrayList<Golpe> getGolpes(){
        return this.getConstelacao().getGolpes();
     }
     

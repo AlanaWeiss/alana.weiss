@@ -2,9 +2,7 @@ import java.util.ArrayList;
 
 public class Constelacao {
     private String nome;
-    //private Golpe[] golpes = new Golpe[3];
     ArrayList<Golpe> golpes = new ArrayList<>();
-    private int ultimaPosicaoPreenchida = 0;
  
     public Constelacao(String nome){
         this.nome=nome;
@@ -15,7 +13,7 @@ public class Constelacao {
                            //golpE = parametro        
     }
     
-    public ArrayList getGolpes(){
+    public ArrayList<Golpe> getGolpes(){
         return golpes;
     }
     
