@@ -51,6 +51,10 @@ public class Saint {
         return this.vida;
     }
     
+    public int getCategoriaArmadura(){
+        return this.armadura.getCategoria();
+    }
+    
     public void perderVida(double dano){
        if (dano<0) {
            throw new InvalidParameterException("dano negativo");
