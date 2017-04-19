@@ -47,11 +47,11 @@ public class ListaSaints{
         double vida = 0.0;
         Saint saintMaior=null;
         
-		if (saints.isEmpty()) {
+        if (saints.isEmpty()) {
             return null;
         }
         
-		for (int x = 0; x<saints.size();x++){
+        for (int x = 0; x<saints.size();x++){
             Saint test = saints.get(x);
             if (test.getVida()>vida){
                 saintMaior = test;
@@ -96,4 +96,23 @@ public class ListaSaints{
             }
         } while (posicoesSendoTrocadas);   
     }   
+    
+    public void ordenar(TipoOrdenacao ordenacao){
+        if(TipoOrdenacao.ASCENDENTE.equals(ordenacao)){
+            boolean posicoesSendoTrocadas;
+        do {
+            posicoesSendoTrocadas = false;
+            for (int i = 0; i < this.saints.size() - 1; i++) {
+                Saint atual = this.saints.get(i);
+                Saint proximo = this.saints.get(i + 1);
+                boolean precisaTrocar = atual.getVida() > proximo.getVida();
+                if (precisaTrocar) {
+                    this.saints.set(i, proximo);
+                    this.saints.set(i + 1, atual);
+                    posicoesSendoTrocadas = true;
+                }
+            }
+        } while (posicoesSendoTrocadas);   
+        }
+    }
 }
