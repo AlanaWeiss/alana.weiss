@@ -73,4 +73,18 @@ public class ListaSaints{
         }
         return saint;
     }
+    
+    public void ordenar(){
+        Saint saint = null;
+        for(int i = 0; i<saints.size(); i++){
+            for(int x = 1; x < saints.size(); x++){
+                if(saints.get(i).getVida()>saints.get(x).getVida()){
+                    saint = saints.get(i);
+                    saints.add(i, saints.get(x));
+                    saints.add(x, saint);
+                }
+            }
+        
+        }
+    }
 }
