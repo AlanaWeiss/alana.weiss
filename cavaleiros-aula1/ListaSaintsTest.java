@@ -78,4 +78,37 @@ public class ListaSaintsTest
         assertEquals(june, resultadoBusca.get(1));
         assertEquals(2, resultadoBusca.size());
     }
+ 	@Test
+    public void getSaintMaiorVidaComApenasTres() throws Exception {
+        ListaSaints listaSaints = new ListaSaints();
+        Saint june = new Saint("June", new Armadura(new Constelacao("Camaleão"), Categoria.BRONZE));
+        Saint misty = new SilverSaint("Misty", new Armadura(new Constelacao("Lagarto"), Categoria.PRATA));
+        Saint shun = new Saint("June", new Armadura(new Constelacao("Andrômeda"), Categoria.BRONZE));
+        listaSaints.adicionar(shun);
+        listaSaints.adicionar(misty);
+        listaSaints.adicionar(june);
+        shun.perderVida(10);
+        june.perderVida(20);
+        assertEquals(misty, listaSaints.getSaintMaiorVida());
+    }
+    
+    @Test
+    public void getSaintMaiorVidaComListaVazia() {
+        ListaSaints listaSaints = new ListaSaints();
+        Saint maiorVida = listaSaints.getSaintMaiorVida();
+        assertNull(maiorVida);
+    }
+ 	@Test
+    public void getSaintMenorVidaComApenasTres() throws Exception {
+        ListaSaints listaSaints = new ListaSaints();
+        Saint june = new Saint("June", new Armadura(new Constelacao("Camaleão"), Categoria.BRONZE));
+        Saint misty = new SilverSaint("Misty", new Armadura(new Constelacao("Lagarto"), Categoria.PRATA));
+        Saint shun = new Saint("June", new Armadura(new Constelacao("Andrômeda"), Categoria.BRONZE));
+        listaSaints.adicionar(shun);
+        listaSaints.adicionar(misty);
+        listaSaints.adicionar(june);
+        shun.perderVida(10);
+        june.perderVida(20);
+        assertEquals(june, listaSaints.getSaintMenorVida());
+    }	
 }

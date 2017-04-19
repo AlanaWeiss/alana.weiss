@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 public class ListaSaints{
     ArrayList<Saint> saints = new ArrayList<>();
     private int indice;
@@ -30,40 +31,44 @@ public class ListaSaints{
         
     }
     
-    public ArrayList<Saint> buscarPorCategoria(Categoria categoria) {
-        ArrayList<Saint> subLista = new ArrayList<Saint>();
-        //
-        for (Saint saint : this.saints) {
-            if (saint.getArmadura().getCat().equals(categoria)) {
-                subLista.add(saint);
-            }
-        }
-        return subLista;
+   public ArrayList<Saint> buscarPorCategoria(Categoria categoria) {
+        return (ArrayList<Saint>)this.saints.stream()
+            .filter(s -> s.getArmadura().getCat().equals(categoria))
+            .collect(Collectors.toList());
     }
-    public ArrayList<Saint> buscarPorStatus(Status status){
-        ArrayList<Saint> listaPorStatus = new ArrayList<>();
-        for (int i = 0; i<saints.size();i++){
-            Saint test = this.saints.get(i);
-            if(test.getStatus().equals(status)) listaPorStatus.add(test);
-        }
-        return listaPorStatus;
-    } 
+    
+    public ArrayList<Saint> buscarPorStatus(Status status) {
+        return (ArrayList<Saint>)this.saints.stream()
+            .filter(s -> s.getStatus().equals(status))
+            .collect(Collectors.toList());
+    }
     
     public Saint getSaintMaiorVida(){
         double vida = 0.0;
-        Saint saint=null;
-        for (int x = 0; x<saints.size();x++){
+        Saint saintMaior=null;
+        
+		if (saints.isEmpty()) {
+            return null;
+        }
+        
+		for (int x = 0; x<saints.size();x++){
             Saint test = saints.get(x);
             if (test.getVida()>vida){
-                saint = test;
+                saintMaior = test;
                 vida=test.getVida();
             }
         }
-        return saint;
+        return saintMaior;
     }
+
     public Saint getSaintMenorVida(){
         double vida = 100.0;
         Saint saint = null;
+        
+        if (saints.isEmpty()) {
+            return null;
+        }
+        
         for (int x = 0; x<saints.size();x++){
             Saint test = saints.get(x);
             if (test.getVida()<vida){
@@ -75,16 +80,15 @@ public class ListaSaints{
     }
     
     public void ordenar(){
-        Saint saint = null;
-        for(int i = 0; i<saints.size(); i++){
-            for(int x = 1; x < saints.size(); x++){
-                if(saints.get(i).getVida()>saints.get(x).getVida()){
-                    saint = saints.get(i);
-                    saints.add(i, saints.get(x));
-                    saints.add(x, saint);
+        Saint saint = null;   
+            for(int i = 0; i<saints.size(); i++){
+                for(int x = 1; x < saints.size(); x++){
+                    if(saints.get(i).getVida()>saints.get(x).getVida()){
+                        saint = saints.get(i);
+                        saints.add(i, saints.get(x));
+                        saints.add(x, saint);
+                    }
                 }
             }
-        
-        }
     }
 }
