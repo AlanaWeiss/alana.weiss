@@ -99,13 +99,15 @@ public class ListaSaints{
     
     public void ordenar(TipoOrdenacao ordenacao){
         if(TipoOrdenacao.ASCENDENTE.equals(ordenacao)){
+            this.ordenar();
+        }else {
             boolean posicoesSendoTrocadas;
             do {
                 posicoesSendoTrocadas = false;
                 for (int i = 0; i < this.saints.size() - 1; i++) {
                     Saint atual = this.saints.get(i);
                     Saint proximo = this.saints.get(i + 1);
-                    boolean precisaTrocar = atual.getVida() > proximo.getVida();
+                    boolean precisaTrocar = atual.getVida() < proximo.getVida();
                     if (precisaTrocar) {
                         this.saints.set(i, proximo);
                         this.saints.set(i + 1, atual);
@@ -113,7 +115,7 @@ public class ListaSaints{
                     }
                 }
             } while (posicoesSendoTrocadas);   
-            }
+           }
     }
     
 }
