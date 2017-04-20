@@ -96,16 +96,27 @@ public class Saint {
          return golpes.get(posicao);
      }
     
-    public String getCSV() {
-        String resultado = "";
-        resultado += 
-               this.nome + "," + 
-               this.vida + "," + 
-                getConstelacao().getNome() + "," + 
-                armadura.getCat() + "," +
-                this.status + "," + 
-                this.genero + "," + 
-                this.armaduraVestida;
-        return resultado;
+     public String getCSV() {
+        
+        // Interpolação de Strings: return `${nome},${vida},${status}`;
+        return String.format(
+            "%s,%s,%s,%s,%s,%s,%s",
+            this.nome,
+            this.vida,
+            this.getConstelacao().getNome(),
+            this.armadura.getCat(),
+            this.status,
+            this.genero,
+            this.armaduraVestida
+        );
+        
+        /*return  
+            this.nome + "," +
+            this.vida + "," +
+            this.getConstelacao().getNome() + "," +
+            this.armadura.getCategoria() + "," +
+            this.status + "," +
+            this.genero + "," +
+            this.armaduraVestida;*/
     }
 }

@@ -315,7 +315,7 @@ public class ListaSaintsTest
         assertEquals(misty,resultado.get(1));
     }
     
-     @Test
+       @Test
     public void getCSVComApenasUmSaint() throws Exception {
         ListaSaints lista = new ListaSaints();
         Saint june = new Saint("June", new Armadura(new Constelacao("Camaleão"), Categoria.BRONZE));
@@ -325,19 +325,4 @@ public class ListaSaintsTest
         String esperado = "June,84.5,Camaleão,BRONZE,VIVO,FEMININO,false";
         assertEquals(esperado, lista.getCSV());
     }
-
-    @Test
-    public void getCSVComApenasDoisSaints() throws Exception {
-        ListaSaints lista = new ListaSaints();
-        Saint june = new Saint("June", new Armadura(new Constelacao("Camaleão"), Categoria.BRONZE));
-        june.setGenero(Gênero.FEMININO);
-        june.perderVida(15.5);
-        lista.adicionar(june);
-        Saint dohko = new Saint("Dohko", new Armadura(new Constelacao(""), Categoria.OURO));
-        dohko.perderVida(90);
-        dohko.vestirArmadura();
-        lista.adicionar(dohko);
-        String esperado = "June,84.5,Camaleão,BRONZE,VIVO,FEMININO,false\nDohko,10.0,,OURO,VIVO,NAO_INFORMADO,true";
-        assertEquals(esperado, lista.getCSV());
-    } 
 }
