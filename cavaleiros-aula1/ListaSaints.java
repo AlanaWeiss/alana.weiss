@@ -118,4 +118,51 @@ public class ListaSaints{
            }
     }
     
+     public ArrayList<Saint> unir (ArrayList<Saint> array){
+         ArrayList<Saint> nova = new ArrayList<>();
+         nova = this.todos();
+         nova.addAll(array);
+         return nova;
+     }
+     
+     public ArrayList<Saint> diff (ArrayList<Saint> recebido){
+        ArrayList<Saint> saintsDiferentes = new ArrayList<>();
+        boolean diferentes = true;
+        for(int i = 0; i<this.saints.size();i++){
+            for(int x=0; x<recebido.size();x++){
+                if (saints.get(i).equals(recebido.get(x))) diferentes = false;
+            }
+            if(diferentes) saintsDiferentes.add(saints.get(i));
+        }
+        return saintsDiferentes;
+     }
+    
+     public ArrayList<Saint> intersec (ArrayList<Saint> recebido){
+         ArrayList<Saint> saintsIguais = new ArrayList<>();
+         boolean iguais = false;
+         for(int i = 0; i<this.saints.size();i++){
+            for(int x=0; x<recebido.size();x++){
+                if (saints.get(i).equals(recebido.get(x))) iguais = true;
+            }
+            if(iguais) saintsIguais.add(saints.get(i));
+        }
+         return saintsIguais;
+     }
+     
+      public String getCSV() {
+        String resultado = "";
+        
+        for(Saint saint : saints) {
+            resultado += 
+                saint.getSaint() + "," + 
+                saint.getVida() + "," + 
+                saint.getConstelacao().getNome() + "," + 
+                saint.getArmadura().getCategoria() + "," +
+                saint.getStatus() + "," + 
+                saint.getGenero() + "," + 
+                saint.getArmaduraVestida()  + "\n";
+        }
+        
+        return resultado;
+    }
 }
