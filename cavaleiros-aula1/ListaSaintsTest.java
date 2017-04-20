@@ -315,18 +315,29 @@ public class ListaSaintsTest
         assertEquals(misty,resultado.get(1));
     }
     
-    public void testarDiff() throws Exception {
-        ListaSaints lista1 = new ListaSaints();
-        ListaSaints lista2 = new ListaSaints();
+     @Test
+    public void getCSVComApenasUmSaint() throws Exception {
+        ListaSaints lista = new ListaSaints();
         Saint june = new Saint("June", new Armadura(new Constelacao("Camaleão"), Categoria.BRONZE));
-        Saint misty = new SilverSaint("Misty", new Armadura(new Constelacao("Lagarto"), Categoria.PRATA));
-        Saint shun = new Saint("Shun", new Armadura(new Constelacao("Andrômeda"), Categoria.BRONZE));
-        lista1.adicionar(shun);
-        lista2.adicionar(misty);
-        lista2.adicionar(june);
-        lista1.diff(lista2);
-        ArrayList<Saint> resultado = lista1.todos();
-        assertEquals(shun,resultado.get(0));
-        assertEquals(misty,resultado.get(1));
+        june.setGenero(Gênero.FEMININO);
+        june.perderVida(15.5);
+        lista.adicionar(june);
+        String esperado = "June,84.5,Camaleão,BRONZE,VIVO,FEMININO,false";
+        assertEquals(esperado, lista.getCSV());
     }
+
+    @Test
+    public void getCSVComApenasDoisSaints() throws Exception {
+        ListaSaints lista = new ListaSaints();
+        Saint june = new Saint("June", new Armadura(new Constelacao("Camaleão"), Categoria.BRONZE));
+        june.setGenero(Gênero.FEMININO);
+        june.perderVida(15.5);
+        lista.adicionar(june);
+        Saint dohko = new Saint("Dohko", new Armadura(new Constelacao(""), Categoria.OURO));
+        dohko.perderVida(90);
+        dohko.vestirArmadura();
+        lista.adicionar(dohko);
+        String esperado = "June,84.5,Camaleão,BRONZE,VIVO,FEMININO,false\nDohko,10.0,,OURO,VIVO,NAO_INFORMADO,true";
+        assertEquals(esperado, lista.getCSV());
+    } 
 }

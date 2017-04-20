@@ -148,19 +148,22 @@ public class ListaSaints{
      }
      
       public String getCSV() {
-        String resultado = "";
-        
-        for(Saint saint : saints) {
-            resultado += 
-                saint.getSaint() + "," + 
-                saint.getVida() + "," + 
-                saint.getConstelacao().getNome() + "," + 
-                saint.getArmadura().getCategoria() + "," +
-                saint.getStatus() + "," + 
-                saint.getGenero() + "," + 
-                saint.getArmaduraVestida()  + "\n";
+        if (this.saints.isEmpty()) {
+            return "";
         }
-        
-        return resultado;
+
+        String separador = System.getProperty("line.separator");
+        StringBuilder builder = new StringBuilder(512);
+
+        builder.append(this.saints.get(0).getCSV());
+        for (int i = 1; i < this.saints.size(); i++) {
+            Saint saint = this.saints.get(i);
+            //resultado += separador + saint.getCSV();
+            //builder.append(String.format("%s%s", separador, saint.getCSV()));
+            builder.append(separador);
+            builder.append(saint.getCSV());
+        }
+
+        return builder.toString();
     }
 }
