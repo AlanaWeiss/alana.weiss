@@ -224,20 +224,4 @@ public class ListaSaintsTest
         assertEquals(shun, resultado.get(0));
     }
     
-    @Test
-    public void testarUnir() throws Exception {
-        ListaSaints lista1 = new ListaSaints();
-        ListaSaints lista2 = new ListaSaints();
-        Saint june = new Saint("June", new Armadura(new Constelacao("Camaleão"), Categoria.BRONZE));
-        Saint misty = new SilverSaint("Misty", new Armadura(new Constelacao("Lagarto"), Categoria.PRATA));
-        Saint shun = new Saint("Shun", new Armadura(new Constelacao("Andrômeda"), Categoria.BRONZE));
-        lista1.adicionar(shun);
-        lista2.adicionar(misty);
-        lista2.adicionar(june);
-        ListaSaints listaResultado = lista1.unir(lista2);
-        ArrayList<Saint> resultado = lista1.todos();
-        assertEquals(june, resultado.get(2));
-        assertEquals(misty, resultado.get(1));
-        assertEquals(shun, resultado.get(0));
-    }
 }
