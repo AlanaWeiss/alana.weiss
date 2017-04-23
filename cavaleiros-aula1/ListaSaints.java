@@ -20,21 +20,19 @@ public class ListaSaints{
          this.saints.remove(saint);
     }
     
-    public Saint buscaPorNome(String s){
-           for(int  i = 0; i<saints.size();i++){
-            Saint test = this.saints.get(i);
-            if (test.getSaint().equals(s)) {
-                return test;   
-            }
-        }
-         return null;
+    public Saint buscaPorNome(String stringNome){
+        return this.saints.stream()
+        .filter(s -> s.getSaint().equals(stringNome))
+        .findFirst()
+        .orElse(null);
         
     }
     
    public ArrayList<Saint> buscarPorCategoria(Categoria categoria) {
         return (ArrayList<Saint>)this.saints.stream()
-            .filter(s -> s.getArmadura().getCat().equals(categoria))
-            .collect(Collectors.toList());
+        .filter(s -> s.getArmadura().getCat().equals(categoria))
+        .collect(Collectors.toList());
+
     }
     
     public ArrayList<Saint> buscarPorStatus(Status status) {

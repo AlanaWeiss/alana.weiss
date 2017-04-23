@@ -10,8 +10,8 @@ public class BatalhaTest
     @Test
     public void BatalhaPrataEBronze()throws Exception {
     
-        Saint dante = new Saint("Dante", new Armadura(new Constelacao("Cisne"), Categoria.PRATA));
-        Saint hyoga = new Saint("Hyoga", new Armadura(new Constelacao("Capricornio"), Categoria.BRONZE));
+        Saint dante = new SilverSaint("Dante","Cisne");
+        Saint hyoga = new BronzeSaint("Hyoga", "Capricornio");
         Batalha batalha = new Batalha (dante,hyoga);
         batalha.iniciar();
         assertEquals(100,dante.getVida(),0.01);
@@ -21,8 +21,8 @@ public class BatalhaTest
     @Test
     public void BatalhaPrataEPrata()throws Exception {
     
-        Saint dante = new Saint("Dante", new Armadura(new Constelacao("Cisne"), Categoria.PRATA));
-        Saint hyoga = new Saint("Hyoga", new Armadura(new Constelacao("Capricornio"), Categoria.PRATA));
+        Saint dante = new SilverSaint("Dante", "Cisne");
+        Saint hyoga = new SilverSaint("Hyoga","Capricornio");
         Batalha batalha = new Batalha (dante,hyoga);
         batalha.iniciar();
         assertEquals(100,dante.getVida(),0.01);
@@ -31,11 +31,13 @@ public class BatalhaTest
     
     @Test
     public void BatalhaBronzeEPrata() throws Exception {
-        Saint dante = new Saint("Dante", new Armadura(new Constelacao("Cisne"), Categoria.BRONZE));
-        Saint hyoga = new Saint("Hyoga", new Armadura(new Constelacao("Capricornio"), Categoria.PRATA));
-        Batalha batalha = new Batalha (dante,hyoga);
+        Constelacao virgem = new Constelacao("Virgem");
+        Constelacao sagitario = new Constelacao("Sagitário");
+        Saint shiryu = new SilverSaint("shiryu", virgem.getNome());
+        Saint ikki = new GoldSaint("ikki", sagitario.getNome());
+        Batalha batalha = new Batalha(shiryu, ikki);
         batalha.iniciar();
-        assertEquals(90,dante.getVida(),0.01);
-        assertEquals(100,hyoga.getVida(),0.01);
+        assertEquals(90.0, shiryu.getVida(), 0.1);
+        assertEquals(100.0, ikki.getVida(), 0.1);
     }
 }

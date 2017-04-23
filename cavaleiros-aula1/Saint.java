@@ -1,9 +1,10 @@
 import java.security.InvalidParameterException;
 import java.util.ArrayList;
 
-public class Saint {
+public abstract class Saint {
     private String nome;
-    private Armadura armadura; 
+    protected Armadura armadura; 
+    private String constelacao;
     private boolean armaduraVestida;
     private Gênero genero = Gênero.NAO_INFORMADO;
     private Status status = Status.VIVO;
@@ -12,11 +13,11 @@ public class Saint {
     private int acumuladorProximoGolpe = 0;
      
     //construtor
-    public Saint(String nome, Armadura armadura) throws Exception {
+    public Saint(String nome, String constelacao) throws Exception{
         this.nome = nome;
-        this.armadura = armadura;
-        vida = 100;
-        } 
+        this.constelacao = constelacao;
+        this.vida = 100;
+    } 
     
     public String getSaint(){
         return this.nome;

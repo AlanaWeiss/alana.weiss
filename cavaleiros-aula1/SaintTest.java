@@ -10,8 +10,8 @@ public class SaintTest {
     public void vestirArmaduraDeixaArmaduraVestida() throws Exception {
         // AAA
         // 1. Arrange - Montagem dos dados de teste
-        Armadura escorpiao = new Armadura(new Constelacao("Escorpião"), Categoria.OURO);
-        Saint milo = new Saint("Milo", escorpiao);
+        
+        Saint milo = new GoldSaint("Milo","Escorpião");
         // 2. Act - Invocar a ação a ser testada
         milo.vestirArmadura();
         // 3. Assert - Verificação dos resultados do teste
@@ -21,20 +21,19 @@ public class SaintTest {
 
     @Test
     public void naoVestirArmaduraDeixaArmaduraNaoVestida() throws Exception {
-        Saint hyoga = new Saint("Hyoga", new Armadura(new Constelacao("Cisne"), Categoria.BRONZE));
+        Saint hyoga = new BronzeSaint("Hyoga", "Cisne");
         assertEquals(false, hyoga.getArmaduraVestida());
     }
 
     @Test
     public void aoCriarSaintGeneroENaoInformado() throws Exception {
-        Armadura virgem = new Armadura(new Constelacao("Virgem"), Categoria.OURO);
-        Saint shaka = new Saint("Shaka", virgem);
+        Saint shaka = new GoldSaint("Shaka", "Virgem");
         assertEquals(Gênero.NAO_INFORMADO, shaka.getGenero());
     }
 
     @Test
     public void deveSerPossivelAlterarOGenero() throws Exception {
-        Saint jabu = new Saint("Jabu", new Armadura(new Constelacao("Unicórnio"), Categoria.BRONZE));
+        Saint jabu = new BronzeSaint("Jabu", "Unicórnio");
         jabu.setGenero(Gênero.MASCULINO);
         assertEquals(Gênero.MASCULINO, jabu.getGenero());
         jabu.setGenero(Gênero.FEMININO);
@@ -43,20 +42,20 @@ public class SaintTest {
 
     @Test
     public void statusInicialDeveSerVivo() throws Exception {
-        Saint shiryu = new Saint("Shiryu", new Armadura(new Constelacao("Dragão"), Categoria.BRONZE));
+        Saint shiryu = new BronzeSaint("Shiryu", "Dragão");
         assertEquals(Status.VIVO, shiryu.getStatus());
     }
 
     @Test
     public void vidaInicialDeveSer100() throws Exception {
-        Saint shiryu = new Saint("Shiryu", new Armadura(new Constelacao("Dragão"), Categoria.BRONZE));
+        Saint shiryu = new BronzeSaint("Shiryu", "Dragão");
         assertEquals(100.0, shiryu.getVida(), 0.01);
     }
 
     @Test
     public void perderDanoComValor10() throws Exception {
         // Arrange
-        Saint shiryu = new Saint("Shiryu", new Armadura(new Constelacao("Dragão"), Categoria.BRONZE));
+        Saint shiryu = new BronzeSaint("Shiryu", "Dragão");
         // Act
         shiryu.perderVida(10);
         // Assert
@@ -66,7 +65,7 @@ public class SaintTest {
     @Test
     public void perderDanoComValor100() throws Exception {
         // Arrange
-        Saint shiryu = new Saint("Shiryu", new Armadura(new Constelacao("Dragão"), Categoria.BRONZE));
+        Saint shiryu = new BronzeSaint("Shiryu", "Dragão");
         // Act
         shiryu.perderVida(100);
         // Assert
@@ -76,7 +75,7 @@ public class SaintTest {
     @Test
     public void perderDanoComValor1000() throws Exception {
         // Arrange
-        Saint shiryu = new Saint("Shiryu", new Armadura(new Constelacao("Dragão"), Categoria.BRONZE));
+        Saint shiryu = new BronzeSaint("Shiryu", "Dragão");
         // Act
         shiryu.perderVida(1000);
         // Assert
@@ -86,7 +85,7 @@ public class SaintTest {
     @Test(expected=InvalidParameterException.class)
     public void perderDanoComValorMenos1000() throws Exception {
         // Arrange
-        Saint shiryu = new Saint("Shiryu", new Armadura(new Constelacao("Dragão"), Categoria.BRONZE));
+        Saint shiryu = new BronzeSaint("Shiryu", "Dragão");
         // Act
         shiryu.perderVida(-1000);
         // Assert
@@ -95,93 +94,69 @@ public class SaintTest {
 
     @Test
     public void criarSaintNasceCom5SentidosDespertados() throws Exception {
-        BronzeSaint seiya = new BronzeSaint("Seiya", new Armadura(new Constelacao("Pégaso"), Categoria.BRONZE));
+        BronzeSaint seiya = new BronzeSaint("Seiya", "Pégaso");
         assertEquals(5, seiya.getQtdSentidosDespertados());
     }
 
     @Test
     public void criarSaintPrataNasceCom6SentidosDespertados() throws Exception {
-        SilverSaint marin = new SilverSaint("Marin", new Armadura(new Constelacao("Águia"), Categoria.PRATA));
+        SilverSaint marin = new SilverSaint("Marin", "Águia");
         assertEquals(6, marin.getQtdSentidosDespertados());
     }
 
     @Test
     public void criarSaintOuroNasceCom7SentidosDespertados() throws Exception {
-        GoldSaint afrodite = new GoldSaint("Afrodite", new Armadura(new Constelacao("Peixes"), Categoria.OURO));
+        GoldSaint afrodite = new GoldSaint("Afrodite", "Peixes");
         assertEquals(7, afrodite.getQtdSentidosDespertados());
     }
 
     @Test(expected=Exception.class)
     public void constelacaoInvalidaDeOuroDeveLancarErro() throws Exception {
-        new GoldSaint("Bernardo", new Armadura(new Constelacao("Café"), Categoria.OURO));
+        new GoldSaint("Bernardo", "Café");
     }
 
     @Test
     public void aprenderUmGolpe() throws Exception {
-        Saint saga = new Saint("Saga", new Armadura(new Constelacao("Gêmeos"), Categoria.OURO));
+        GoldSaint saga = new GoldSaint("Saga", "Gêmeos");
         Golpe outraDimensao = new Golpe("Outra dimensão", 10);
         saga.aprenderGolpe(new Golpe("Outra dimensão", 10));
-        ArrayList<Golpe> golpes = new ArrayList<>();
-        golpes = saga.getGolpes();
+        ArrayList<Golpe> golpes = saga.getGolpes();
         assertEquals(outraDimensao, golpes.get(0));
-        //assertNull(golpes.get(1));
-        //assertNull(golpes.get(2));
+        assertEquals(1, golpes.size());
         // TODO: assert null
     }
 
     @Test
     public void aprenderDoisGolpes() throws Exception {
-        Saint saga = new Saint("Saga", new Armadura(new Constelacao("Gêmeos"), Categoria.OURO));
+        GoldSaint saga = new GoldSaint("Saga", "Gêmeos");
         Golpe outraDimensao = new Golpe("Outra dimensão", 10);
         Golpe explosaoGalatica = new Golpe("Explosão Galáctica", 11);
         saga.aprenderGolpe(outraDimensao);
         saga.aprenderGolpe(explosaoGalatica);
-        ArrayList<Golpe> golpes = new ArrayList<>();
-        golpes = saga.getGolpes();
+        ArrayList<Golpe> golpes = saga.getGolpes();
         assertEquals(outraDimensao, golpes.get(0));
         assertEquals(explosaoGalatica, golpes.get(1));
-       // assertNull(golpes.get(2));
+        assertEquals(2, golpes.size());
     }
 
     @Test
     public void aprenderTresGolpes() throws Exception {
-        Saint saga = new Saint("Saga", new Armadura(new Constelacao("Gêmeos"), Categoria.OURO));
+        GoldSaint saga = new GoldSaint("Saga", "Gêmeos");
         Golpe outraDimensao = new Golpe("Outra dimensão", 10);
         Golpe explosaoGalatica = new Golpe("Explosão Galáctica", 11);
         Golpe sataImperial = new Golpe("Satã Imperial", 42);
         saga.aprenderGolpe(outraDimensao);
         saga.aprenderGolpe(explosaoGalatica);
         saga.aprenderGolpe(sataImperial);
-        ArrayList<Golpe> golpes = new ArrayList<>();
-        golpes = saga.getGolpes();
+        ArrayList<Golpe> golpes = saga.getGolpes();
         assertEquals(outraDimensao, golpes.get(0));
         assertEquals(explosaoGalatica, golpes.get(1));
         assertEquals(sataImperial, golpes.get(2));
-    }
-    
-    @Test
-    public void aprenderQuatroGolpes() throws Exception {
-        Saint saga = new Saint("Saga", new Armadura(new Constelacao("Gêmeos"), Categoria.OURO));
-        Golpe outraDimensao = new Golpe("Outra dimensão", 10);
-        Golpe explosaoGalatica = new Golpe("Explosão Galáctica", 11);
-        Golpe sataImperial = new Golpe("Satã Imperial", 42);
-        Golpe cafe = new Golpe("café", 57);
-        saga.aprenderGolpe(outraDimensao);
-        saga.aprenderGolpe(explosaoGalatica);
-        saga.aprenderGolpe(sataImperial);
-        saga.aprenderGolpe(cafe);
-        ArrayList<Golpe> golpes = new ArrayList<>();
-        golpes = saga.getGolpes();
-        assertEquals(outraDimensao, golpes.get(0));
-        assertEquals(explosaoGalatica, golpes.get(1));
-        assertEquals(sataImperial, golpes.get(2));
-        assertEquals(cafe, golpes.get(3));
     }
 
-    //QUATRO GOLPES NAO LANCA ERRO 
-    /*@Test(expected=ArrayIndexOutOfBoundsException.class)
-    public void aprenderQuatroGolpesLancaErro() throws Exception {
-        Saint saga = new Saint("Saga", new Armadura(new Constelacao("Gêmeos"), Categoria.OURO));
+    @Test
+    public void aprenderQuatroGolpes() throws Exception {
+        Saint saga = new GoldSaint("Saga", "Gêmeos");
         Golpe outraDimensao = new Golpe("Outra dimensão", 10);
         Golpe explosaoGalatica = new Golpe("Explosão Galáctica", 11);
         Golpe sataImperial = new Golpe("Satã Imperial", 42);
@@ -190,11 +165,17 @@ public class SaintTest {
         saga.aprenderGolpe(explosaoGalatica);
         saga.aprenderGolpe(sataImperial);
         saga.aprenderGolpe(rasteira);
-    }*/
+        ArrayList<Golpe> golpes = saga.getGolpes();
+        assertEquals(outraDimensao, golpes.get(0));
+        assertEquals(explosaoGalatica, golpes.get(1));
+        assertEquals(sataImperial, golpes.get(2));
+        assertEquals(rasteira, golpes.get(3));
+    }
+
 
     @Test
     public void getProximoGolpeComUm() throws Exception {
-        Saint saga = new Saint("Saga", new Armadura(new Constelacao("Gêmeos"), Categoria.OURO));
+        Saint saga = new GoldSaint("Saga","Gêmeos");
         Golpe outraDimensao = new Golpe("Outra dimensão", 10);
         saga.aprenderGolpe(new Golpe("Outra dimensão", 10));
         assertEquals(outraDimensao, saga.getProximoGolpe());
@@ -202,7 +183,7 @@ public class SaintTest {
 
     @Test
     public void getProximoGolpeComDois() throws Exception {
-        Saint saga = new Saint("Saga", new Armadura(new Constelacao("Gêmeos"), Categoria.OURO));
+        Saint saga = new GoldSaint("Saga", "Gêmeos");
         Golpe outraDimensao = new Golpe("Outra dimensão", 10);
         Golpe explosaoGalatica = new Golpe("Explosão Galáctica", 11);
         saga.aprenderGolpe(outraDimensao);
@@ -213,7 +194,7 @@ public class SaintTest {
 
     @Test
     public void getProximoGolpeComTres() throws Exception {
-        Saint saga = new Saint("Saga", new Armadura(new Constelacao("Gêmeos"), Categoria.OURO));
+        Saint saga = new GoldSaint("Saga", "Gêmeos");
         Golpe outraDimensao = new Golpe("Outra dimensão", 10);
         Golpe explosaoGalatica = new Golpe("Explosão Galáctica", 11);
         Golpe sataImperial = new Golpe("Satã Imperial", 42);
@@ -227,7 +208,7 @@ public class SaintTest {
     
     @Test
     public void getProximoGolpeComQuatroChamadas() throws Exception {
-        Saint saga = new Saint("Saga", new Armadura(new Constelacao("Gêmeos"), Categoria.OURO));
+        Saint saga = new GoldSaint("Saga", "Gêmeos");
         Golpe outraDimensao = new Golpe("Outra dimensão", 10);
         Golpe explosaoGalatica = new Golpe("Explosão Galáctica", 11);
         Golpe sataImperial = new Golpe("Satã Imperial", 42);
