@@ -33,8 +33,8 @@ public class BatalhaTest
     public void BatalhaBronzeEPrata() throws Exception {
         Constelacao virgem = new Constelacao("Virgem");
         Constelacao sagitario = new Constelacao("Sagitário");
-        Saint shiryu = new SilverSaint("shiryu", virgem.getNome());
-        Saint ikki = new GoldSaint("ikki", sagitario.getNome());
+        Saint shiryu = new BronzeSaint("shiryu", virgem.getNome());
+        Saint ikki = new SilverSaint("ikki", sagitario.getNome());
         Batalha batalha = new Batalha(shiryu, ikki);
         batalha.iniciar();
         assertEquals(90.0, shiryu.getVida(), 0.1);
