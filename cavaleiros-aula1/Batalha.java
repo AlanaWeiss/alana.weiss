@@ -9,14 +9,21 @@ public class Batalha
     }
     
     public void iniciar() throws Exception{
-        int valor1 = this.saint1.getValorArmadura();
-        int valor2 = this.saint2.getValorArmadura();
         double dano = 10;
-        
-        if(valor1>= valor2){
-            saint2.perderVida(dano);
-        } else{ 
-             saint1.perderVida(dano);
-               }
+        Movimento movimento;
+        Saint atacaPrimeiro = this.saint1;
+        Saint atacaDepois = this.saint2;
+        if(saint1.getValorArmadura() < saint2.getValorArmadura()){
+            atacaPrimeiro = this.saint2;
+            atacaDepois = this.saint1;
+        }
+        while (saint1.getStatus() != Status.MORTO && saint2.getStatus() != Status.MORTO){
+            movimento = atacaPrimeiro.getProximoMovimento();
+            movimento.executar();
+            if(atacaDepois.getStatus() != Status.MORTO){
+                movimento = atacaDepois.getProximoMovimento();
+                movimento.executar();
+            }
+        }
     }
 }
