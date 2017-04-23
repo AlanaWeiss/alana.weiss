@@ -11,6 +11,8 @@ public abstract class Saint {
     private double vida = 100.0;
     protected int qtdSentidosDespertados; //acesso para a classe e as subclasses
     private int acumuladorProximoGolpe = 0;
+    private int acumuladorProximoMovimento = 0;
+    ArrayList<Movimento> listaMovimentos = new ArrayList<>();
      
     //construtor
     public Saint(String nome, String constelacao) throws Exception{
@@ -36,7 +38,7 @@ public abstract class Saint {
         return this.armaduraVestida;
     }
 
-	 public Armadura getArmadura() {
+     public Armadura getArmadura() {
         return this.armadura;
     }
 
@@ -120,4 +122,16 @@ public abstract class Saint {
             this.genero + "," +
             this.armaduraVestida;*/
     }
+    
+    public void adicionarMovimento(Movimento movimento){
+        listaMovimentos.add(movimento);
+    }
+    
+    public Movimento getProximoMovimento() {
+         int posicao = this.acumuladorProximoMovimento % listaMovimentos.size();
+         this.acumuladorProximoMovimento++;
+         return listaMovimentos.get(posicao);
+     }
+    
+    
 }

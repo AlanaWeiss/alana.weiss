@@ -221,4 +221,22 @@ public class SaintTest {
         assertEquals(outraDimensao, saga.getProximoGolpe());
     }
 
+    @Test
+    public void proximoMovimentoPegaOProximoMovimento()throws Exception{
+        GoldSaint aiolia = new GoldSaint("Aiolia", "Leão");
+        GoldSaint dohko = new GoldSaint("Dohko", "Libra");
+        Golpe capsula = new Golpe("Cápsula de Poder", 10);
+        aiolia.aprenderGolpe(capsula);
+        Golpear golpear = new Golpear (aiolia, dohko);
+        aiolia.adicionarMovimento(golpear);
+        aiolia.getProximoMovimento().executar();
+        assertEquals(90.0,dohko.getVida(),0.1);
+        VestirArmadura vestirArmadura = new VestirArmadura(aiolia);
+        aiolia.adicionarMovimento(vestirArmadura);
+        aiolia.getProximoMovimento().executar();
+        assertEquals(true,aiolia.getArmaduraVestida());
+        aiolia.getProximoMovimento().executar();
+        assertEquals(50.0,dohko.getVida(),0.1);
+    
+    }
 }
