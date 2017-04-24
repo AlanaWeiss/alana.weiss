@@ -133,5 +133,9 @@ public abstract class Saint {
          return listaMovimentos.get(posicao);
      }
     
-    
+    // "agendando" execução do golpe no saint passado por parâmetro
+    // o golpe de fato só será executado na batalha.
+    public void golpear(Saint golpeado) {
+        this.adicionarMovimento(new Golpear(this, golpeado));
+    }
 }
