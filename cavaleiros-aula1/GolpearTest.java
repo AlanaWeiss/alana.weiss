@@ -12,9 +12,10 @@ public class GolpearTest{
         Saint camus = new GoldSaint("Camus","Aquário");
         Saint ikki = new BronzeSaint("Ikki","Fênix");
         Golpe execucao = new Golpe("Execução Aurora", 10);
-        camus.vestirArmadura();
+        //camus.vestirArmadura();
+        new VestirArmadura(camus).executar();
         camus.aprenderGolpe(execucao);
-        Golpear golpear = new Golpear(camus, ikki);
+        Movimento golpear = new Golpear(camus, ikki);
         golpear.executar();
         assertEquals(60.0,ikki.getVida(),0.1);
     }
@@ -25,7 +26,7 @@ public class GolpearTest{
         Saint ikki = new BronzeSaint("Ikki","Fênix");
         Golpe execucao = new Golpe("Execução Aurora", 10);
         camus.aprenderGolpe(execucao);
-        Golpear golpear = new Golpear(camus, ikki);
+        Movimento golpear = new Golpear(camus, ikki);
         golpear.executar();
         assertEquals(90.0,ikki.getVida(),0.1);
     }
@@ -37,7 +38,7 @@ public class GolpearTest{
         Golpe chamas = new Golpe("Chamas de Babel", 10);
         babel.vestirArmadura();
         babel.aprenderGolpe(chamas);
-        Golpear golpear = new Golpear(babel, ikki);
+        Movimento golpear = new Golpear(babel, ikki);
         golpear.executar();
         assertEquals(70.0,ikki.getVida(),0.1);
     }
@@ -48,7 +49,7 @@ public class GolpearTest{
         Saint ikki = new BronzeSaint("Ikki","Fênix");
         Golpe chamas = new Golpe("Chamas de Babel", 10);
         babel.aprenderGolpe(chamas);
-        Golpear golpear = new Golpear(babel, ikki);
+        Movimento golpear = new Golpear(babel, ikki);
         golpear.executar();
         assertEquals(90.0,ikki.getVida(),0.1);
     }
@@ -60,7 +61,7 @@ public class GolpearTest{
         Golpe forca = new Golpe("Força Explosiva", 10);
         moses.vestirArmadura();
         moses.aprenderGolpe(forca);
-        Golpear golpear = new Golpear(moses, ikki);
+        Movimento golpear = new Golpear(moses, ikki);
         golpear.executar();
         assertEquals(80.0,ikki.getVida(),0.1);
     }
@@ -71,8 +72,16 @@ public class GolpearTest{
         Saint ikki = new BronzeSaint("Ikki","Fênix");
         Golpe chamas = new Golpe("Chamas de Babel", 10);
         babel.aprenderGolpe(chamas);
-        Golpear golpear = new Golpear(babel, ikki);
+        Movimento golpear = new Golpear(babel, ikki);
         golpear.executar();
         assertEquals(90.0,ikki.getVida(),0.1);
+    }
+    
+    @Test(expected=ArithmeticException.class)
+    public void naoGolpear() throws Exception {
+        Saint seiya = new BronzeSaint("Seiya", "Pégaso");
+        Saint aldebaran = new GoldSaint("Aldebaran", "Touro");
+        Movimento golpear = new Golpear(aldebaran, seiya);
+        golpear.executar();
     }
 }

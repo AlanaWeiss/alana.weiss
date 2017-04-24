@@ -12,8 +12,8 @@ public class Golpear implements Movimento{
     public void executar(){
         int fatorDano = golpeador.getArmaduraVestida() ?
                 (golpeador.getProximoGolpe().getDano())*(1+golpeador.getValorArmadura()) 
-        : golpeador.getProximoGolpe().getDano();
-                        
-        golpeado.perderVida(fatorDano);
+                : golpeador.getProximoGolpe().getDano();
+                   
+        this.golpeado.perderVida(fatorDano);
     }
 }
