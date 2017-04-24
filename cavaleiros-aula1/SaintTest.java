@@ -222,21 +222,19 @@ public class SaintTest {
     }
 
     @Test
-    public void proximoMovimentoPegaOProximoMovimento()throws Exception{
-        GoldSaint aiolia = new GoldSaint("Aiolia", "Leão");
-        GoldSaint dohko = new GoldSaint("Dohko", "Libra");
-        Golpe capsula = new Golpe("Cápsula de Poder", 10);
-        aiolia.aprenderGolpe(capsula);
-        Golpear golpear = new Golpear (aiolia, dohko);
-        aiolia.adicionarMovimento(golpear);
-        aiolia.getProximoMovimento().executar();
-        assertEquals(90.0,dohko.getVida(),0.1);
-        VestirArmadura vestirArmadura = new VestirArmadura(aiolia);
-        aiolia.adicionarMovimento(vestirArmadura);
-        aiolia.getProximoMovimento().executar();
-        assertEquals(true,aiolia.getArmaduraVestida());
-        aiolia.getProximoMovimento().executar();
-        assertEquals(50.0,dohko.getVida(),0.1);
+    public void getProximoMovimentoComUmMovimento() throws Exception {
+        Saint hyoga = new BronzeSaint("Hyoga", "Cisne");
+        Movimento vestirArmadura = new VestirArmadura(hyoga);
+        hyoga.adicionarMovimento(vestirArmadura);
+        assertEquals(vestirArmadura, hyoga.getProximoMovimento());
+    }
     
+    @Test
+    public void getProximoMovimentoDuasVezesComUmMovimento() throws Exception {
+        Saint hyoga = new BronzeSaint("Hyoga", "Cisne");
+        Movimento vestirArmadura = new VestirArmadura(hyoga);
+        hyoga.adicionarMovimento(vestirArmadura);
+        hyoga.getProximoMovimento();
+        assertEquals(vestirArmadura, hyoga.getProximoMovimento());
     }
 }
