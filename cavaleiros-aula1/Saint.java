@@ -14,6 +14,7 @@ public abstract class Saint {
     private int acumuladorProximoMovimento = 0;
     ArrayList<Movimento> listaMovimentos = new ArrayList<>();
     private static int qtdSaints = 0;
+    private int id = 0;
      
     //construtor
     public Saint(String nome, String constelacao) throws Exception{
@@ -21,6 +22,7 @@ public abstract class Saint {
         this.constelacao = constelacao;
         this.vida = 100;
         Saint.qtdSaints++;
+        id++;
     } 
     
     public static int getQtdSaints(){
