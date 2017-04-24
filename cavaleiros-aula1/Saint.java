@@ -13,13 +13,19 @@ public abstract class Saint {
     private int acumuladorProximoGolpe = 0;
     private int acumuladorProximoMovimento = 0;
     ArrayList<Movimento> listaMovimentos = new ArrayList<>();
+    private static int qtdSaints = 0;
      
     //construtor
     public Saint(String nome, String constelacao) throws Exception{
         this.nome = nome;
         this.constelacao = constelacao;
         this.vida = 100;
+        Saint.qtdSaints++;
     } 
+    
+    public static int getQtdSaints(){
+        return Saint.qtdSaints;
+    }
     
     public String getSaint(){
         return this.nome;
