@@ -6,6 +6,12 @@ import java.security.InvalidParameterException;
 import java.util.ArrayList;
 
 public class SaintTest {
+    
+    @After
+    public void tearDown() {
+        System.gc(); // forçar garbage collection - NÂO USAR!!!!!!
+    }
+    
     @Test
     public void vestirArmaduraDeixaArmaduraVestida() throws Exception {
         // AAA
@@ -238,6 +244,18 @@ public class SaintTest {
         assertEquals(vestirArmadura, hyoga.getProximoMovimento());
     }
     
+    //TESTES QUANDO NAO USAVAMOS GARBAGE COLLECTION
+    
+    /*@Test
+    public void testarQtsSaintsOutroMetodo() throws Exception {
+        int qtdSaintsAntes = Saint.getQtdSaints();        
+        Saint saga = new GoldSaint("Saga", "Gêmeos");
+        Saint dohko = new GoldSaint("Dohko", "Libra");
+        Saint seiya = new BronzeSaint("Seiya", "Pégaso");
+        
+        assertEquals(qtdSaintsAntes + 3 , Saint.getQtdSaints());
+    }
+    
      @Test
     public void testarQtsSaints() throws Exception {
         int qtdSaints = Saint.getQtdSaints();        
@@ -246,7 +264,6 @@ public class SaintTest {
         Saint seiya = new BronzeSaint("Seiya", "Pégaso");
         
         assertEquals(3, Saint.getQtdSaints() - qtdSaints);
-
     }
     
     @Test
@@ -257,6 +274,29 @@ public class SaintTest {
         Saint seiya = new BronzeSaint("Seiya", "Pégaso");
         
         assertEquals(3, seiya.getId()-id);
+    }*/
+    
+    // TESTES DEPOIS DE IMPLEMENTAR O GARBAGE COLLECTION
+    
+      @Test
+    public void criarUmSaintQtdSaintsDeveTerUmAMais() throws Exception {
+        Saint shun = new BronzeSaint("Shun", "Andrômeda");
+        assertEquals(1, Saint.getQtdSaints());
+    }
 
+    @Test
+    public void criarDoisSaintQtdSaintsDeveTerDoisAMais() throws Exception {
+        new BronzeSaint("Shun", "Andrômeda");
+        new SilverSaint("Marin", "Águia");
+        assertEquals(2, Saint.getQtdSaints());
+    }
+
+    @Test
+    public void criarDuzentosSaintsQtdSaintsDeveTerDuzentosAMais() throws Exception {
+        final int quantidade = 200;
+        for (int i = 0; i < quantidade; i++) {
+            new BronzeSaint("Bronze " + i, "Constelação " + i);
+        }
+        assertEquals(quantidade, Saint.getQtdSaints());
     }
 }
