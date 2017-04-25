@@ -237,4 +237,26 @@ public class SaintTest {
         hyoga.getProximoMovimento();
         assertEquals(vestirArmadura, hyoga.getProximoMovimento());
     }
+    
+     @Test
+    public void testarQtsSaints() throws Exception {
+        int qtdSaints = Saint.getQtdSaints();        
+        Saint saga = new GoldSaint("Saga", "Gêmeos");
+        Saint dohko = new GoldSaint("Dohko", "Libra");
+        Saint seiya = new BronzeSaint("Seiya", "Pégaso");
+        
+        assertEquals(3, Saint.getQtdSaints() - qtdSaints);
+
+    }
+    
+    @Test
+    public void testarIdSaints() throws Exception {
+        int id = Saint.getId();        
+        Saint saga = new GoldSaint("Saga", "Gêmeos");
+        Saint dohko = new GoldSaint("Dohko", "Libra");
+        Saint seiya = new BronzeSaint("Seiya", "Pégaso");
+        
+        assertEquals(3, seiya.getId()-id);
+
+    }
 }
