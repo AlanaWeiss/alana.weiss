@@ -17,13 +17,18 @@ public abstract class Saint {
     private static int id = 0;
      
     //construtor
-    public Saint(String nome, String constelacao) throws Exception{
+    protected Saint(String nome, String constelacao) throws Exception{
         this.nome = nome;
         this.constelacao = constelacao;
         this.vida = 100;
         Saint.qtdSaints++;
         Saint.id++;
     } 
+    
+    // destrutor 
+    protected void finalize() throws Throwable{
+        Saint.qtdSaints--;
+    }
     
     public static int getQtdSaints(){
         return Saint.qtdSaints;
