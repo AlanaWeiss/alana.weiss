@@ -299,4 +299,13 @@ public class SaintTest {
         }
         assertEquals(quantidade, Saint.getQtdSaints());
     }
+    
+    @Test
+    public void criarUmSaintIdIncrementaUm() throws Exception {
+        int idAntes =Saint.getAcumuladorQtdSaints();
+        Saint shun = new BronzeSaint("Shun", "Andrômeda");
+        assertEquals(idAntes+1, shun.getId());
+        Saint hyoga = new BronzeSaint("Hyoga","Aguia");
+        assertEquals(idAntes+2, hyoga.getId());
+    }
 }

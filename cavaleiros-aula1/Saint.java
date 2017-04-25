@@ -13,8 +13,8 @@ public abstract class Saint {
     private int acumuladorProximoGolpe = 0;
     private int acumuladorProximoMovimento = 0;
     ArrayList<Movimento> listaMovimentos = new ArrayList<>();
-    private static int qtdSaints = 0;
-    private static int id = 0;
+    private static int qtdSaints = 0, acumuladorQtdSaints = 0;
+    private  int id = 0;
      
     //construtor
     protected Saint(String nome, String constelacao) throws Exception{
@@ -22,7 +22,7 @@ public abstract class Saint {
         this.constelacao = constelacao;
         this.vida = 100;
         Saint.qtdSaints++;
-        Saint.id++;
+        this.id = ++acumuladorQtdSaints;
     } 
     
     // destrutor 
@@ -34,9 +34,14 @@ public abstract class Saint {
         return Saint.qtdSaints;
     }
     
-    public static int getId(){
-        return Saint.id;
+    public int getId(){
+        return this.id;
     }
+    
+    public static int getAcumuladorQtdSaints(){
+        return Saint.acumuladorQtdSaints;
+    }
+    
     public String getSaint(){
         return this.nome;
     }
