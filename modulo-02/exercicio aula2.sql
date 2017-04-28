@@ -175,4 +175,9 @@ Select * from Produto
 
 drop table Produto
 
-select getdate()
+select getdate() -- getdate : metodo que pega a hora do servidor 
+
+-- select CONVERT( DATE, '28/04/2017', 103) : converte pro padrão brasil de horario 
+
+
+--SELECT : APELIDOS FUNCIONAM SÓ PARA PROJEÇÃO, PARA NOMES COM ESPAÇO USAR COLCHETES 

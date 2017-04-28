@@ -80,8 +80,8 @@ Select Nomeempregado as nome,
 Select IDEmpregado, 
 		NomeEmpregado,
 		(salario*13) as SalarioAnual,
-		(comissao*12) as ComissaoAnual,
-		((salario*13) + (comissao*12)) as RendaAnual
+		(ISNULL(Comissao,0)*12) as ComissaoAnual,
+		((salario*13) + (ISNULL(Comissao,0)*12)) as RendaAnual
 		from Empregado
 
 -- exercicio 4
@@ -89,3 +89,18 @@ Select IDEmpregado,
 Select IDEmpregado, NomeEmpregado as Nome, Cargo, salario as SalarioMensal
 from Empregado
 where ((salario*13) < 18500) and cargo in('Atendente')
+
+select distinct cargo, IDDepartamento from empregado
+select count(distinct cargo) cargosdistintos from empregado
+
+SELECT Cargo, iddepartamento,
+	count(1) as totalempregados
+	from Empregado
+	where cargo like 'A%'
+	group by Cargo, IDDepartamento
+	having count(1)>1
+
+Select NomeEmpregado,
+DataAdmissao,
+DateDiff(YEAR, DataAdmissao, getdate()) AnosTrabalho
+From Empregado;
