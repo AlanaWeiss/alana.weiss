@@ -143,7 +143,10 @@ truncate table CidadeAux;
 
 Select * from CidadeAux;
 
-Select * into CidadeAux from Cidade c where c.UF = 'RS';
+Insert into CidadeAux (IDCidade, Nome, UF) 
+		Select IDCidade, Nome, UF 
+		From Cidade 
+		Where UF = 'RS';
 
 
 Create table Produto 
