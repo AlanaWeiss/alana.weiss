@@ -1,3 +1,5 @@
+
+-- criar tabela para copiar no exercicio 1
 Create table Cidade 
 (
   IDCidade  int         not null,
@@ -136,9 +138,10 @@ insert into Associado
        convert(datetime, '20/02/1980', 103), 
        'M' );
 
-
+--exercicio 1
 Select * into CidadeAux from Cidade;
 
+--exercicio 2
 truncate table CidadeAux;
 
 Select * from CidadeAux;
@@ -148,7 +151,7 @@ Insert into CidadeAux (IDCidade, Nome, UF)
 		From Cidade 
 		Where UF = 'RS';
 
-
+-- exercicio 3
 Create table Produto 
 (
   IDProduto        int   identity         not null,
@@ -161,6 +164,7 @@ Create table Produto
     constraint PK_Produto primary key (IDProduto)
 );	
 
+-- exercicio 4 
 insert into Produto(NomeCurto,NomeDescritivo,DataCriacao,LocalEstoque,Quantidade,Preco)
 values ('bola','bola de volei','28/04/2017' , 'prateleira 2', 5, 100.0);
 
