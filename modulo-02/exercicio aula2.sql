@@ -154,7 +154,7 @@ Insert into CidadeAux (IDCidade, Nome, UF)
 -- exercicio 3
 Create table Produto 
 (
-  IDProduto        int   identity         not null,
+  IDProduto        int identity   not null,
   NomeCurto        varchar(30)    not null,
   NomeDescritivo   varchar(100)   not null,
   DataCriacao      datetime       not null,
@@ -166,11 +166,13 @@ Create table Produto
 
 -- exercicio 4 
 insert into Produto(NomeCurto,NomeDescritivo,DataCriacao,LocalEstoque,Quantidade,Preco)
-values ('bola','bola de volei','28/04/2017' , 'prateleira 2', 5, 100.0);
+values ('bola','bola de volei', getdate() , 'prateleira 2', 5, 100.0);
 
 insert into Produto(NomeCurto,NomeDescritivo,DataCriacao,LocalEstoque,Quantidade,Preco)
-values ('bolsa','bola de couro preta', '28/04/2017', 'balcao 77', 100, 329.0);
+values ('bolsa','bola de couro preta', getdate(), 'balcao 77', 100, 329.0);
 
 Select * from Produto
 
 drop table Produto
+
+select getdate()
