@@ -70,7 +70,7 @@ select IDEmpregado, NomeEmpregado as Nome
 -- exercicio 2
 
 Select Nomeempregado as nome,
-		comissao
+		ISNULL(comissao,0)
 		from empregado 
 		where comissao is null
 		order by Salario
