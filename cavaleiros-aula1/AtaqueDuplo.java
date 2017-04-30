@@ -7,14 +7,24 @@ public class AtaqueDuplo implements Movimento {
     }
     
     public void executar(){
-        int fatorDano = golpeador.getArmaduraVestida() ?
-                (golpeador.getProximoGolpe().getDano())*(1+golpeador.getValorArmadura()) 
+        boolean ataqueDuploPossivel = new DadoD3().sortear() < 2;
+        boolean armuaduraEstaVestida = golpeador.getArmaduraVestida();
+         int fatorDano;
+         double cincoPorcentoDaVida = golpeador.getVida()*0.05;
+        if(armuaduraEstaVestida){
+             fatorDano = ataqueDuploPossivel ?
+                ((golpeador.getProximoGolpe().getDano())*(1+golpeador.getValorArmadura()))*2 
                 : golpeador.getProximoGolpe().getDano();
-        double d = Math.random() * 100;
-        if (d < 33.3){
-            int fatorDanoDuplo = fatorDano*2;
-            this.golpeado.perderVida(fatorDanoDuplo);
-        }  //TODO: else perder vida e dar ataque normal
-    }
+        } else {
+            fatorDano = ataqueDuploPossivel ?
+                ((golpeador.getProximoGolpe().getDano()))*2 
+                : golpeador.getProximoGolpe().getDano();
+            }
+         golpeado.perderVida(fatorDano);
+        if (!ataqueDuploPossivel){
+            golpeador.perderVida(cincoPorcentoDaVida);
+        }
+    }  
+    
     
 }
