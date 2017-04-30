@@ -7,7 +7,7 @@ public class AtaqueDuplo implements Movimento {
     }
     
     public void executar(){
-        boolean ataqueDuploPossivel = new DadoD3().sortear() < 2;
+        boolean ataqueDuploPossivel = new DadoD3().sortear() <= 3;
         boolean armuaduraEstaVestida = golpeador.getArmaduraVestida();
          int fatorDano;
          double cincoPorcentoDaVida = golpeador.getVida()*0.05;
