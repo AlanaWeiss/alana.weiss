@@ -20,33 +20,28 @@ order by emp.salario desc
 
 /*Aplique uma alteração salarial em todos os empregados que o departamento fique na localidade de SAO PAULO, 
 este reajuste deve ser de 17,3%.*/
+
+SELECT * INTO CopiaEmpregado2 FROM Empregado
+
 BEGIN TRANSACTION
 
 UPDATE Empregado
 SET Salario = Salario + Salario*0.173
 from Empregado emp
 inner join Departamento dep on emp.IDDepartamento = dep.IDDepartamento
-where Departamento.Localizacao = 'SÃO PAULO'
+where dep.Localizacao = 'SAO PAULO'
  
+ Select salario from Empregado where IDDepartamento = 10
+
+COMMIT
 
 ROLLBACK
 
-SELECT * INTO CopiaEmpregado2 FROM Empregado
-
-UPDATE EMPREGADO
-SET SALARIO = SALARIO * 1.173
-FROM EMPREGADO
-INNER JOIN DEPARTAMENTO ON EMPREGADO.IDDepartamento = DEPARTAMENTO.IDDepartamento
-WHERE Departamento.Localizacao = 'SAO PAULO'
-
 /*
-Exercício 4
-Cidades duplicadas
 Liste todas as cidades duplicadas (nome e UF iguais).
 */
+select Nome as Cidade, count(Nome) as [Cidade Repetida], UF as Estado
+from Cidade
+group by Nome, UF 
+having count(nome)>1 
 
-(
-SELECT COUNT(1) as [Quantidade de Cidades Iguais],Nome as [Nome Da Cidade], UF as [Unidade Federativa] FROM CIDADE 
-GROUP BY Nome,uf
-having COUNT(1) >= 2
-)
