@@ -45,3 +45,29 @@ from Cidade
 group by Nome, UF 
 having count(nome)>1 
 
+/*EXPLICAÇÃO VIEWS*/
+
+Create view vwCidades_Gauchas as
+   Select IDCidade,
+          Nome
+   From   Cidade
+   Where  UF = 'RS';
+
+Select IDCidade, nome from vwCidades_Gauchas
+
+/*Faça uma alteraçao nas cidades que tenham nome+UF duplicados, adicione no final do nome um asterisco. 
+Mas atenção! apenas a cidade com maior ID deve ser alterada.*/
+
+BEGIN TRANSACTION
+
+update cidade
+	set cidade.Nome = cidade.Nome + '*'
+	from Cidade cidade
+	inner join Cidade city on cidade.IDCidade != city.IDCidade
+	and cidade.Nome = city.Nome
+	and cidade.UF = city.UF
+	where cidade.IDCidade > city.IDCidade
+
+select nome from cidade
+
+COMMIT
