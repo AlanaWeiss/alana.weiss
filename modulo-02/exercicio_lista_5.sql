@@ -26,12 +26,12 @@ UPDATE Empregado
 SET Salario = Salario + Salario*0.173
 from Empregado emp
 inner join Departamento dep on emp.IDDepartamento = dep.IDDepartamento
-WHERE Departamento.Localizacao = 'SÃO PAULO'
+where Departamento.Localizacao = 'SÃO PAULO'
  
 
 ROLLBACK
 
-SELECT * INTO CopiaEmpregado FROM Empregado
+SELECT * INTO CopiaEmpregado2 FROM Empregado
 
 UPDATE EMPREGADO
 SET SALARIO = SALARIO * 1.173
