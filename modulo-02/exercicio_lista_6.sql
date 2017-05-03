@@ -32,4 +32,40 @@ order by count(c.Nome) desc
 
 
 
-select*from cidade
+select*from --cidade
+Produto where Nome = 'Galocha Maragato'
+
+/*Crie (insira) um novo registro na tabela de Produto, com as seguintes informações:
+
+Nome: Galocha Maragato
+Preço de custo: 35.67
+Preço de venda: 77.95
+Situação: A */
+
+begin transaction 
+
+insert into Produto (Nome, PrecoCusto, PrecoVenda, Situacao) values ('Galocha Maragato', 35.67, 77.95, 'A')
+
+commit 
+rollback
+
+/*Identifique e liste os produtos que não tiveram nenhum pedido, 
+considere os relacionamentos no modelo de dados, 
+pois não há relacionamento direto entre Produto e Pedido (será preciso relacionar PedidoItem).
+
+=> Obs.: o produto criado anteriormente deverá ser listado (apenas este)*/
+
+Select * from PedidoItem
+SELECT * from Produto
+select * from Pedido
+
+Select p.IDProduto, 
+	   p.Nome
+from   Produto p
+Where  NOT EXISTS (Select pditem.IDProduto
+					from  PedidoItem pditem
+					where p.IDProduto = pditem.IDProduto)
+
+/*Liste os 30 produtos que mais geraram lucro em 2016.*/
+
+Select top(30) 
