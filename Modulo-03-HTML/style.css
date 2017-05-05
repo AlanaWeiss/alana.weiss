@@ -1,0 +1,29 @@
+body{
+  background-color: #d696ac;
+}
+
+h1 {
+    color: purple;
+    text-align: center;
+    font-family: "Verdana";
+    font-size: 300%;
+}
+
+.subtitulo{
+  text-align: center;
+  color: #5f2269;
+  font-family: "Verdana";
+  font-size: 200%;
+}
+ p.paragrafo{
+   text-align: center;
+   font-family:"Lucida Sans Unicode";
+   font-size: 100%;
+ }
+
+ p.info{
+   text-align: left;
+   font-family: "Lucida Sans Unicode";
+   font-size: 80%;
+   padding: 100px 0;
+ }
