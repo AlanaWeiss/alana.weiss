@@ -1,0 +1,75 @@
+@font-face {
+   font-family: IndieFlower;
+   src: url('IndieFlower.ttf');
+}
+@font-face {
+  font-family: Montserrat;
+  src:url('Montserrat-Regular.ttf');
+}
+body{
+  background-image: url("fundo.png");
+}
+
+.paragrafo p{
+  text-align: justify;
+  text-indent: 30px;
+  margin-left: 60px;
+  margin-right: 100px;
+  line-height: 20px;
+  font-family: Montserrat;
+  color: #736c6c;
+}
+
+.paragrafo{
+  width: 95%;
+  height: 200px;
+  border-radius: 20px;
+  background-color: #333;
+  padding: 10px;
+}
+
+h1 {
+  text-align: center;
+  font-family: IndieFlower;
+  font-weight: 300px;
+  font-size: 60px;
+  color: #736c6c;
+}
+
+h2 {
+  text-align: center;
+  font-family: IndieFlower;
+  font-size: 40px;
+  color: #736c6c;
+}
+
+h3{
+  text-align: left;
+  text-indent: 30px;
+  font-family: Montserrat;
+  color: #736c6c;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color:  #736c6c;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #111;
+}
