@@ -22,7 +22,7 @@ body{
 
 .paragrafo{
   width: 95%;
-  height: 200px;
+  height: 220px;
   border-radius: 20px;
   background-color: #333;
   padding: 10px;
@@ -50,7 +50,7 @@ h3{
   color: #736c6c;
 }
 
-ul {
+ul { /*formata a lista*/
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -62,7 +62,7 @@ li {
     float: left;
 }
 
-li a {
+li a {/*formata os elementos da lista*/
     display: block;
     color:  #736c6c;
     text-align: center;
