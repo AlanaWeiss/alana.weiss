@@ -31,7 +31,7 @@ h1{
   font-weight: bold;
 }
 
-p:first-letter {
+.paragrafo:first-letter {
 font-size: 200%;
 color: #c4170c;
 }
