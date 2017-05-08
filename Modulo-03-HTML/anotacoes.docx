@@ -1,0 +1,15 @@
+margem do lado de fora
+margin: 20 - bota em todos os lados
+margin: 20 10 - 20 em cima 10 do lado
+margin: 20 10 4 2 - 20 em cima 10 do lado direito 4 em baixo e 2 lado esquero
+
+
+padding: margem pra dentro
+padding-top:  espaçamento de cima
+left: espaçamento na esquerda
+botton: espaçamento em baixo
+mesma sintaxe do margin
+
+
+display inline nao respeita comprimento; usa somente o tamanho nesessario do conteudo
+inline-block respeita comprimento e nao rouba toda a linha pra ela
