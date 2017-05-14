@@ -133,7 +133,7 @@ function creditosIlluminatis(serie) {
             Elenco:
     \n${outroElencos.join('\n')}`;
 }
-
+console.log("Exercicio 7");
 console.log(creditosIlluminatis(series[1]));
 console.log(creditosIlluminatis(series[2]));
 console.log(creditosIlluminatis(series[3]));
@@ -141,8 +141,24 @@ console.log(creditosIlluminatis(series[4]));
 console.log(creditosIlluminatis(series[5]));
 console.log(creditosIlluminatis(series[6]));
 
+/*Essa é a informação básica! Construa uma função que identificará aquela série que tem TODOS do elenco com nomes abreviados.
+Uma vez achada a série, vamos modificar um pouquinho a implementação. Coloque todas as palavras abreviadas
+(de preferência sem os pontos finais) em uma string que será retornada ao final do método.
+Forme uma hashtag com a palavra! #PALAVRA*/
 
+function elencoIlluminati(series) {
+  let lista = [];
 
+  for(item of series) {
+    for(elenc of item.elenco) {
+      if(elenc.indexOf('.') >= 0)
+        lista.push(elenc.substring(elenc.indexOf('.') - 1, elenc.indexOf('.')));
+    }
+  }
 
+  return "#" + lista.join('');
+}
+console.log("Exercicio 8");
+console.log(elencoIlluminati(series));
 
 //
