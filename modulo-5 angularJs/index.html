@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+ 
+<html ng-app="exercicio">
+    <head>
+        <title>aula 1</title>
+        <script src="https://code.angularjs.org/1.6.4/angular.js"></script>
+        <script src="controller.js"></script>
+    </head>
+    <body>
+        <div ng-controller="MainController">
+            <label>Escolha o pokemon</label>
+            <input type="text" ng-model="pokemon.nome">
+            <h2> {{ pokemon.nome }}</h2>
+        </div>
+    </body>
+</html>
