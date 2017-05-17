@@ -7,10 +7,19 @@
         <script src="controller.js"></script>
     </head>
     <body>
-        <div ng-controller="MainController">
+        <!--<div ng-controller="MainController">
             <label>Escolha o pokemon</label>
             <input type="text" ng-model="pokemon.nome">
-            <h2> {{ pokemon.nome }}</h2>
+            <h2> Nome: {{ pokemon.nome }}</h2>
+            <h3>Tipo: {{ pokemon.tipo }}</h3>
+        </div>-->
+        <div ng-controller="ex02">
+            <input type="text" ng-model="busca">
+            <ul>
+                <li ng-repeat = "pokemon in pokemons | filter: { pokemon.nome : busca}">
+                Nome : {{ pokemon.nome }} - Tipo: {{ pokemon.tipo | uppercase }}
+                </li>
+            </ul>
         </div>
     </body>
 </html>
