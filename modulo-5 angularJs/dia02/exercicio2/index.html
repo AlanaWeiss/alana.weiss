@@ -6,11 +6,29 @@
         <title>Aula 2</title>
         <script src="https://code.angularjs.org/1.6.4/angular.js"></script>
         <script src="controller.js"></script>
+
+        <style>
+        body{
+            background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbjoGwaQ4dMqd-952mg7IDKcIbcVtNddDacTPKYeG3Y7e1uuAB");
+        }
+        .fundo{
+            background-color:beige;
+            width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px; 
+            padding-top: 50px; 
+            font-size: 30px;
+        }
+        ul{
+            padding-left: 165px;
+        }
+        </style>
     </head>
     <body>
         <div class="container">
             <h4 class="jumbotron">Exercicio Filtro Personalizado</h4>
-            <div ng-controller="instrutores">
+            <div ng-controller="instrutores" class="fundo">
                 <ul>
                     <li ng-repeat="instrutor in instrutores ">
                         {{ instrutor.nome | mascada}}
