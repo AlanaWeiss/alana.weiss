@@ -3,19 +3,18 @@
 <html ng-app="exercicio">
     <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <title>aula 1</title>
+        <title>Aula 2</title>
         <script src="https://code.angularjs.org/1.6.4/angular.js"></script>
         <script src="controller.js"></script>
     </head>
     <body>
         <div class="container">
-            <div class="pull-left fundo" ng-controller="converterData">
-                <label for="dataDigitada">Data Digitada</label>
-    <input type="text" ng-model="dataDigitada" placeholder="dd/mm/aaaa"/>
-    
-    <button ng-click="converter()">Converter!</button>
-
-    <span>{{ dataPronta }}</span>
+            <h2 class="jumbotron">Exercicio Converter data</h2>
+            <div ng-controller="converterData">
+                <label for="dataDigitada">Digite a data:</label>
+                <input type="text" ng-model="dataDigitada" placeholder="dd.mm.aaaa"/>
+                 <button ng-click="converter()">Converter!</button><br>
+                <span> Data Convertida: {{ dataObjeto | date: 'shortDate' }}</span>
         </div>
     </body>
 </html>
