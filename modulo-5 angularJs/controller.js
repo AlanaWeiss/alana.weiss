@@ -1,7 +1,7 @@
 var modulo = angular.module('exercicio', []);
- 
+
 modulo.controller('MainController', function($scope){
- 
+
     $scope.pokemon = {nome:'Pikachu', tipo: 'Default'};
 });
 
@@ -12,14 +12,14 @@ modulo.controller('ex02', function($scope) {
              tipo: 'tipo1'
         },
         {
-            nome: 'poke2', 
+            nome: 'poke2',
             tipo: 'tipo2'
         },
         {
             nome: 'poke3',
             tipo: 'tipo3'},
         {
-            nome: 'poke4', 
+            nome: 'poke4',
             tipo: 'tipo4'
         }];
 });

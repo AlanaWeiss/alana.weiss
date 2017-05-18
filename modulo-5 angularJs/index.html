@@ -1,5 +1,5 @@
 <!DOCTYPE html>
- 
+
 <html ng-app="exercicio">
     <head>
         <title>aula 1</title>
@@ -14,11 +14,9 @@
             <h3>Tipo: {{ pokemon.tipo }}</h3>
         </div>-->
         <div ng-controller="ex02">
-            <input type="text" ng-model="busca">
-            <ul>
-                <li ng-repeat = "pokemon in pokemons | filter: { pokemon.nome : busca}">
-                Nome : {{ pokemon.nome }} - Tipo: {{ pokemon.tipo | uppercase }}
-                </li>
+            <input type="text" ng-model="search">
+            <ul ng-repeat = "pokemon in pokemons | filter:search}">
+                <li>Nome : {{ pokemon.nome }} - Tipo: {{ pokemon.tipo | uppercase }}</li>
             </ul>
         </div>
     </body>
