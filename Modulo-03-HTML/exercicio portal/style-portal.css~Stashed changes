@@ -71,3 +71,9 @@ body {
   color: #bbb;
   word-spacing: 2px;
 }
+
+/*@media screen and (max-width: 800px){
+  .noticia{
+    width: 100%
+  }
+}*/
