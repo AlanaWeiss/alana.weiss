@@ -1,0 +1,25 @@
+.jumbotron{
+    padding-left: 50px;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    background-image: url("http://wallpapercave.com/wp/Qf9SNmS.png");
+}
+
+.exercicioTitulo{
+    margin-right: 200px;
+}
+
+.exercicio{
+    margin-left: 120px;
+}
+
+.fundo{
+    height: 500px;
+    padding: 20px;
+    background-color: white;
+}
