@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css?family=Inconsolata|Josefin+Sans|Montserrat');
+
+*{
+  box-sizing: border-box;
+}
+.tabelaTitulo{
+     font-family: 'Montserrat', sans-serif;
+     /*font-family: 'Inconsolata', monospace;
+     font-family: 'Josefin Sans', sans-serif;*/
+}
+
+.tabelaCorpo{
+  font-family: 'Inconsolata', monospace;
+}
+
+body{
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSU2FncHFZPhBfS0mcUUYyE81k2bJcJJiMfuuP05r6rJ6HCpLAEMg");
+  background-size: cover;
+}
+
+.fundo{
+  background-color: beige;
+  padding:20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.jumbotron{
+  background-color: beige;
+}
