@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+    <head>
+        <title>Formulário</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link href="style.css" rel="stylesheet">
+        <script src="https://code.angularjs.org/1.6.4/angular.js"></script>
+        <script src="controller.js"></script>
+    </head>
+    <body>
+      <div class="container-fluid jumbotron">
+        <h2>Exercicios fim de semana</h2>
+      </div>
+        <div ng-controller="mainController"  class="container">
+          <form novalidate name="meuForm" ng-submit="incluir()" class="form-style-5">
+            <div class="row">
+              <div class="form-group col-md-10">
+                <label for="nome">Adicione uma aula</label>
+                <input type="text" name="nome" ng-model="novaAula.nome" required ng-minlength="3" ng-maxlength="20" placeholder="Banco de Dados">
+                <span  ng-show="meuForm.nome.$error.minlength">Nome curto! </span>
+                <span  ng-show="meuForm.nome.$error.maxlength">Nome muito longo!!</span>
+                <span ng-show="meuForm.nome.$error.required"> * </span>
+              </div>
+              <div class="form-group col-md-4">
+                <button type="submit">Adicionar</button>
+              </div>
+            </div>
+          </form>
+          <br><hr>
+          <form novalidate name="formEditarAula" ng-submit="editarAula(editarAula.index)" class="form-style-5">
+            <label>Edite uma Aula</label>
+                <select class="ui search dropdown" ng-model="editarAula.index" required>
+                    <option value="" disabled hidden>Selecione a aula</option>
+                    <option class="item" ng-repeat="item in aulas track by $index" value="{{$index}}">{{item.nome}}</option>
+                </select>
+                <br>
+                <input type="text" name="nomeEditado" ng-model="nomeEditado">
+            <button type="submit"> Editar </button>
+          </form>
+          <br><hr>
+          <form novalidate name="formExcluirAula" ng-submit="excluirAula(removerAula.index)" class="form-style-5">
+            <label>Remova uma Aula</label>
+                <select class="ui search dropdown" ng-model="removerAula.index" required>
+                    <option value="" disabled hidden>Selecione a aula</option>
+                    <option class="item" ng-repeat="item in aulas track by $index" value="{{$index}}">{{item.nome}}</option>
+                </select>
+                <br>
+            <button type="submit"> Excluir </button>
+          </form>
+          <ul>
+            <li ng-repeat="item in aulas" >{{item.nome}}- {{item.id}}</li>
+          </ul>
+        </div>
+    </body>
+</html>
