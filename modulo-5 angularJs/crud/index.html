@@ -23,41 +23,43 @@
               </li>
             </ul>
           </nav>
-          <form novalidate name="meuForm" ng-submit="incluir()" class="form-style-5">
+          <div class="conteudoInterno">
+          <label  id="aulas" class="tituloEdicao">Aulas</label>
+          <form novalidate name="meuForm" ng-submit="incluir()" class="form-style-5 partAula">
             <div class="row">
               <div class="form-group col-md-10">
-                <label for="nome" id="aulas">Adicione uma aula</label>
+                <label for="nome">Adicione uma aula</label>
                 <input type="text" name="nome" ng-model="novaAula.nome" required ng-minlength="3" ng-maxlength="20" placeholder="Banco de Dados">
                 <span ng-show="mostrarAvisoAula">Aula já cadastrada!</span>
                 <span  ng-show="meuForm.nome.$error.minlength">Nome curto! </span>
                 <span  ng-show="meuForm.nome.$error.maxlength">Nome muito longo!!</span>
                 <span ng-show="meuForm.nome.$error.required"> * </span>
               </div>
-              <div class="form-group col-md-4">
-                <button class="btn btn-primary" type="submit">Adicionar</button>
-              </div>
+                <button class="btn btn-success" type="submit">Adicionar</button>
+
             </div>
           </form>
           <br><hr>
-          <form novalidate name="formEditarAula" ng-submit="editarAula(editarAula.index)" class="form-style-5">
+          <form novalidate name="formEditarAula" ng-submit="editarAula(editarAula.index)" class="form-style-5 partAula">
             <label>Edite uma Aula</label>
                 <select class="ui search dropdown" ng-model="editarAula.index" required>
                     <option value="" disabled hidden>Selecione a aula</option>
                     <option class="item" ng-repeat="item in aulas track by $index" value="{{$index}}">{{item.nome}}</option>
                 </select>
                 <br>
-                <input type="text" name="nomeEditado" ng-model="nomeEditado">
-            <button type="submit"> Editar </button>
+                <input type="text" name="nomeEditado" ng-model="nomeEditado" class="editarAula">
+                <br>
+            <button type="submit" class="btn btn-info"> Editar </button>
           </form>
           <br><hr>
-          <form novalidate name="formExcluirAula" ng-submit="excluirAula(removerAula.index)" class="form-style-5">
+          <form novalidate name="formExcluirAula" ng-submit="excluirAula(removerAula.index)" class="form-style-5 partAula">
             <label>Remova uma Aula</label>
                 <select class="ui search dropdown" ng-model="removerAula.index" required>
                     <option value="" disabled hidden>Selecione a aula</option>
                     <option class="item" ng-repeat="item in aulas track by $index" value="{{$index}}">{{item.nome}}</option>
                 </select>
                 <br>
-            <button type="submit"> Excluir </button>
+            <button type="submit" class="btn btn-danger"> Excluir </button>
           </form>
           <table class="table table-striped table-bordered table-hover table-condensed tabela">
             <thead class="tabelaTitulo">
@@ -73,9 +75,9 @@
                 </tr>
             </tbody>
         </table>
-          <div class="row">
-                <div class="col-md-6">
-                <label align="center" id="instrutores"> Adicione um instrutor</label>
+        <hr>
+          <div >
+                <label class="tituloEdicao" id="instrutores"> Adicione um instrutor</label>
                 <form novalidate name="formInstrutor" ng-submit="incluirInstrutor()" class="form-style-5">
 
                     <label for="nome">Nome do instrutor</label>
@@ -103,13 +105,11 @@
                            <option ng-repeat="aula in aulas | orderBy: 'id'" value="{{ aula.id }}"> {{ aula.nome }} </option>
                        </select><br>
 
-
                     <label for="text">Foto do instrutor</label>
                     <input  class="form-control" type="text" ng-model="novoInstrutor.urlFoto"><br>
 
-                    <button class="btn btn-primary" type="submit" name="nome">Adicionar</button>
+                    <button class="btn btn-success" type="submit" name="nome">Adicionar</button>
                 </form>
-             </div>
            </div>
            <table class="table table-striped table-bordered table-hover table-condensed tabela">
              <thead class="tabelaTitulo">
@@ -134,7 +134,7 @@
                      <td>{{instrutor.dandoAula}}</td>
                      <td>{{instrutor.aula}}</td>
                      <td> <img src="{{instrutor.urlFoto}}" alt=""></td>
-                     <td><button type="submit" name="buttonedit" ng-click="querEditar(instrutor)"> Editar </button></td>
+                     <td><button type="submit" name="buttonedit" ng-click="querEditar(instrutor)" class="btn btn-info"> Editar </button></td>
                      <td><button class="btn btn-danger" type="submit" ng-click="querExcluir(instrutor)"> Excluir</button></td>
                  </tr>
              </tbody>
@@ -144,7 +144,7 @@
                  <div class="col-md-3"></div>
                  <div class="col-md-6">
                  <h4 align="center"> Instrutores</h4>
-                 <form novalidate name="formEditarInstrutor" ng-submit="editarInstrutor()">
+                 <form novalidate name="formEditarInstrutor" ng-submit="editarInstrutor()"  class="form-style-5">
 
                      <label for="nome">Nome do instrutor</label>
                      <input class="form-control" maxlength="20" minlength="3" type="text" ng-model="instrutorEditado.nome" required>
@@ -169,11 +169,12 @@
                      <label for="text">Foto do instrutor</label>
                      <input  class="form-control" type="text" ng-model="instrutorEditado.urlFoto">
 
-                     <button class="btn btn-primary" type="submit" name="nome" ng-click="salvarInstrutor(instrutorEditado)">Salvar</button>
+                     <button class="btn btn-success" type="submit" name="nome" ng-click="salvarInstrutor(instrutorEditado)">Salvar</button>
                  </form>
               </div>
             </div>
          </div>
+       </div>
         </div>
     </body>
 </html>

@@ -20,16 +20,25 @@ h1{
 
 body{
   font-size: font-family: 'Josefin Sans', sans-serif;
-  background-color: gainsboro;
+  background-image: url("fundo.png");
 
 }
 
+.conteudoInterno{
+  width: 70%;
+  height: 100vh;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 .container .menu{
-  width: 40%;
- background-color: rgba(169,169,169,.5);
+  width: 20%;
+  background: rgba(241,241,241,.5);
   border: 2px solid rgba(169,169,169,.5);
   border-radius: 20px;
   margin: 0 auto;
+  margin-bottom: 20px;
 }
 
 .container .menu .menu-list{
@@ -38,14 +47,22 @@ body{
 
 .container .menu .menu-list .menu-item {
   display: inline;
-padding-left: 5%;
+  padding-left: 7%;
 }
 
 .container .menu .menu-list .menu-item .menu-link{
-  color: #fff;
-  padding: 0 10px;
+  color: orange;
   text-decoration: none;
   display: inline-block;
+  padding-top: 6px;
+}
+
+.tituloEdicao{
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 20px;
+  color: #f10567;
 }
 
 .form-style-5 input[type="text"],
@@ -62,7 +79,7 @@ padding-left: 5%;
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
-    background-color: #e8eeef;
+    background-color: white;
     color:#8a97a0;
     -webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
     box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
@@ -74,7 +91,7 @@ padding-left: 5%;
     max-width: 500px;
     margin: 10px auto;
     padding: 20px;
-    background: #f4f7f8;
+    background: #f1f1f1;
     border-radius: 8px;
 }
 
@@ -83,6 +100,16 @@ padding-left: 5%;
   padding-right: auto;
 }
 
+.editarAula, .partAula .btn{
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 img {
   width: 50%;
+}
+
+table thead th {
+  color: purple;
 }
