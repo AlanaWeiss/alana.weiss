@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css?family=Inconsolata|Josefin+Sans|Montserrat');
+
+*{
+  box-sizing: border-box;
+}
+form{
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+
+h1{
+    margin-top: 50px;
+}
+
+.tabela{
+  margin-top: 50px;
+  background: #f4f7f8;
+  border-radius: 8px;
+}
+
+body{
+  font-size: font-family: 'Josefin Sans', sans-serif;
+  background-image: url("fundo.png");
+
+}
+
+.conteudoInterno{
+  width: 70%;
+  height: 100vh;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.container .menu{
+  width: 20%;
+  background: rgba(241,241,241,.5);
+  border: 2px solid rgba(169,169,169,.5);
+  border-radius: 20px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.container .menu .menu-list{
+  list-style: none;
+}
+
+.container .menu .menu-list .menu-item {
+  display: inline;
+  padding-left: 7%;
+}
+
+.container .menu .menu-list .menu-item .menu-link{
+  color: orange;
+  text-decoration: none;
+  display: inline-block;
+  padding-top: 6px;
+}
+
+.tituloEdicao{
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 20px;
+  color: #f10567;
+}
+
+.form-style-5 input[type="text"],
+.form-style-5 input[type="email"],
+.form-style-5 input[type="number"],
+.form-style-5 select {
+    background: rgba(255,255,255,.1);
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    margin: 0;
+    outline: 0;
+    padding: 7px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    background-color: white;
+    color:#8a97a0;
+    -webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+    margin-bottom: 30px;
+
+}
+
+.form-style-5{
+    max-width: 500px;
+    margin: 10px auto;
+    padding: 20px;
+    background: #f1f1f1;
+    border-radius: 8px;
+}
+
+.jumbotron{
+  padding-left: 10%;
+  padding-right: auto;
+}
+
+.editarAula, .partAula .btn{
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+img {
+  width: 50%;
+}
+
+table thead th {
+  color: purple;
+}
