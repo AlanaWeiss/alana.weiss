@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+    <head>
+        <title>teste</title>
+        <meta charset="UTF-8">
+        <script src="https://code.angularjs.org/1.6.4/angular.js"></script>
+        <script src="controller.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link href="style.css" rel="stylesheet">
+    </head>
+    <body>
+        <div ng-controller="mainController" class="container">
+        <h1>Formulário instrutores</h1>
+            <form novalidate name="meuForm" ng-submit="incluir()">
+                <div class="form-group">
+                    <label for="nome">Nome: </label>
+                    <input type="text" name="nome" ng-model="novoInstrutor.nome" required ng-minlength="3" ng-maxlength="20" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="sobrenome">Sobrenome:</label>
+                    <input type="text" name="sobrenome" ng-model="novoInstrutor.sobrenome"  ng-maxlength="30" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="idade">Idade:</label>
+                    <input type="number" name="idade" ng-model="novoInstrutor.idade" required class="form-control col-md-6">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email: </label>
+                    <input type="email" name="email" required ng-model="novoInstrutor.email" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Ja deu aula?
+                        <label for="">Sim</label>
+                        <input type="checkbox" ng-model="novoInstrutor.jaDeuAula">
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label for="aulaDada">Aula ministrada:</label>
+                    <select name="aulaDada" ng-model="novoInstrutor.aula">
+                          <option ng-repeat="aula in aulas" value="{{aula}}">{{aula}}</option>
+                    </select>
+                </div>
+                <button type="submit">Adicionar</button>
+            </form>
+            <div class="exibicao">
+                <ul>
+                    <li ng-repeat="item in instrutores">
+                        {{item.nome}} {{item.sobrenome}} - {{item.idade}} ({{item.email}}) Ja deu aula? {{item.jaDeuAula}} {{item.aula}}
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+    </body>
+</html>
