@@ -14,27 +14,12 @@
   </div>
 </form>
 <br><hr>
-<form novalidate name="formEditarAula" ng-submit="editarAula(editarAula.index)" class="form-style-5 partAula">
-  <label>Edite uma Aula</label>
-      <select class="ui search dropdown" ng-model="editarAula.index" required>
-          <option value="" disabled hidden>Selecione a aula</option>
-          <option class="item" ng-repeat="item in aulas track by $index" value="{{$index}}">{{item.nome}}</option>
-      </select>
-      <br>
-      <input type="text" name="nomeEditado" ng-model="nomeEditado" class="editarAula">
+<form novalidate name="formEditarAula" ng-show="ciclouParaEditarAula" ng-submit="editarAula()" class="form-style-5 partAula">
+      <input type="text" name="nomeEditado" ng-model="aulaEditada.nome" class="editarAula">
       <br>
   <button type="submit" class="btn btn-info"> Editar </button>
 </form>
 <br><hr>
-<form novalidate name="formExcluirAula" ng-submit="excluirAula(removerAula.index)" class="form-style-5 partAula">
-  <label>Remova uma Aula</label>
-      <select class="ui search dropdown" ng-model="removerAula.index" required>
-          <option value="" disabled hidden>Selecione a aula</option>
-          <option class="item" ng-repeat="item in aulas track by $index" value="{{$index}}">{{item.nome}}</option>
-      </select>
-      <br>
-  <button type="submit" class="btn btn-danger"> Excluir </button>
-</form>
 <table class="table table-striped table-bordered table-hover table-condensed tabela">
   <thead class="tabelaTitulo">
       <tr>
@@ -46,6 +31,8 @@
       <tr ng-repeat="aula in aulas | orderBy: 'id'">
           <td>{{aula.nome}}</td>
           <td>{{aula.id}}</td>
+          <td> <button type="button" name="button" ng-click="excluirAula(aula)" >Excluir</button></td>
+          <td><button type="button" name="button" ng-click="ciclouParaEditarAula(aula)">Editar</button></td>
       </tr>
   </tbody>
 </table>
