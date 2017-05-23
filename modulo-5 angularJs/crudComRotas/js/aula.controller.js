@@ -14,15 +14,7 @@ app.config(function ($routeProvider) {
     .otherwise({redirectTo: '/index.html'});
 });
 
-app.controller('PrincipalController', function ($scope) {
-  $scope.instrutores = [{
-  }];
 
-    $scope.aulas =[];
-
-    $scope.idAula = 0;
-    $scope.idInstrutor = 0;
-});
 
 
 app.factory('aulaService', function ($http) {
