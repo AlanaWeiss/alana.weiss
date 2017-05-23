@@ -25,7 +25,7 @@ app.controller('PrincipalController', function ($scope) {
 });
 
 
-app.factory('aulaService', function ($http,) {
+app.factory('aulaService', function ($http) {
 
     let urlBase = 'http://localhost:3000';
     let aulas;
@@ -61,16 +61,15 @@ app.factory('aulaService', function ($http,) {
   function criar(aula) {
 
       if(!verificaAulaExiste(aula)){
-        $http.post(urlBase + '/aula', aula);
+       return $http.post(urlBase + '/aula', aula);
         alert('Aula inserida com sucesso.');
       } else {
         alert('Aula já cadastrada.');
       }
-      getTodasAsAulas().then(response => aulas = response.data);
   };
 
   function deletar(aula) {
-    $http.delete(urlBase + '/aula/' + aula.id, aula);
+    return $http.delete(urlBase + '/aula/' + aula.id, aula);
     alert("Ação realizada com sucesso!");
   }
 
@@ -85,27 +84,38 @@ app.factory('aulaService', function ($http,) {
 
 app.controller('aulaController', function ($scope, $routeParams, aulaService) {
 
-    list();
+    listar();
+    $scope.clicouParaEditarAula = false;
 
     $scope.incluir = function () {
-     aulaService.create($scope.novaAula);
+     let promisse = aulaService.create($scope.novaAula);
+     promisse.then(function (response) {
+        $scope.novaAula = {}
+        alert('Aula inserida com sucesso.');
+        listar();
+     })
    }
 
    $scope.excluirAula = function (aula) {
-     aulaService.delete(aula);
+     let promisse = aulaService.delete(aula);
+
+     promisse.then(function (response) {
+        alert('Aula excluida com sucesso.');
+        listar();
+     })
    }
 
-   function ciclouParaEditarAula(aula) {
-     $cope.aulaEditada = aula;
-     ciclouParaEditarAula = true;
+   $scope.clicouParaEditarAula = function (aula) {
+     $scope.aulaEditada = aula;
+     $scope.querEditar = true;
    }
 
-   $scope.editarAula = function (aulaEditada) {
+   $scope.editarAula = function () {
      aulaService.update($scope.aulaEditada.nome);
-     ciclouParaEditarAula = false;
+    $scope.querEditar = false;
    }
 
-   function list() {
+   function listar() {
     aulaService.list().then(function (response) {
       $scope.aulas = response.data;
     });
