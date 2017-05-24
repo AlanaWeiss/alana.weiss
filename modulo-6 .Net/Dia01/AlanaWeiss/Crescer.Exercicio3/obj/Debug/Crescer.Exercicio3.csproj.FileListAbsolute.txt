@@ -1,0 +1,6 @@
+C:\Users\alana.weiss\Documents\alana.weiss\modulo-6 .Net\Dia01\AlanaWeiss\Crescer.Exercicio3\bin\Debug\Crescer.Exercicio3.dll
+C:\Users\alana.weiss\Documents\alana.weiss\modulo-6 .Net\Dia01\AlanaWeiss\Crescer.Exercicio3\bin\Debug\Crescer.Exercicio3.pdb
+C:\Users\alana.weiss\Documents\alana.weiss\modulo-6 .Net\Dia01\AlanaWeiss\Crescer.Exercicio3\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\alana.weiss\Documents\alana.weiss\modulo-6 .Net\Dia01\AlanaWeiss\Crescer.Exercicio3\obj\Debug\Crescer.Exercicio3.csprojResolveAssemblyReference.cache
+C:\Users\alana.weiss\Documents\alana.weiss\modulo-6 .Net\Dia01\AlanaWeiss\Crescer.Exercicio3\obj\Debug\Crescer.Exercicio3.dll
+C:\Users\alana.weiss\Documents\alana.weiss\modulo-6 .Net\Dia01\AlanaWeiss\Crescer.Exercicio3\obj\Debug\Crescer.Exercicio3.pdb

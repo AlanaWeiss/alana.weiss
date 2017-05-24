@@ -1,0 +1,6 @@
+C:\Users\alana.weiss\Documents\alana.weiss\modulo-6 .Net\Dia01\Aula1\Demo1\bin\Debug\Demo1.exe.config
+C:\Users\alana.weiss\Documents\alana.weiss\modulo-6 .Net\Dia01\Aula1\Demo1\bin\Debug\Demo1.exe
+C:\Users\alana.weiss\Documents\alana.weiss\modulo-6 .Net\Dia01\Aula1\Demo1\bin\Debug\Demo1.pdb
+C:\Users\alana.weiss\Documents\alana.weiss\modulo-6 .Net\Dia01\Aula1\Demo1\obj\Debug\Demo1.csprojResolveAssemblyReference.cache
+C:\Users\alana.weiss\Documents\alana.weiss\modulo-6 .Net\Dia01\Aula1\Demo1\obj\Debug\Demo1.exe
+C:\Users\alana.weiss\Documents\alana.weiss\modulo-6 .Net\Dia01\Aula1\Demo1\obj\Debug\Demo1.pdb
