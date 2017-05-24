@@ -1,15 +1,19 @@
-let app = angular.module('app', ['ngRoute']);
+let app = angular.module('app', ['ngRoute','ngAnimate', 'toastr']);
 
-app.controller('aulaController', function ($scope, $routeParams, aulaService) {
+app.controller('aulaController', function ($scope, $routeParams, aulaService,toastr) {
 
     listar();
-    $scope.clicouParaEditarAula = false;
 
     $scope.incluir = function () {
+      if($scope.meuForm.$invalid){
+        toastr.error('Houston, We Have a Problem');
+        return;
+      }
+
      let promisse = aulaService.create($scope.novaAula);
      promisse.then(function (response) {
         $scope.novaAula = {}
-        alert('Aula inserida com sucesso.');
+        toastr.success('Aula inserida com sucesso!');
         listar();
      })
    }
@@ -18,7 +22,7 @@ app.controller('aulaController', function ($scope, $routeParams, aulaService) {
      let promisse = aulaService.delete(aula);
 
      promisse.then(function (response) {
-        alert('Aula excluida com sucesso.');
+        toastr.success('Aula excluida com sucesso.');
         listar();
      })
    }

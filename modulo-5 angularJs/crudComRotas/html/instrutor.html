@@ -37,18 +37,18 @@
    <thead class="tabelaTitulo">
        <tr>
            <th>ID</th>
-           <th>Nome</th>
-           <th>sobrenome</th>
-           <th>Idade</th>
-           <th>Email</th>
-           <th>Está dando aulas</th>
-           <th>ID aula lecionada</th>
-           <th>Foto</th>
+           <th class="col-md-2">Nome</th>
+           <th class="col-md-2">sobrenome</th>
+           <th class="col-md-1">Idade</th>
+           <th class="col-md-2">Email</th>
+           <th class="col-md-1">Está dando aulas</th>
+           <th class="col-md-1">ID aula lecionada</th>
+           <th class="col-md-1">Foto</th>
        </tr>
    </thead>
    <tbody class="tabelaCorpo">
-       <tr ng-repeat="instrutor in instrutores | orderBy: 'id'">
-           <td>{{instrutor.id}}</td>
+       <tr ng-repeat="instrutor in instrutores | orderBy: 'nome'">
+           <td cla>{{instrutor.id}}</td>
            <td>{{instrutor.nome}}</td>
            <td>{{instrutor.sobrenome}}</td>
            <td>{{instrutor.idade}}</td>
@@ -56,7 +56,7 @@
            <td>{{instrutor.dandoAula}}</td>
            <td>{{instrutor.aula}}</td>
            <td> <img src="{{instrutor.urlFoto}}" alt=""></td>
-           <td><button type="submit" name="buttonedit" ng-click="querEditar(instrutor)" class="btn btn-info"> Editar </button></td>
+           <td><button type="submit" name="buttonedit" ng-click="clicouParaEditarInstrutor(instrutor)" class="btn btn-info"> Editar </button></td>
            <td><button class="btn btn-danger" type="submit" ng-click="querExcluir(instrutor)"> Excluir</button></td>
        </tr>
    </tbody>
@@ -91,6 +91,6 @@
            <label for="text">Foto do instrutor</label>
            <input  class="form-control" type="text" ng-model="instrutorEditado.urlFoto">
 
-           <button class="btn btn-success" type="submit" name="nome" ng-click="salvarInstrutor(instrutorEditado)">Salvar</button>
+           <button class="btn btn-success" type="submit" name="nome">Salvar</button>
        </form>
     </div>
