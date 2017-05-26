@@ -3,3 +3,8 @@ C:\Users\alana\Documents\alana.weiss\modulo-6 .Net\ExercicioLambdaLinq\Repositor
 C:\Users\alana\Documents\alana.weiss\modulo-6 .Net\ExercicioLambdaLinq\RepositorioFuncionarios\obj\Debug\Repositorio.csprojResolveAssemblyReference.cache
 C:\Users\alana\Documents\alana.weiss\modulo-6 .Net\ExercicioLambdaLinq\RepositorioFuncionarios\obj\Debug\Repositorio.dll
 C:\Users\alana\Documents\alana.weiss\modulo-6 .Net\ExercicioLambdaLinq\RepositorioFuncionarios\obj\Debug\Repositorio.pdb
+C:\Users\alana.weiss\Documents\alana.weiss\modulo-6 .Net\ExercicioLambdaLinq\RepositorioFuncionarios\bin\Debug\Repositorio.dll
+C:\Users\alana.weiss\Documents\alana.weiss\modulo-6 .Net\ExercicioLambdaLinq\RepositorioFuncionarios\bin\Debug\Repositorio.pdb
+C:\Users\alana.weiss\Documents\alana.weiss\modulo-6 .Net\ExercicioLambdaLinq\RepositorioFuncionarios\obj\Debug\Repositorio.csprojResolveAssemblyReference.cache
+C:\Users\alana.weiss\Documents\alana.weiss\modulo-6 .Net\ExercicioLambdaLinq\RepositorioFuncionarios\obj\Debug\Repositorio.dll
+C:\Users\alana.weiss\Documents\alana.weiss\modulo-6 .Net\ExercicioLambdaLinq\RepositorioFuncionarios\obj\Debug\Repositorio.pdb

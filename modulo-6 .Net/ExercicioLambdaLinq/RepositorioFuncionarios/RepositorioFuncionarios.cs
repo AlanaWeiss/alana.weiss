@@ -200,13 +200,13 @@ namespace Repositorio
         public dynamic FuncionarioMaisComplexo()
         {
             return Funcionarios
-               .Where(funcionario => !funcionario.Cargo.Titulo.Equals("Desenvolvedor Júnior") && funcionario.TurnoTrabalho.Equals("Tarde"))
+               .Where(funcionario => !funcionario.Cargo.Titulo.Equals("Desenvolvedor Júnior"))
                .Select(f => new
                {
                    Nome = f.Nome,
                    DataNascimento = f.DataNascimento.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture),
-                   SalarioRS = String.Format("R$ {0:N2}", f.Cargo.Salario).Replace('.', ','),
-                   SalarioUS = String.Format("${0:N2}", f.Cargo.Salario),
+                   SalarioRS = String.Format("R$ {0:N2}", f.Cargo.Salario),
+                   SalarioUS = String.Format("${0:N2}", f.Cargo.Salario).Replace(',', '.'),
                    QuantidadeMesmoCargo = Funcionarios.Where(c => c.Cargo.Equals(f.Cargo)).Count()
                })
                .OrderByDescending(f => ContarConsoantes(f.Nome))
