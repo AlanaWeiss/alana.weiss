@@ -159,10 +159,6 @@ namespace Repositorio
 
         public IList<Funcionario> AniversariantesDoMes()
         {
-            //var today = DateTime.Today;
-            //var idade = today.Year - funcionario.dataNascimento.Year;
-            //if (dataNascimento > today.AddYears(-idade)) idade--;
-
             return Funcionarios.Where(funcionario =>
             {
                 if (funcionario.DataNascimento.Month == DateTime.Today.Month)
