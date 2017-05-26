@@ -121,7 +121,7 @@ namespace Repositorio
             
             return Funcionarios.Where(funcionario =>
             {
-                var idadeCalculada = this.CalcularIdade(funcionario.DataNascimento);
+                var idadeCalculada = CalcularIdade(funcionario.DataNascimento);
 
                 if ( idadeCalculada <= (idade + 5)
                     && idadeCalculada >= (idade - 5))
@@ -146,12 +146,35 @@ namespace Repositorio
 
         public double SalarioMedio(TurnoTrabalho? turno = null)
         {
-            throw new NotImplementedException();
+            if (turno == null)
+            {
+                return Funcionarios.Select(funcionario => funcionario.Cargo.Salario).Average();
+            }
+            else
+            {
+                return Funcionarios.Where(funcionario => funcionario.TurnoTrabalho.Equals(turno)).Select(f => f.Cargo.Salario).Average();
+            }
+           
         }
 
         public IList<Funcionario> AniversariantesDoMes()
         {
-            throw new NotImplementedException();
+            //var today = DateTime.Today;
+            //var idade = today.Year - funcionario.dataNascimento.Year;
+            //if (dataNascimento > today.AddYears(-idade)) idade--;
+
+            return Funcionarios.Where(funcionario =>
+            {
+                if (funcionario.DataNascimento.Month == DateTime.Today.Month)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+
+            }).ToList();
         }
 
         public IList<dynamic> BuscaRapida()
