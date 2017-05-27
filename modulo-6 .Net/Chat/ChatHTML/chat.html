@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html ng-app="herois-app">>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <!--[if IE]>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <![endif]-->
+    <title>Chat</title>
+    <!-- BOOTSTRAP CORE STYLE CSS -->
+    <link href="css/bootstrap.css" rel="stylesheet" />
+
+</head>
+<body style="font-family:Verdana" ng-controller="HeroisController">
+  <div class="container">
+<div class="row " style="padding-top:40px;">
+    <h3 class="text-center" >WEB API CHAT </h3>
+    <br /><br />
+    <div class="login" ng-show="localStorage.getItem("Nome") === null">
+        
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-5 col-md-3">
+                    <div class="form-login">
+                    <h4>Bem vindo!</h4>
+                    <input type="text" id="userName" class="form-control input-sm chat-input" ng-model="novoUsuario.Nome" placeholder="username" />
+                    </br>
+                    <input type="text" id="userPassword" class="form-control input-sm chat-input" ng-model="novoUsuario.FotoUrl" placeholder="URL da sua foto" />
+                    </br>
+                    <div class="wrapper">
+                        <button type="submit" class="btn btn-primary btn-md" ng-click="criarUsuario()">Login</button>
+                    
+                    </div>
+                    </div>
+                
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="col-md-8" >
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                 CHAT HISTORY
+            </div>
+            <div class="panel-body">
+<ul class="media-list">
+
+<li class="media">
+
+    <div class="media-body">
+
+        <div class="media">
+            <a class="pull-left" href="#">
+                <img class="media-object img-circle " src="{{heroi.urlFoto}}" />
+            </a>
+            <div class="media-body" >
+                 <h2>aqui é {{testeNome}} {{localId}}</h2>
+                <ul>
+        <li ng-repeat="mensagem in mensagens">
+            <!--{{ heroi.Nome }} - {{ heroi.FotoUrl }} - {{ heroi.Id}}-->
+            {{mensagem.Texto}}
+            <br />
+                <small class="text-muted">{{mensagem.IdAutor}} | {{mensagem.EnviadoEm}}</small>
+                <hr />
+        </li>
+    </ul>
+                
+            </div>
+        </div>
+
+    </div>
+</li>
+    <div class="panel-footer">
+                <div class="input-group">
+                                    <input type="text" class="form-control" ng-model="novaMensagem.texto" placeholder="Enter Message" />
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-info" ng-click="criarMensagem()" type="button">SEND</button>
+                                    </span>
+                                </div>
+            </div>
+    </div>
+   </div>
+   </div>
+  </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="controller.js"></script>
+    <script src="service.js"></script>
+</body>
+</html>
