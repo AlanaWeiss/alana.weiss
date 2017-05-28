@@ -18,7 +18,7 @@
 <div class="row " style="padding-top:40px;">
     <h3 class="text-center" >WEB API CHAT </h3>
     <br /><br />
-    <div class="login" ng-show="localStorage.getItem("Nome") === null">
+    <div class="login" ng-show="exibe()">
         
 
         <div class="container">
@@ -54,18 +54,18 @@
 
     <div class="media-body">
 
-        <div class="media">
+        <div class="media" ng-repeat="mensagem in mensagens">
             <a class="pull-left" href="#">
-                <img class="media-object img-circle " src="{{heroi.urlFoto}}" />
+                <img class="media-object img-circle " src="{{novaMensagem.Usuario.FotoUrl}}" />
             </a>
             <div class="media-body" >
-                 <h2>aqui é {{testeNome}} {{localId}}</h2>
+                 <!--<h2>aqui é {{testeNome}} {{localId}}</h2>-->
                 <ul>
-        <li ng-repeat="mensagem in mensagens">
+        <li >
             <!--{{ heroi.Nome }} - {{ heroi.FotoUrl }} - {{ heroi.Id}}-->
             {{mensagem.Texto}}
             <br />
-                <small class="text-muted">{{mensagem.IdAutor}} | {{mensagem.EnviadoEm}}</small>
+                <small class="text-muted">{{mensagem.Usuario.Nome}} | {{mensagem.EnviadoEm}}</small>
                 <hr />
         </li>
     </ul>

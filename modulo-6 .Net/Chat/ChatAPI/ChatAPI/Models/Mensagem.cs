@@ -9,7 +9,7 @@ namespace ChatAPI.Models
     {
         public int Id { get; set; }
         public string Texto { get; set; }
-        public int IdAutor { get; set; }
+        public Usuario Usuario { get; set; }
         public readonly DateTime EnviadoEm = DateTime.Now;
     }
 }

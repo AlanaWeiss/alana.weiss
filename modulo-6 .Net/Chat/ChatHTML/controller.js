@@ -1,6 +1,9 @@
 var modulo = angular.module('herois-app', []);
 
 modulo.controller('HeroisController', function ($scope, heroisService, mensagemService) {
+    $scope.exibe = function () {
+        return (localStorage.getItem("Nome") === null) ? true : false;
+    }
     $scope.herois = {};
     $scope.criarUsuario = criarUsuario;
     obterHerois();    
@@ -21,18 +24,28 @@ modulo.controller('HeroisController', function ($scope, heroisService, mensagemS
     }
 
     function criarUsuario() {
-         localStorage.setItem("Nome", $scope.novoUsuario.Nome);
-         localStorage.setItem("FotoUrl", $scope.novoUsuario.FotoUrl);
+         
         heroisService
         .enviarHeroi($scope.novoUsuario)
         .then(herois => {
+            localStorage.setItem('Nome', $scope.novoUsuario.Nome);
+            localStorage.setItem('FotoUrl', $scope.novoUsuario.FotoUrl);
             obterHerois();
         })
     }
 
     $scope.mensagens = {};
     $scope.criarMensagem = criarMensagem;
-    obterMensagem();    
+    
+     obterMensagem(); 
+    
+             
+       setInterval(function(){ 
+        
+                            obterMensagem(); 
+                          
+                          }, 1000);
+       
 
     function obterMensagem() {
         mensagemService
@@ -42,13 +55,18 @@ modulo.controller('HeroisController', function ($scope, heroisService, mensagemS
         })
     }
 
+    $scope.usuario = {nome:localStorage.getItem('Nome'), UrlFoto:localStorage.getItem('FotoUrl')};
+
     function criarMensagem() {
-        $scope.novaMensagem.IdAutor = $scope.localId;
+
+        $scope.novaMensagem.Usuario = $scope.usuario;
+
         mensagemService
         .enviarMensagem($scope.novaMensagem)
         .then(mensagens => {
             obterMensagem();
         })
         console.log("clicou");
+        delete $scope.novaMensagem;
     }
 });
