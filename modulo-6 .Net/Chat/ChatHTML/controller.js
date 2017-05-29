@@ -4,6 +4,9 @@ modulo.controller('HeroisController', function ($scope, heroisService, mensagemS
     $scope.exibe = function () {
         return (localStorage.getItem("Nome") === null) ? true : false;
     }
+    $scope.exibeChat = function () {
+        return (localStorage.getItem("Nome") === null) ? false : true;
+    }
     $scope.herois = {};
     $scope.criarUsuario = criarUsuario;
     obterHerois();    
@@ -52,15 +55,16 @@ modulo.controller('HeroisController', function ($scope, heroisService, mensagemS
         .obterMensagem()
         .then(response => {
             $scope.mensagens = response.data;
+            
         })
     }
 
-    $scope.usuario = {nome:localStorage.getItem('Nome'), UrlFoto:localStorage.getItem('FotoUrl')};
+    $scope.usuario = {nome:localStorage.getItem('Nome'), FotoUrl:localStorage.getItem('FotoUrl')};
 
     function criarMensagem() {
-
         $scope.novaMensagem.Usuario = $scope.usuario;
-
+        console.log($scope.novaMensagem.Usuario.nome);
+        console.log($scope.novaMensagem.Usuario.FotoUrl);
         mensagemService
         .enviarMensagem($scope.novaMensagem)
         .then(mensagens => {

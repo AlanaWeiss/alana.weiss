@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html ng-app="herois-app">>
+<html ng-app="herois-app">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
@@ -15,9 +15,7 @@
 </head>
 <body style="font-family:Verdana" ng-controller="HeroisController">
   <div class="container">
-<div class="row " style="padding-top:40px;">
-    <h3 class="text-center" >WEB API CHAT </h3>
-    <br /><br />
+
     <div class="login" ng-show="exibe()">
         
 
@@ -42,7 +40,7 @@
 
 
     </div>
-    <div class="col-md-8" >
+    <div class="col-md-8" ng-show="exibeChat()">
         <div class="panel panel-info">
             <div class="panel-heading">
                  CHAT HISTORY
@@ -55,21 +53,14 @@
     <div class="media-body">
 
         <div class="media" ng-repeat="mensagem in mensagens">
-            <a class="pull-left" href="#">
-                <img class="media-object img-circle " src="{{novaMensagem.Usuario.FotoUrl}}" />
-            </a>
+           
+                <img class="img-responsive img-perfil img-circle" width="40px" height="40px" ng-src="{{mensagem.Usuario.FotoUrl}}" />
+            
             <div class="media-body" >
-                 <!--<h2>aqui é {{testeNome}} {{localId}}</h2>-->
-                <ul>
-        <li >
-            <!--{{ heroi.Nome }} - {{ heroi.FotoUrl }} - {{ heroi.Id}}-->
-            {{mensagem.Texto}}
-            <br />
-                <small class="text-muted">{{mensagem.Usuario.Nome}} | {{mensagem.EnviadoEm}}</small>
-                <hr />
-        </li>
-    </ul>
-                
+                        {{mensagem.Texto}}
+                        <br />
+                            <small class="text-muted">{{mensagem.Usuario.Nome}} | {{mensagem.EnviadoEm}}</small>
+                         <hr />        
             </div>
         </div>
 

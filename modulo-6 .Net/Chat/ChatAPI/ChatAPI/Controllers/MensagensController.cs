@@ -33,6 +33,7 @@ namespace ChatAPI.Controllers
                 lock (ObjetoLock)
                 {
                     mensagem.Id = ++idInterno;
+                    mensagem.Texto = mensagem.Texto.Replace("André Nunes", "$$$$$ $$$$$");
                     mensagens.Add(mensagem);
                 }
                 //salva no banco de dados
