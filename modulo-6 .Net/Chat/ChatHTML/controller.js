@@ -34,7 +34,7 @@ modulo.controller('HeroisController', function ($scope, heroisService, mensagemS
             localStorage.setItem('Nome', $scope.novoUsuario.Nome);
             localStorage.setItem('FotoUrl', $scope.novoUsuario.FotoUrl);
             obterHerois();
-        })
+        }).then(a => obterHerois());
     }
 
     $scope.mensagens = {};

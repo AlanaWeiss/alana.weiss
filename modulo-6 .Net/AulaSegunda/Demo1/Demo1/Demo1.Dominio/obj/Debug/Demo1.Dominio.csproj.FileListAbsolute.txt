@@ -1,0 +1,5 @@
+C:\Users\alana.weiss\Documents\alana.weiss\modulo-6 .Net\AulaSegunda\Demo1\Demo1\Demo1.Dominio\bin\Debug\Demo1.Dominio.dll
+C:\Users\alana.weiss\Documents\alana.weiss\modulo-6 .Net\AulaSegunda\Demo1\Demo1\Demo1.Dominio\bin\Debug\Demo1.Dominio.pdb
+C:\Users\alana.weiss\Documents\alana.weiss\modulo-6 .Net\AulaSegunda\Demo1\Demo1\Demo1.Dominio\obj\Debug\Demo1.Dominio.csprojResolveAssemblyReference.cache
+C:\Users\alana.weiss\Documents\alana.weiss\modulo-6 .Net\AulaSegunda\Demo1\Demo1\Demo1.Dominio\obj\Debug\Demo1.Dominio.dll
+C:\Users\alana.weiss\Documents\alana.weiss\modulo-6 .Net\AulaSegunda\Demo1\Demo1\Demo1.Dominio\obj\Debug\Demo1.Dominio.pdb
