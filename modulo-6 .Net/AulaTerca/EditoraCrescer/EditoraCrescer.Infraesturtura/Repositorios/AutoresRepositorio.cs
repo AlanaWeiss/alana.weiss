@@ -7,20 +7,20 @@ using System.Threading.Tasks;
 
 namespace EditoraCrescer.Infraesturtura.Repositorios
 {
-    public class LivroRepositorio
+    public class AutoresRepositorio
     {
         private Contexto contexto = new Contexto();
 
-        public List<Livro> Obter()
+        public List<Autor> Obter()
         {
-            return contexto.Livros.ToList();
+            return contexto.Autores.ToList();
         }
 
-        public bool Criar(Livro livro)
+        public bool Criar(Autor autor)
         {
             try
             {
-                contexto.Livros.Add(livro);
+                contexto.Autores.Add(autor);
                 contexto.SaveChanges();
                 return true;
             }
@@ -34,8 +34,8 @@ namespace EditoraCrescer.Infraesturtura.Repositorios
         {
             try
             {
-                var livroADeletar = contexto.Livros.FirstOrDefault(x => x.Isbn == id);
-                contexto.Livros.Remove(livroADeletar);
+                var autorADeletar = contexto.Autores.FirstOrDefault(x => x.Id == id);
+                contexto.Autores.Remove(autorADeletar);
                 contexto.SaveChanges();
                 return true;
             }

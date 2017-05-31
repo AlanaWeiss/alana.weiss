@@ -1,5 +1,4 @@
-﻿using EditoraCrescer.Infraesturtura;
-using EditoraCrescer.Infraesturtura.Entidades;
+﻿using EditoraCrescer.Infraesturtura.Entidades;
 using EditoraCrescer.Infraesturtura.Repositorios;
 using System;
 using System.Collections.Generic;
@@ -10,9 +9,9 @@ using System.Web.Http;
 
 namespace EditoraCrescer.Api.Controllers
 {
-    public class LivrosController : ApiController
+    public class AutoresController : ApiController
     {
-        private LivroRepositorio repositorio = new LivroRepositorio();
+        private AutoresRepositorio repositorio = new AutoresRepositorio();
 
         public IHttpActionResult Get()
         {
@@ -22,13 +21,13 @@ namespace EditoraCrescer.Api.Controllers
         }
 
         //POST   api/Livros (apenas cria, não altera)
-        public IHttpActionResult Post(Livro livro)
+        public IHttpActionResult Post(Autor autor)
         {
-            var criou = repositorio.Criar(livro);
+            var criou = repositorio.Criar(autor);
             if (criou)
                 return Ok();
             else
-                return BadRequest("Nao foi possivel adicionar o livro :c");
+                return BadRequest("Nao foi possivel adicionar o autor :c");
         }
 
         //DELETE api/Livros/{id} (deleta pelo id)
@@ -40,6 +39,5 @@ namespace EditoraCrescer.Api.Controllers
             else
                 return BadRequest("Nao foi possivel deletar");
         }
-        
     }
 }

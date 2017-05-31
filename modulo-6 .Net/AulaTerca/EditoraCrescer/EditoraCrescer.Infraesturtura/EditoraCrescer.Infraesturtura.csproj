@@ -51,15 +51,19 @@
     <Compile Include="Contexto.cs" />
     <Compile Include="Entidades\Autor.cs" />
     <Compile Include="Entidades\Livro.cs" />
+    <Compile Include="Entidades\Revisor.cs" />
     <Compile Include="Mapping\AutorMap.cs" />
     <Compile Include="Mapping\LivroMap.cs" />
+    <Compile Include="Mapping\RevisorMap.cs" />
     <Compile Include="Migrations\201705301940345_CriacaoDoBanco.cs" />
     <Compile Include="Migrations\201705301940345_CriacaoDoBanco.Designer.cs">
       <DependentUpon>201705301940345_CriacaoDoBanco.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositorios\AutoresRepositorio.cs" />
     <Compile Include="Repositorios\LivroRepositorio.cs" />
+    <Compile Include="Repositorios\RevisorRepositorio.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
