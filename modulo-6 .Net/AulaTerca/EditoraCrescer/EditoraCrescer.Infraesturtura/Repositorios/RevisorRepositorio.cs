@@ -13,14 +13,14 @@ namespace EditoraCrescer.Infraesturtura.Repositorios
 
         public List<Revisor> Obter()
         {
-            return contexto.Revisor.ToList();
+            return contexto.Revisores.ToList();
         }
 
         public bool Criar(Revisor revisor)
         {
             try
             {
-                contexto.Autores.Add(revisor);
+                contexto.Revisores.Add(revisor);
                 contexto.SaveChanges();
                 return true;
             }
@@ -34,8 +34,8 @@ namespace EditoraCrescer.Infraesturtura.Repositorios
         {
             try
             {
-                var revisorADeletar = contexto.Revisor.FirstOrDefault(x => x.Id == id);
-                contexto.Autores.Remove(revisorADeletar);
+                var revisorADeletar = contexto.Revisores.FirstOrDefault(x => x.Id == id);
+                contexto.Revisores.Remove(revisorADeletar);
                 contexto.SaveChanges();
                 return true;
             }
