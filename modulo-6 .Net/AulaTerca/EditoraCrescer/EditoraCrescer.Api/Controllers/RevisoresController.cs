@@ -19,25 +19,26 @@ namespace EditoraCrescer.Api.Controllers
 
             return Ok(revisores);
         }
+        public IHttpActionResult Get(int id)
+        {
+            var revisores = repositorio.ObterPorId(id);
 
+            return Ok(revisores);
+        }
         //POST   api/Livros (apenas cria, não altera)
         public IHttpActionResult Post(Revisor revisor)
         {
-            var criou = repositorio.Criar(revisor);
-            if (criou)
-                return Ok();
-            else
-                return BadRequest("Nao foi possivel adicionar o revisor :c");
+            repositorio.Criar(revisor);
+            return Ok();
+            
         }
 
         //DELETE api/Livros/{id} (deleta pelo id)
         public IHttpActionResult Delete(int id)
         {
-            var deletar = repositorio.Excluir(id);
-            if (deletar)
+            repositorio.Excluir(id);
+           
                 return Ok();
-            else
-                return BadRequest("Nao foi possivel deletar");
         }
     }
 }

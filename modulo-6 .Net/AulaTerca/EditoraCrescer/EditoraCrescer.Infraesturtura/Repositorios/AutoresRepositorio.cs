@@ -1,6 +1,7 @@
 ﻿using EditoraCrescer.Infraesturtura.Entidades;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,38 +12,49 @@ namespace EditoraCrescer.Infraesturtura.Repositorios
     {
         private Contexto contexto = new Contexto();
 
-        public List<Autor> Obter()
+        public List<Autor> Listar()
         {
             return contexto.Autores.ToList();
         }
 
-        public bool Criar(Autor autor)
+        public Autor Obter(int id)
         {
-            try
-            {
-                contexto.Autores.Add(autor);
-                contexto.SaveChanges();
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
+            //var autoresContador = contexto.Autores.Where(a => a.Id == id).Count();
+            //if (autoresContador < 1)
+            //    return null;
+
+            return contexto.Autores.Where(a => a.Id == id).FirstOrDefault(); ;
         }
 
-        public bool Excluir(int id)
+        public List<Livro> ObterOsLivros(int id)
         {
-            try
-            {
-                var autorADeletar = contexto.Autores.FirstOrDefault(x => x.Id == id);
-                contexto.Autores.Remove(autorADeletar);
-                contexto.SaveChanges();
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
+            return contexto.Livros.Where(l => l.IdAutor == id).ToList();
         }
+
+        public void Criar(Autor autor)
+        {
+            contexto.Autores.Add(autor);
+            contexto.SaveChanges();
+        }
+
+        public void Deletar(int id)
+        {
+            contexto.Autores.Remove(contexto.Autores.Where(l => l.Id == id).FirstOrDefault());
+            contexto.SaveChanges();
+        }
+
+        public Autor Alterar(int id)
+        {
+            var autorAlterar = contexto.Autores.Where(l => l.Id == id).FirstOrDefault();
+
+            autorAlterar.Nome = "alterado";
+
+            contexto.Entry(autorAlterar).State = EntityState.Modified;
+            contexto.SaveChanges();
+            return autorAlterar;
+        }
+
     }
+
+    //select passando para um new object. pro autor x.Autor.Nome
 }

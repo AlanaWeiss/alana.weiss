@@ -63,6 +63,14 @@
     <Compile Include="Migrations\201705311645382_CriacaoDosServidores.Designer.cs">
       <DependentUpon>201705311645382_CriacaoDosServidores.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201705311712352_Ajustes2.cs" />
+    <Compile Include="Migrations\201705311712352_Ajustes2.Designer.cs">
+      <DependentUpon>201705311712352_Ajustes2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201705311908187_adicionarCapaAoLivro.cs" />
+    <Compile Include="Migrations\201705311908187_adicionarCapaAoLivro.Designer.cs">
+      <DependentUpon>201705311908187_adicionarCapaAoLivro.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorios\AutoresRepositorio.cs" />
@@ -79,6 +87,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705311645382_CriacaoDosServidores.resx">
       <DependentUpon>201705311645382_CriacaoDosServidores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705311712352_Ajustes2.resx">
+      <DependentUpon>201705311712352_Ajustes2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201705311908187_adicionarCapaAoLivro.resx">
+      <DependentUpon>201705311908187_adicionarCapaAoLivro.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

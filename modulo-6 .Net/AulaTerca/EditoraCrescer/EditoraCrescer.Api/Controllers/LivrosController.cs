@@ -10,36 +10,54 @@ using System.Web.Http;
 
 namespace EditoraCrescer.Api.Controllers
 {
+    [RoutePrefix("api/livros")]
+
     public class LivrosController : ApiController
     {
         private LivroRepositorio repositorio = new LivroRepositorio();
-
+        
         public IHttpActionResult Get()
         {
-            var livros = repositorio.Obter();
-
-            return Ok(livros);
+            return Ok(repositorio.Listar());
         }
 
-        //POST   api/Livros (apenas cria, não altera)
+        [Route("{isbn:int}")]
+        public IHttpActionResult Get(int isbn)
+        {
+            return Ok(repositorio.ObterPorId(isbn));
+        }
+
+        [Route("{genero}")]
+        public IHttpActionResult Get(string genero)
+        {
+            return Ok(repositorio.ObterPorGenero(genero));
+        }
+
         public IHttpActionResult Post(Livro livro)
         {
-            var criou = repositorio.Criar(livro);
-            if (criou)
-                return Ok();
-            else
-                return BadRequest("Nao foi possivel adicionar o livro :c");
+            repositorio.Criar(livro);
+            return Ok();
         }
 
-        //DELETE api/Livros/{id} (deleta pelo id)
-        public IHttpActionResult Delete(int id)
+        [Route("{isbn:int}")]
+        public IHttpActionResult Put(int isbn)
         {
-            var deletar = repositorio.Excluir(id);
-            if (deletar)
-                return Ok();
-            else
-                return BadRequest("Nao foi possivel deletar");
+            repositorio.Alterar(isbn);
+            return Ok();
         }
-        
+
+        [Route("{isbn:int}")]
+        public IHttpActionResult Delete(int isbn)
+        {
+            repositorio.Deletar(isbn);
+            return Ok();
+        }
+
+        //protected override void Dispose(bool disposing)
+        //{
+        //    repositorio.Dispose();
+        //    base.Dispose(disposing);
+        //}
+
     }
 }

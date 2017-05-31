@@ -9,35 +9,46 @@ using System.Web.Http;
 
 namespace EditoraCrescer.Api.Controllers
 {
+    [RoutePrefix("api/autores")]
     public class AutoresController : ApiController
     {
         private AutoresRepositorio repositorio = new AutoresRepositorio();
 
         public IHttpActionResult Get()
         {
-            var livros = repositorio.Obter();
-
-            return Ok(livros);
+            return Ok(repositorio.Listar());
         }
 
-        //POST   api/Livros (apenas cria, não altera)
+        [Route("{id}")]
+        public IHttpActionResult Get(int id)
+        {
+            return Ok(repositorio.Obter(id));
+        }
+
+        //[Route("{id}/Livros")]
+        //public IHttpActionResult Get(int idAutor)
+        //{
+        //    return Ok(repositorio.ObterOsLivros(idAutor));
+        //}
+
         public IHttpActionResult Post(Autor autor)
         {
-            var criou = repositorio.Criar(autor);
-            if (criou)
-                return Ok();
-            else
-                return BadRequest("Nao foi possivel adicionar o autor :c");
+            repositorio.Criar(autor);
+            return Ok();
         }
 
-        //DELETE api/Livros/{id} (deleta pelo id)
+        [Route("{id}")]
+        public IHttpActionResult Put(int id)
+        {
+            repositorio.Alterar(id);
+            return Ok();
+        }
+
+        [Route("{id}")]
         public IHttpActionResult Delete(int id)
         {
-            var deletar = repositorio.Excluir(id);
-            if (deletar)
-                return Ok();
-            else
-                return BadRequest("Nao foi possivel deletar");
+            repositorio.Deletar(id);
+            return Ok();
         }
     }
 }
