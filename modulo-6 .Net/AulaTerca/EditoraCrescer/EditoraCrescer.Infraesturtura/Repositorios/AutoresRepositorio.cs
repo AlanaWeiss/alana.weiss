@@ -26,15 +26,17 @@ namespace EditoraCrescer.Infraesturtura.Repositorios
             return contexto.Autores.Where(a => a.Id == id).FirstOrDefault(); ;
         }
 
-        public List<Livro> ObterOsLivros(int id)
+        public List<Livro> ObterLivros(int id)
         {
             return contexto.Livros.Where(l => l.IdAutor == id).ToList();
         }
 
-        public void Criar(Autor autor)
+        public Autor Criar(Autor autor)
         {
             contexto.Autores.Add(autor);
             contexto.SaveChanges();
+
+            return autor;
         }
 
         public void Deletar(int id)
@@ -43,15 +45,13 @@ namespace EditoraCrescer.Infraesturtura.Repositorios
             contexto.SaveChanges();
         }
 
-        public Autor Alterar(int id)
+        public Autor Alterar(int id, Autor autor)
         {
-            var autorAlterar = contexto.Autores.Where(l => l.Id == id).FirstOrDefault();
 
-            autorAlterar.Nome = "alterado";
-
-            contexto.Entry(autorAlterar).State = EntityState.Modified;
+            contexto.Entry(autor).State = EntityState.Modified;
             contexto.SaveChanges();
-            return autorAlterar;
+
+            return Obter(id);
         }
 
     }

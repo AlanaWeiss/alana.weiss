@@ -9,36 +9,41 @@ using System.Web.Http;
 
 namespace EditoraCrescer.Api.Controllers
 {
+    [RoutePrefix("api/revisores")]
     public class RevisoresController : ApiController
     {
         private RevisorRepositorio repositorio = new RevisorRepositorio();
 
         public IHttpActionResult Get()
         {
-            var revisores = repositorio.Obter();
-
-            return Ok(revisores);
+            return Ok(new { dados = repositorio.Obter() });
         }
+
+        [Route("{id}")]
         public IHttpActionResult Get(int id)
         {
-            var revisores = repositorio.ObterPorId(id);
-
-            return Ok(revisores);
+            return Ok(new { dados = repositorio.ObterPorId(id) });
         }
-        //POST   api/Livros (apenas cria, não altera)
+
         public IHttpActionResult Post(Revisor revisor)
         {
-            repositorio.Criar(revisor);
-            return Ok();
-            
+
+            return Ok(new { dados = repositorio.Criar(revisor) });
+
         }
 
-        //DELETE api/Livros/{id} (deleta pelo id)
+        [Route("{id}")]
+        public IHttpActionResult Put(int id, Revisor revisor)
+        {
+            return Ok(new { dados = repositorio.Alterar(id, revisor) });
+        }
+
+        [Route("{id}")]
         public IHttpActionResult Delete(int id)
         {
             repositorio.Excluir(id);
-           
-                return Ok();
+
+            return Ok(new { mensagens = "Deletado!" });
         }
     }
 }

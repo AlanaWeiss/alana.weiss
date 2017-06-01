@@ -18,12 +18,26 @@ namespace EditoraCrescer.Infraesturtura.Repositorios
         {
             var livros = contexto.Livros.ToList();
 
-            livros.ForEach(l => {
+            livros.ForEach(l =>
+            {
                 l.Autor = autorRepositorio.Obter(l.IdAutor);
                 l.Revisor = revisorRepositorio.ObterPorId(l.IdRevisor);
             });
 
             return livros;
+        }
+
+        public dynamic ListarResumo()
+        {
+            return contexto.Livros.Select(l => new
+            {
+                Isbn = l.Isbn,
+                Titulo = l.Titulo,
+                Capa = l.Capa,
+                NomeAutor = l.Autor.Nome,
+                Genero = l.Genero,
+                Publicacao = l.DataPublicacao
+            });
         }
 
         public Livro ObterPorId(int isbn)
@@ -37,40 +51,69 @@ namespace EditoraCrescer.Infraesturtura.Repositorios
         public List<Livro> ObterPorGenero(string genero)
         {
             var livros = contexto.Livros.Where(l => l.Genero.Contains(genero)).ToList();
-            livros.ForEach(l => {
+            livros.ForEach(l =>
+            {
                 l.Autor = autorRepositorio.Obter(l.IdAutor);
                 l.Revisor = revisorRepositorio.ObterPorId(l.IdRevisor);
             });
             return livros;
         }
-
-        public Livro Alterar(int isbn)
+        public dynamic ObterPorGeneroResumo(string genero)
         {
+            var livros = contexto.Livros.Where(l => l.Genero.Contains(genero)).Select(l => new
+            {
+                Isbn = l.Isbn,
+                Titulo = l.Titulo,
+                Capa = l.Capa,
+                NomeAutor = l.Autor.Nome,
+                Genero = l.Genero
+            }).ToList();
             
-            var livroAlterar = contexto.Livros.Where(l => l.Isbn == isbn).FirstOrDefault();
-
-            livroAlterar.Titulo = "alterado";
-
-            contexto.Entry(livroAlterar).State = EntityState.Modified;
-            contexto.SaveChanges();
-            return livroAlterar;
+            return livros;
         }
 
-        public void Criar(Livro livro)
-        {
-            contexto.Livros.Add(livro);
+    public Livro Alterar(int isbn, Livro livro)
+    {
+            contexto.Entry(livro).State = System.Data.Entity.EntityState.Modified;
             contexto.SaveChanges();
+
+            return ObterPorId(isbn);
         }
 
-        public void Deletar(int isbn)
-        {
-            contexto.Livros.Remove(contexto.Livros.Where(l => l.Isbn == isbn).FirstOrDefault());
-            contexto.SaveChanges();
-        }
+    public Livro Criar(Livro livro)
+    {
+        contexto.Livros.Add(livro);
+        contexto.SaveChanges();
 
-        //public void Dispose()
-        //{
-        //    contexto.Dispose();
-        //}
+        return livro;
     }
+
+    public void Deletar(int isbn)
+    {
+        contexto.Livros.Remove(contexto.Livros.Where(l => l.Isbn == isbn).FirstOrDefault());
+        contexto.SaveChanges();
+        
+    }
+
+    public dynamic ObterPorLancamento()
+        {
+            var data = DateTime.Now.AddDays(-7);
+
+            return contexto.Livros
+                .Where(l => (l.DataPublicacao > data))
+                .Select(l => new {
+                    Isbn = l.Isbn,
+                    Titulo = l.Titulo,
+                    Capa = l.Capa,
+                    NomeAutor = l.Autor.Nome,
+                    Genero = l.Genero
+                })
+                .ToList();
+        }
+
+    //public void Dispose()
+    //{
+    //    contexto.Dispose();
+    //}
+}
 }

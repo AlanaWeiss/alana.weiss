@@ -16,39 +16,39 @@ namespace EditoraCrescer.Api.Controllers
 
         public IHttpActionResult Get()
         {
-            return Ok(repositorio.Listar());
+            return Ok(new { dados = repositorio.Listar() });
         }
 
         [Route("{id}")]
         public IHttpActionResult Get(int id)
         {
-            return Ok(repositorio.Obter(id));
+            return Ok(new { dados = repositorio.Obter(id) });
         }
 
-        //[Route("{id}/Livros")]
-        //public IHttpActionResult Get(int idAutor)
-        //{
-        //    return Ok(repositorio.ObterOsLivros(idAutor));
-        //}
+        [HttpGet]
+        [Route("{id}/livros")]
+        public IHttpActionResult GetLivros(int id)
+        {
+            return Ok(new { dados = repositorio.ObterLivros(id) });
+        }
 
         public IHttpActionResult Post(Autor autor)
         {
-            repositorio.Criar(autor);
-            return Ok();
+
+            return Ok(new { dados = repositorio.Criar(autor) });
         }
 
         [Route("{id}")]
-        public IHttpActionResult Put(int id)
+        public IHttpActionResult Put(int id, Autor autor)
         {
-            repositorio.Alterar(id);
-            return Ok();
+            return Ok(new { dados = repositorio.Alterar(id, autor) });
         }
 
         [Route("{id}")]
         public IHttpActionResult Delete(int id)
         {
             repositorio.Deletar(id);
-            return Ok();
+            return Ok(new { mensagens = "Deletado!" });
         }
     }
 }

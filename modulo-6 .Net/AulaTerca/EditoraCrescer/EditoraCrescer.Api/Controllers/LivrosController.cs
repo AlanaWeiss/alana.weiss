@@ -18,39 +18,46 @@ namespace EditoraCrescer.Api.Controllers
         
         public IHttpActionResult Get()
         {
-            return Ok(repositorio.Listar());
+            //return Ok(repositorio.Listar());
+            return Ok(repositorio.ListarResumo());
         }
 
         [Route("{isbn:int}")]
         public IHttpActionResult Get(int isbn)
         {
-            return Ok(repositorio.ObterPorId(isbn));
+            return Ok( new { dados = repositorio.ObterPorId(isbn) });
+        }
+
+        [HttpGet]
+        [Route("Lancamentos")]
+        public IHttpActionResult GetLancamentos()
+        {
+            return Ok(new { dados = repositorio.ObterPorLancamento() });
         }
 
         [Route("{genero}")]
         public IHttpActionResult Get(string genero)
         {
-            return Ok(repositorio.ObterPorGenero(genero));
+            //return Ok(repositorio.ObterPorGenero(genero));
+            return Ok(new { dados = repositorio.ObterPorGeneroResumo(genero) });
         }
 
         public IHttpActionResult Post(Livro livro)
         {
-            repositorio.Criar(livro);
-            return Ok();
+            return Ok(new { dados = repositorio.Criar(livro) });
         }
 
         [Route("{isbn:int}")]
-        public IHttpActionResult Put(int isbn)
+        public IHttpActionResult Put(int isbn, Livro livro)
         {
-            repositorio.Alterar(isbn);
-            return Ok();
+            return Ok(new { dados = repositorio.Alterar(isbn, livro) });
         }
 
         [Route("{isbn:int}")]
         public IHttpActionResult Delete(int isbn)
         {
-            repositorio.Deletar(isbn);
-            return Ok();
+            ;
+            return Ok( new { mensagens = "Deletado!" });
         }
 
         //protected override void Dispose(bool disposing)
