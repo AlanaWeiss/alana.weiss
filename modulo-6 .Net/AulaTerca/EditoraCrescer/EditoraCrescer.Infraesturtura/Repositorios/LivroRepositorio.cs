@@ -35,16 +35,13 @@ namespace EditoraCrescer.Infraesturtura.Repositorios
                 Titulo = l.Titulo,
                 Capa = l.Capa,
                 NomeAutor = l.Autor.Nome,
-                Genero = l.Genero,
-                Publicacao = l.DataPublicacao
+                Genero = l.Genero
             });
         }
 
         public Livro ObterPorId(int isbn)
         {
             var livro = contexto.Livros.Where(l => l.Isbn == isbn).FirstOrDefault();
-            livro.Autor = autorRepositorio.Obter(livro.IdAutor);
-            livro.Revisor = revisorRepositorio.ObterPorId(livro.IdRevisor);
             return livro;
         }
 
@@ -68,40 +65,44 @@ namespace EditoraCrescer.Infraesturtura.Repositorios
                 NomeAutor = l.Autor.Nome,
                 Genero = l.Genero
             }).ToList();
-            
+
             return livros;
         }
 
-    public Livro Alterar(int isbn, Livro livro)
-    {
+        public void Editar(Livro livro)
+        {
             contexto.Entry(livro).State = System.Data.Entity.EntityState.Modified;
             contexto.SaveChanges();
-
-            return ObterPorId(isbn);
         }
 
-    public Livro Criar(Livro livro)
-    {
-        contexto.Livros.Add(livro);
-        contexto.SaveChanges();
+        public bool VerificaExistenciaLivro(int isbn)
+        {
+            return contexto.Livros.Count(x => x.Isbn == isbn) > 0;
+        }
 
-        return livro;
-    }
+        public Livro Criar(Livro livro)
+        {
+            contexto.Livros.Add(livro);
+            contexto.SaveChanges();
 
-    public void Deletar(int isbn)
-    {
-        contexto.Livros.Remove(contexto.Livros.Where(l => l.Isbn == isbn).FirstOrDefault());
-        contexto.SaveChanges();
-        
-    }
+            return livro;
+        }
 
-    public dynamic ObterPorLancamento()
+        public void Deletar(int isbn)
+        {
+            contexto.Livros.Remove(contexto.Livros.Where(l => l.Isbn == isbn).FirstOrDefault());
+            contexto.SaveChanges();
+
+        }
+
+        public dynamic ObterPorLancamento()
         {
             var data = DateTime.Now.AddDays(-7);
 
             return contexto.Livros
                 .Where(l => (l.DataPublicacao > data))
-                .Select(l => new {
+                .Select(l => new
+                {
                     Isbn = l.Isbn,
                     Titulo = l.Titulo,
                     Capa = l.Capa,
@@ -111,9 +112,9 @@ namespace EditoraCrescer.Infraesturtura.Repositorios
                 .ToList();
         }
 
-    //public void Dispose()
-    //{
-    //    contexto.Dispose();
-    //}
-}
+        //public void Dispose()
+        //{
+        //    contexto.Dispose();
+        //}
+    }
 }

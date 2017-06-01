@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html ng-app="livraria">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="css/style.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="header">EDITORA CRESCER</div>
+        <div class="container">
+            <div ng-controller="livrosController">
+
+                <div class="lancamentos">
+                    <div uib-carousel active="active" interval="5000" no-wrap="noWrapSlides">
+                        <div uib-slide ng-repeat="livro in livrosLancamentos track by livro.Isbn" index="livro.Isbn">
+                            <img ng-src="{{livro.Capa}}">
+                            <div class="carousel-caption">
+                                <h4>{{livro.Titulo}}</h4>
+                                <h5>{{livro.NomeAutor}}</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br> <hr>
+               <div class="outrosLivros">
+                    <div class="livroMostar">
+                        <ul>
+                            <li ng-repeat="livro in livros">
+                                <img ng-src="{{livro.Capa}}" alt="" width="110px">
+                                {{livro}}
+                                <br><hr>                            
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div> 
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+        <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-i18n/1.6.4/angular-locale_pt-br.min.js"></script>
+        <script src="js/app.js"></script>
+        <script src="js/route.js"></script>
+        <script src="js/livrosController.js"></script>
+        <script src="js/livrosService.js"></script>
+    </body>
+</html>

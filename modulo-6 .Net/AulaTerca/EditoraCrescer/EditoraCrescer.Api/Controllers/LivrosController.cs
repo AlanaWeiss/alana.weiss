@@ -32,6 +32,7 @@ namespace EditoraCrescer.Api.Controllers
         [Route("Lancamentos")]
         public IHttpActionResult GetLancamentos()
         {
+
             return Ok(new { dados = repositorio.ObterPorLancamento() });
         }
 
@@ -47,10 +48,19 @@ namespace EditoraCrescer.Api.Controllers
             return Ok(new { dados = repositorio.Criar(livro) });
         }
 
-        [Route("{isbn:int}")]
-        public IHttpActionResult Put(int isbn, Livro livro)
+        [HttpPut]
+        [Route("{isbn}")]
+        public HttpResponseMessage EditarLivro(int isbn, Livro livro)
         {
-            return Ok(new { dados = repositorio.Alterar(isbn, livro) });
+            var mensagens = new List<string>();
+            if (isbn != livro.Isbn)
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new { mensagens = new string[] { "Dados inconsistentes - ISBNs diferentes" } });
+
+            if (!repositorio.VerificaExistenciaLivro(isbn))
+                return Request.CreateResponse(HttpStatusCode.BadRequest, new { mensagens = new string[] { "Dados inconsistentes - Livro não cadastrado" } });
+
+            repositorio.Editar(livro);
+            return Request.CreateResponse(HttpStatusCode.OK, new { dados = livro });
         }
 
         [Route("{isbn:int}")]
