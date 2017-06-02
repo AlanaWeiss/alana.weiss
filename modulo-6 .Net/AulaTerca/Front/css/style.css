@@ -9,6 +9,19 @@ body{
     margin-top: 30px;
 }
 
+* {
+    box-sizing: border-box;
+}
+
+.clearfix{
+  content: "";
+  clear: both;
+}
+
+.container {
+    background-color: #dfdfdf;
+}
+
 .header{
   font-size: 26px;
   text-align: center;
@@ -19,10 +32,26 @@ body{
 }
 
 .lancamentos{
-    margin-top: 30px;
-    background-color: pink;
+    padding-top: 30px;
+    background-color: background-image: -webkit-gradient(linear, left top, left bottom, from(whitesmoke), to(gray));
+    background-image: -webkit-linear-gradient(top, whitesmoke, gray);
+    background-image: -moz-linear-gradient(top, whitesmoke, gray);
+    background-image: linear-gradient(to bottom, whitesmoke, gray);;
 }
 
+.centerImg{
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 2px antiquewhite;   
+}
+.border{
+    width: 10%;
+    height: 100%;
+}
+.infos {
+    text-align: center;
+}
 .outrosLivros{
     margin-top: 30px;
 }

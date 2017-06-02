@@ -1,7 +1,7 @@
 angular.module('livraria')
 .factory('livrosService', function ($http) {
 
-    let urlBase = 'http://localhost:60523/api/livros';
+    let urlBase = 'http://localhost:60523/api/Livros/';
    
     let livros;
 
@@ -13,6 +13,10 @@ angular.module('livraria')
 
     function  getLancamentos() {
       return $http.get(urlBase + '/lancamentos');
+    }
+
+    function getIsbn(isbn) {
+      return $http.get(urlBase + isbn);
     }
 
 //     function getAulaPorId(id) {
@@ -39,7 +43,8 @@ angular.module('livraria')
 
   return {
     list: getLivros,
-    listNews : getLancamentos
+    listNews : getLancamentos,
+    buscarIsbn : getIsbn
     // findById: getAulaPorId,
     // update: atualizar,
     // create: criar,

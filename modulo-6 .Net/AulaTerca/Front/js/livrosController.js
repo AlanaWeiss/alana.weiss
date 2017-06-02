@@ -1,5 +1,5 @@
 angular.module('livraria')
-    .controller('livrosController', function ($scope, livrosService) {
+    .controller('livrosController', function ($scope, livrosService, $routeParams) {
 
     listar();
     listarLancamentos();
@@ -16,7 +16,4 @@ angular.module('livraria')
             console.log( $scope.livrosLancamentos);
         });
     }
-
-
-
 });
