@@ -4,13 +4,10 @@
 
 body{
     margin: 0;
+    background-image: url("back.png");
 }
 .container{
     margin-top: 30px;
-}
-
-* {
-    box-sizing: border-box;
 }
 
 .clearfix{
@@ -18,25 +15,18 @@ body{
   clear: both;
 }
 
-.container {
-    background-color: #dfdfdf;
-}
-
 .header{
   font-size: 26px;
   text-align: center;
   font-weight: 900;
   color : white;
-  background :#c4170c;
+  background-color: rgba(194, 148, 139, 1);
   padding: 23px;
 }
 
 .lancamentos{
     padding-top: 30px;
-    background-color: background-image: -webkit-gradient(linear, left top, left bottom, from(whitesmoke), to(gray));
-    background-image: -webkit-linear-gradient(top, whitesmoke, gray);
-    background-image: -moz-linear-gradient(top, whitesmoke, gray);
-    background-image: linear-gradient(to bottom, whitesmoke, gray);;
+    background-color: rgba(194, 148, 139, 0.1);
 }
 
 .centerImg{
@@ -53,5 +43,6 @@ body{
     text-align: center;
 }
 .outrosLivros{
-    margin-top: 30px;
+    padding-top: 30px;
+    background-color: rgba(194, 148, 139, 0.1);
 }

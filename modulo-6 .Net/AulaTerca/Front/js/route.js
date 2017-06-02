@@ -3,11 +3,11 @@ angular.module('livraria')
         $routeProvider
         .when('/livros', {
             controller: 'livrosController',
-            templateUrl: '/html/livros.html'
+            templateUrl: 'html/livros.html'
         })
         .when('/livros/:isbn', {
             controller: 'livroVizualizarController',
-            templateUrl: '/html/livroVisualizar.html'
+            templateUrl: 'html/livroVisualizar.html'
         })
-        .otherwise({redirectTo: '/livros'});
+        .otherwise('/livros');
 });

@@ -11,6 +11,14 @@ angular.module('livraria')
       return $http.get(urlBase);
     };
 
+     function listar(parametros) {
+      return $http({
+            url: urlBase,
+            method: 'GET',
+            params: parametros
+          });
+  }
+
     function  getLancamentos() {
       return $http.get(urlBase + '/lancamentos');
     }
