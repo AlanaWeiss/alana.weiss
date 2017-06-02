@@ -1,10 +1,11 @@
-
-
-  <div class="livro">
-    <img src="{{livro.Capa}}">
-    Título: {{livro.Titulo}}
-    Autor: {{livro.NomeAutor}}
-    Gênero: {{livro.Genero}}
-    Descrição {{livro.Descricao}}
-    Data de Publicação: {{livro.DataPublicacao | date : "dd/MM/yyyy"}}
-  </div>
+<div class="livroDetalhe" >
+   <img ng-src="{{livro.Capa}}"  width="200px" class="pull-left">
+   <div class="infos detalhadas pull-left"> 
+     <h2>Título: {{livro.Titulo}}</h2> 
+      <h4>Autor: {{livro.Autor}}</h4>
+      <h4>Gênero: {{livro.Genero}}</h4>
+      <h4>Descrição {{livro.Descricao}}</h4>
+      <h4>Data de Publicação: {{livro.DataPublicacao | date : "dd/MM/yyyy"}} </h4>
+   </div>
+    
+</div>

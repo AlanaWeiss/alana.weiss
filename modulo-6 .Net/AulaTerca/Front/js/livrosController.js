@@ -1,11 +1,10 @@
 angular.module('livraria')
-    .controller('livrosController', function ($scope, livrosService, $routeParams) {
+    .controller('livrosController', function ($scope, livrosService, $routeParams,$location) {
    
    let paginaAtual = 1;
 
   livrosService.list()
-    .then(response => gerarQuantidadePaginas(response.data.length / 5))
-    .catch(error => console.log(error));
+    .then(response => gerarQuantidadePaginas(response.data.length / 5));
 
   $scope.parametros = {
       quantidadePular: 0,
@@ -60,7 +59,8 @@ angular.module('livraria')
       $scope.totalLivros.push({indice: i}); 
   }
 
-    function exibirLivro(livro) {
+     $scope.exibirLivro = function (livro) {
+      console.lo
     $location.path('/livros/' + livro.Isbn);
   }
 

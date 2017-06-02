@@ -46,3 +46,17 @@ body{
     padding-top: 30px;
     background-color: rgba(194, 148, 139, 0.1);
 }
+
+.livroDetalhe{
+    padding-left: 20%;
+}
+
+.detalhadas{
+    width: 60%;
+    height: 60%;
+}
+
+.detalhadas h2{
+    font-size: 20px;
+    
+}
