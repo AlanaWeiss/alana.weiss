@@ -50,11 +50,16 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Contexto.cs" />
     <Compile Include="Entidades\Autor.cs" />
+    <Compile Include="Entidades\EntidadeBasica.cs" />
     <Compile Include="Entidades\Livro.cs" />
+    <Compile Include="Entidades\Permissao.cs" />
     <Compile Include="Entidades\Revisor.cs" />
+    <Compile Include="Entidades\Usuario.cs" />
     <Compile Include="Mapping\AutorMap.cs" />
     <Compile Include="Mapping\LivroMap.cs" />
+    <Compile Include="Mapping\PermissaoMap.cs" />
     <Compile Include="Mapping\RevisorMap.cs" />
+    <Compile Include="Mapping\UsuarioMap.cs" />
     <Compile Include="Migrations\201705301940345_CriacaoDoBanco.cs" />
     <Compile Include="Migrations\201705301940345_CriacaoDoBanco.Designer.cs">
       <DependentUpon>201705301940345_CriacaoDoBanco.cs</DependentUpon>
@@ -70,6 +75,14 @@
     <Compile Include="Migrations\201705311908187_adicionarCapaAoLivro.cs" />
     <Compile Include="Migrations\201705311908187_adicionarCapaAoLivro.Designer.cs">
       <DependentUpon>201705311908187_adicionarCapaAoLivro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706030044008_criacaoUsuarioEPermissao.cs" />
+    <Compile Include="Migrations\201706030044008_criacaoUsuarioEPermissao.Designer.cs">
+      <DependentUpon>201706030044008_criacaoUsuarioEPermissao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706030047535_incluirUsuarioEPermissao.cs" />
+    <Compile Include="Migrations\201706030047535_incluirUsuarioEPermissao.Designer.cs">
+      <DependentUpon>201706030047535_incluirUsuarioEPermissao.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -93,6 +106,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201705311908187_adicionarCapaAoLivro.resx">
       <DependentUpon>201705311908187_adicionarCapaAoLivro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706030044008_criacaoUsuarioEPermissao.resx">
+      <DependentUpon>201706030044008_criacaoUsuarioEPermissao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706030047535_incluirUsuarioEPermissao.resx">
+      <DependentUpon>201706030047535_incluirUsuarioEPermissao.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
