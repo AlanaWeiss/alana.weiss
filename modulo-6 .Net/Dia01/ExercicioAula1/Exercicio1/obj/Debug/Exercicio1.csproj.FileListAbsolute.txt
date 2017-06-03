@@ -1,6 +1,0 @@
-C:\Users\alana.weiss\Documents\alana.weiss\modulo-6 .Net\Dia01\ExercicioAula1\Exercicio1\bin\Debug\Exercicio1.exe.config
-C:\Users\alana.weiss\Documents\alana.weiss\modulo-6 .Net\Dia01\ExercicioAula1\Exercicio1\bin\Debug\Exercicio1.exe
-C:\Users\alana.weiss\Documents\alana.weiss\modulo-6 .Net\Dia01\ExercicioAula1\Exercicio1\bin\Debug\Exercicio1.pdb
-C:\Users\alana.weiss\Documents\alana.weiss\modulo-6 .Net\Dia01\ExercicioAula1\Exercicio1\obj\Debug\Exercicio1.csprojResolveAssemblyReference.cache
-C:\Users\alana.weiss\Documents\alana.weiss\modulo-6 .Net\Dia01\ExercicioAula1\Exercicio1\obj\Debug\Exercicio1.exe
-C:\Users\alana.weiss\Documents\alana.weiss\modulo-6 .Net\Dia01\ExercicioAula1\Exercicio1\obj\Debug\Exercicio1.pdb
