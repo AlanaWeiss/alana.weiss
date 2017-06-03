@@ -9,6 +9,7 @@ using System.Web.Http;
 
 namespace EditoraCrescer.Api.Controllers
 {
+    [AllowAnonymous]
     [RoutePrefix("api/autores")]
     public class AutoresController : ApiController
     {

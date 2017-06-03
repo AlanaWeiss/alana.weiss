@@ -10,6 +10,7 @@ using System.Web.Http;
 
 namespace EditoraCrescer.Api.Controllers
 {
+    [AllowAnonymous]
     [RoutePrefix("api/livros")]
 
     public class LivrosController : ApiController

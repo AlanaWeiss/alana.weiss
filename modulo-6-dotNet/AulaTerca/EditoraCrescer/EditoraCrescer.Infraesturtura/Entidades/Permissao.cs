@@ -15,5 +15,9 @@ namespace EditoraCrescer.Infraesturtura.Entidades
         {
             Nome = nome;
         }
+        public Permissao()
+        {
+
+        }
     }
 }
