@@ -3,48 +3,47 @@ angular.module('livraria')
    
    let paginaAtual = 1;
 
-  livrosService.list()
-    .then(response => gerarQuantidadePaginas(response.data.length / 5));
 
   $scope.parametros = {
       quantidadePular: 0,
-      quantidadeTrazer: 5
+      quantidadeTrazer: 8
     };
 
   listar();
   listarLancamentos()
 
-  $scope.irParaPagina = (num) => {
-    let result = 0;
 
-    if(num > paginaAtual) 
-      $scope.parametros.quantidadePular += (num - 1) * 5;
-    else if(num < paginaAtual)
-      $scope.parametros.quantidadePular -= (num) * 5
-    
-    console.log('pular',$scope.parametros.quantidadePular);
-    console.log('num', num);
-    console.log('pagina', paginaAtual);
-    listar();
-    listarLancamentos()
-    paginaAtual = num;
-  }
-
-  $scope.avancar = () => {
-    $scope.parametros.quantidadePular += 5;
-    listar();
-  }
-
-  $scope.voltar = () => {
-    $scope.parametros.quantidadePular -= 5;
-    if($scope.parametros.quantidadePular < 0) $scope.parametros.quantidadePular = 0;
-    listar();
-  }
     function listar() {
-        livrosService.list($scope.parametros).then(function (response) {
-        $scope.livros = response.data;
-        });
+        livrosService.listPaginacao($scope.parametros)
+        .then(response => {
+            $scope.livros = response.data.dados;
+        })
     }
+
+     livrosService.list().then(response => { console.log("paginas", response) })
+
+     livrosService.list().then(response => {
+       console.log('aqui',response.data);
+       qtdPaginas(response.data.length / 8)
+    })
+   
+    function qtdPaginas(p) {
+    $scope.paginas = [];
+    for(var i = 1; i <= Math.ceil(p); i++) 
+      $scope.paginas.push({indice: i}); 
+    }
+    
+     $scope.CarregarPagina = function(pagina) {
+    if(pagina > paginaAtual) {
+      $scope.parametros.quantidadePular += (pagina - 1) * 8;
+    }
+    else if(pagina < paginaAtual) {
+      $scope.parametros.quantidadePular -= (pagina) * 8;
+    }
+    
+    listar();
+    paginaAtual = pagina;
+  }
 
     function listarLancamentos() {
         livrosService.listNews().then(function (response) {
@@ -53,14 +52,8 @@ angular.module('livraria')
         });
     }
 
-    function gerarQuantidadePaginas(num) {
-    $scope.totalLivros = [];
-    for(var i = 1; i <= Math.ceil(num); i++) 
-      $scope.totalLivros.push({indice: i}); 
-  }
-
      $scope.exibirLivro = function (livro) {
-      console.lo
+    
     $location.path('/livros/' + livro.Isbn);
   }
 

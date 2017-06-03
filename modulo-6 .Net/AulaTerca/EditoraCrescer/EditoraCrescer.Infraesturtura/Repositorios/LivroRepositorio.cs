@@ -39,19 +39,20 @@ namespace EditoraCrescer.Infraesturtura.Repositorios
             });
         }
 
-        public object ListarResumo(int quantidadePular, int quantidadeTrazer)
+        public object ObterLivrosPublicados(int quantidadePular, int quantidadeTrazer)
         {
             return contexto.Livros
-                .OrderBy(l => l.Isbn)
-                .Skip(quantidadePular)
-                .Take(quantidadeTrazer)
-                .Select(l => new {
-                    Isbn = l.Isbn,
-                    Titulo = l.Titulo,
-                    Capa = l.Capa,
-                    NomeAutor = l.Autor.Nome,
-                    Genero = l.Genero
-                }).ToList();
+                       .OrderByDescending(x => x.DataPublicacao)
+                       .Skip(quantidadePular)
+                       .Take(quantidadeTrazer)
+                       .Select(x => new
+                       {
+                           Isbn = x.Isbn,
+                           Titulo = x.Titulo,
+                           NomeAutor = x.Autor.Nome,
+                           Genero = x.Genero,
+                           Capa = x.Capa
+                       }).ToList();
         }
 
         public Livro ObterPorId(int isbn)

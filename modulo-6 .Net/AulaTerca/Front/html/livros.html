@@ -7,7 +7,7 @@
                     <div class="infos">
                         <h4>{{livro.Titulo}}</h4>
                     <h5>{{livro.NomeAutor}}</h5>
-                    <button  class="btn btn-link" type="submit" ng-click="exibirLivro(livro)">aaaaa</button>
+                    <button  class="btn btn-link" type="submit" ng-click="exibirLivro(livro)">Ver mais...</button>
                     </div>
             </div>
         </div>        
@@ -20,15 +20,13 @@
               <div class="infos">
                         <h4>{{livro.Titulo}}</h4>
                     <h5>{{livro.NomeAutor}}</h5>
-                    <footer ng-click="exibirLivro(livro)">Clique para ver mais...</footer>
+                    <button  class="btn btn-link" type="submit" ng-click="exibirLivro(livro)">Ver mais...</button>
             </div>
         </div>
     </div>
       <ul class="pagination">
-    <li><a href="" ng-click="voltar()"><</a></li>
-    <li><a href="" ng-repeat="item in totalLivros" ng-click="irParaPagina(item.indice)">{{item.indice}}</a></li>
-    <li><a href="" ng-click="avancar()">></a></li>
-  </ul>
+    <li><a href="" ng-repeat="pagina in paginas" ng-click="CarregarPagina(pagina.indice)">{{pagina.indice}}</a></li>
+</ul>
 </div>
 </div> 
     

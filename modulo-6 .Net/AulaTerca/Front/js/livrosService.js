@@ -1,7 +1,7 @@
 angular.module('livraria')
 .factory('livrosService', function ($http) {
 
-    let urlBase = 'http://localhost:60523/api/Livros/';
+    let urlBase = 'http://localhost:60523/api/livros/';
    
     let livros;
 
@@ -11,20 +11,20 @@ angular.module('livraria')
       return $http.get(urlBase);
     };
 
-     function listar(parametros) {
-      return $http({
-            url: urlBase,
-            method: 'GET',
-            params: parametros
-          });
-  }
-
     function  getLancamentos() {
       return $http.get(urlBase + '/lancamentos');
     }
 
     function getIsbn(isbn) {
       return $http.get(urlBase + isbn);
+    }
+
+    function listarLivrosPaginacao(parametros) {
+      return $http({
+            url: urlBase,
+            method: 'GET',
+            params: parametros
+          });
     }
 
 //     function getAulaPorId(id) {
@@ -52,7 +52,8 @@ angular.module('livraria')
   return {
     list: getLivros,
     listNews : getLancamentos,
-    buscarIsbn : getIsbn
+    buscarIsbn : getIsbn,
+    listPaginacao : listarLivrosPaginacao
     // findById: getAulaPorId,
     // update: atualizar,
     // create: criar,
