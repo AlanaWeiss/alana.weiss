@@ -9,5 +9,9 @@ angular.module('livraria')
             controller: 'livroVizualizarController',
             templateUrl: 'html/livroVisualizar.html'
         })
+        .when('/login', {
+            controller: 'loginController',
+            templateUrl: 'html/login.html'
+        })
         .otherwise('/livros');
 });
