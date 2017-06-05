@@ -84,7 +84,7 @@ namespace EditoraCrescer.Api.Controllers
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest, "Usuário já existe.");
             }
-            return Request.CreateResponse(HttpStatusCode.OK); 
+            return Request.CreateResponse(HttpStatusCode.OK);
         }
 
         //[HttpPost, Route("resetarsenha")]
@@ -110,7 +110,7 @@ namespace EditoraCrescer.Api.Controllers
         // Exige que o usuário se autentique
 
         [HttpGet, Route("usuario")]
-        [BasicAuthorization]
+        [BasicAuthorization(Roles = "Revisor")]
         public IHttpActionResult Obter()
         {
             var usuarioDaSessao = _usuarioRepositorio.Obter(Thread.CurrentPrincipal.Identity.Name);
