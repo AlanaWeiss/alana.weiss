@@ -49,6 +49,12 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="Contexto.cs" />
+    <Compile Include="Mapping\ClienteMap.cs" />
+    <Compile Include="Mapping\EnderecoMap.cs" />
+    <Compile Include="Mapping\PermissaoMap.cs" />
+    <Compile Include="Mapping\ProdutoMap.cs" />
+    <Compile Include="Mapping\ReservaMap.cs" />
+    <Compile Include="Mapping\UsuarioMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -57,6 +63,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Repositorios\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LocadoraImoveis.Dominio\LocadoraImoveis.Dominio.csproj">
+      <Project>{1CFA3F8D-6C20-4DAD-AE51-755CEEA6D7E5}</Project>
+      <Name>LocadoraImoveis.Dominio</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

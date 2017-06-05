@@ -13,9 +13,13 @@ namespace LocadoraImoveis.Infraestrutura.Mapping
         public ReservaMap()
         {
             ToTable("Reserva");
-            HasRequired(x => x.Itens)
-                .WithMany()
-                .HasForeignKey(x => x.IdItens);
+
+            HasMany(x => x.Itens).WithMany().Map(x =>
+            {
+                x.MapLeftKey("IdReserva");
+                x.MapRightKey("IdItens");
+                x.ToTable("ReservaItens");
+            });
         }
     }
 }

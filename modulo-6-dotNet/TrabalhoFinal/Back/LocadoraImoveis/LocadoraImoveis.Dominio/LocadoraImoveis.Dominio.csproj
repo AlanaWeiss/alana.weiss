@@ -43,8 +43,6 @@
     <Compile Include="Entidades\Cliente.cs" />
     <Compile Include="Entidades\Endereco.cs" />
     <Compile Include="Entidades\EntidadeBasica.cs" />
-    <Compile Include="Entidades\Opcionais.cs" />
-    <Compile Include="Entidades\Pacote.cs" />
     <Compile Include="Entidades\Permissao.cs" />
     <Compile Include="Entidades\Produto.cs" />
     <Compile Include="Entidades\Reserva.cs" />
