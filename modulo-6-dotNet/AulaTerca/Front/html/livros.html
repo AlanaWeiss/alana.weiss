@@ -3,17 +3,24 @@
   <button type="button" class="btn btn-link">
     <a href="#!/login">Login </a>
   </button>
+  <button class="btn btn-link" ng-click="logout()"> <a href="">Logout</a></button>
+   <button type="button" class="btn btn-link" ng-show="mostrarAdm">
+    <a href="#!/administrativo">Administrativo </a>
+  </button>
 </div>
     <h2>Lançamentos</h2>
-    <div class="lancamentos row">
+    <div class="lancamentos clearfix">
         <div>
-            <div ng-repeat="livro in livrosLancamentos" class="pull-left col-md-6 border">
-                <img ng-src="{{livro.Capa}}" width="110px" class="centerImg"  ng-click="exibirLivro(livro)">
+            <div ng-repeat="livro in livrosLancamentos" class="">
+                <div class="pull-right col-md-2 border">
+                    <img ng-src="{{livro.Capa}}" width="110px" class="centerImg"  ng-click="exibirLivro(livro)">
                     <div class="infos">
                         <h4>{{livro.Titulo}}</h4>
                     <h5>{{livro.NomeAutor}}</h5>
                     <button  class="btn btn-link" type="submit" ng-click="exibirLivro(livro)">Ver mais...</button>
                     </div>
+                </div>
+                
             </div>
         </div>        
     </div>

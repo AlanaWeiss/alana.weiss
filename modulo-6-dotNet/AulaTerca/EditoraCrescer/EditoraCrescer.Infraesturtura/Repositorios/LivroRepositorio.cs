@@ -14,10 +14,11 @@ namespace EditoraCrescer.Infraesturtura.Repositorios
         private Contexto contexto = new Contexto();
         private AutoresRepositorio autorRepositorio = new AutoresRepositorio();
         private RevisorRepositorio revisorRepositorio = new RevisorRepositorio();
+        // ||
 
         public List<Livro> Listar()
         {
-            var livros = contexto.Livros.ToList();
+            var livros = contexto.Livros.Where(l => l.DataPublicacao != null && l.DataRevisao != null).ToList();
 
             livros.ForEach(l =>
             {
@@ -30,7 +31,7 @@ namespace EditoraCrescer.Infraesturtura.Repositorios
 
         public dynamic ListarResumo()
         {
-            return contexto.Livros.Select(l => new
+            return contexto.Livros.Where(l => l.DataPublicacao != null && l.DataRevisao != null).Select(l => new
             {
                 Isbn = l.Isbn,
                 Titulo = l.Titulo,
@@ -43,6 +44,7 @@ namespace EditoraCrescer.Infraesturtura.Repositorios
         public object ObterLivrosPublicados(int quantidadePular, int quantidadeTrazer)
         {
             return contexto.Livros
+                        .Where(l => l.DataPublicacao != null && l.DataRevisao != null)
                        .OrderByDescending(x => x.DataPublicacao)
                        .Skip(quantidadePular)
                        .Take(quantidadeTrazer)
@@ -56,9 +58,24 @@ namespace EditoraCrescer.Infraesturtura.Repositorios
                        }).ToList();
         }
 
+        public List<Livro> obterNaoRevisadosOuPublicados()
+        {
+            var livros = contexto.Livros.Where(l => l.DataPublicacao  == null || l.DataRevisao == null).ToList();
+
+            livros.ForEach(l =>
+            {
+                l.Autor = autorRepositorio.Obter(l.IdAutor);
+                l.Revisor = revisorRepositorio.ObterPorId(l.IdRevisor);
+            });
+
+            return livros;
+        }
+
         public Livro ObterPorId(int isbn)
         {
             var livro = contexto.Livros.Where(l => l.Isbn == isbn).FirstOrDefault();
+            livro.Autor = autorRepositorio.Obter(livro.IdAutor);
+            livro.Revisor = revisorRepositorio.ObterPorId(livro.IdRevisor);
             return livro;
         }
 

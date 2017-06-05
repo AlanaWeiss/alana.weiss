@@ -1,6 +1,7 @@
 angular.module('livraria')
-    .controller('livrosController', function ($scope, livrosService, $routeParams,$location) {
+    .controller('livrosController', function ($scope, livrosService, $routeParams,$location, authService) {
    
+   $scope.logout = authService.logout;
    let paginaAtual = 1;
 
 
@@ -12,6 +13,9 @@ angular.module('livraria')
   listar();
   listarLancamentos()
 
+  if(authService.isAutenticado()){
+    $scope.mostrarAdm = true;
+}
 
     function listar() {
         livrosService.listPaginacao($scope.parametros)

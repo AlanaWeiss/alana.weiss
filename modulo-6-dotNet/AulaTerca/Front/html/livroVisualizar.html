@@ -1,15 +1,21 @@
 <div class="voltar">
   <button type="button" class="btn btn-link">
-    <a href="#!/livros">Voltar </a>
+    <a href="#!/livros">Home </a>
+  </button>
+   <button type="button" class="btn btn-link" ng-show="mostrarAdm">
+    <a href="#!/administrativo">Administrativo </a>
   </button>
 </div>
 <div class="livroDetalhe" >
    <img ng-src="{{livro.Capa}}"  width="200px" class="pull-left">
    <div class="infos detalhadas pull-left"> 
      <h2>Título: {{livro.Titulo}}</h2> 
-      <h4>Autor: {{livro.Autor}}</h4>
+      <h4>Autor: {{livro.Autor.Nome}}</h4>
       <h4>Gênero: {{livro.Genero}}</h4>
       <h4>Descrição {{livro.Descricao}}</h4>
-      <h4>Data de Publicação: {{livro.DataPublicacao | date : "dd/MM/yyyy"}} </h4>
+      <h4 ng-show="dataNaoNula">Data de Publicação: {{livro.DataPublicacao | date : "dd/MM/yyyy"}} </h4>
+      <div class="aviso"> 
+        <h4 ng-show="dataNula"> Ops.. Parece que esse livro não foi publicado ainda</h4>
+      </div>
    </div>
 </div>

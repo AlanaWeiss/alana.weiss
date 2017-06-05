@@ -1,5 +1,8 @@
-angular.module('livraria').controller('loginController', function ($scope, authService) {
+angular.module('livraria').controller('loginController', function ($scope, authService, $location) {
 
+  if(authService.isAutenticado()){
+  $location.path('/administrativo');
+}
   $scope.login = function (usuario) {
 
     authService.login(usuario)

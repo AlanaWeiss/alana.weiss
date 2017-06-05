@@ -1,4 +1,5 @@
-﻿using EditoraCrescer.Infraesturtura;
+﻿using EditoraCrescer.Api.App_Start;
+using EditoraCrescer.Infraesturtura;
 using EditoraCrescer.Infraesturtura.Entidades;
 using EditoraCrescer.Infraesturtura.Repositorios;
 using System;
@@ -27,6 +28,15 @@ namespace EditoraCrescer.Api.Controllers
         public IHttpActionResult ObterLivrosPublicados(int quantidadePular, int quantidadeTrazer)
         {
             var livros = repositorio.ObterLivrosPublicados(quantidadePular, quantidadeTrazer);
+            return Ok(new { dados = livros });
+
+        }
+
+        [HttpGet]
+        [Route("incompletos")]
+        public IHttpActionResult ObterLivrosNaoCompletos()
+        {
+            var livros = repositorio.obterNaoRevisadosOuPublicados();
             return Ok(new { dados = livros });
 
         }
@@ -75,7 +85,7 @@ namespace EditoraCrescer.Api.Controllers
         [Route("{isbn:int}")]
         public IHttpActionResult Delete(int isbn)
         {
-            ;
+            repositorio.Deletar(isbn);
             return Ok( new { mensagens = "Deletado!" });
         }
 

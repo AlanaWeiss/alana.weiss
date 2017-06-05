@@ -27,6 +27,34 @@ angular.module('livraria')
           });
     }
 
+    function  getIncompletos() {
+      return $http.get(urlBase + '/incompletos');
+    }
+
+    // function putIsbn(isbn, livro) {
+    //   return $http.put(urlBase + isbn, livro);
+
+    // } 
+
+    function putIsbn(isbn, livro) {
+    return $http({
+      url: urlBase + isbn,
+      method: 'PUT',
+      data: livro
+    });
+  }
+
+  function criar(livro) {
+    return $http({
+      url: urlBase,
+      method: 'POST',
+      data: livro
+    });
+  }
+
+  function deletar(livro) {
+    return $http.delete(urlBase + livro.Isbn, livro);
+    }
 //     function getAulaPorId(id) {
 //       return $http.get(urlBase + '/aula' + '/' + id);
 //     };
@@ -53,7 +81,11 @@ angular.module('livraria')
     list: getLivros,
     listNews : getLancamentos,
     buscarIsbn : getIsbn,
-    listPaginacao : listarLivrosPaginacao
+    listPaginacao : listarLivrosPaginacao,
+    listIncompleto : getIncompletos,
+    updateLivro: putIsbn,
+    criarLivro: criar,
+    deletar : deletar
     // findById: getAulaPorId,
     // update: atualizar,
     // create: criar,

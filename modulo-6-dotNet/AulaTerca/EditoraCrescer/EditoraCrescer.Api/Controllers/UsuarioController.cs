@@ -86,7 +86,7 @@ namespace EditoraCrescer.Api.Controllers
             }
             return Request.CreateResponse(HttpStatusCode.OK); 
         }
-        
+
         //[HttpPost, Route("resetarsenha")]
         //public HttpResponseMessage ResetarSenha(string email)
         //{
@@ -108,17 +108,19 @@ namespace EditoraCrescer.Api.Controllers
         //}
 
         // Exige que o usuário se autentique
-        [BasicAuthorization]
+
         [HttpGet, Route("usuario")]
-        public HttpResponseMessage Obter()
+        [BasicAuthorization]
+        public IHttpActionResult Obter()
         {
-            // só pode obter as informações do usuário corrente (logado, autenticado)
-            var usuario = _usuarioRepositorio.Obter(Thread.CurrentPrincipal.Identity.Name);
+            var usuarioDaSessao = _usuarioRepositorio.Obter(Thread.CurrentPrincipal.Identity.Name);
 
-            if (usuario == null)
-                return Request.CreateResponse(HttpStatusCode.BadRequest, "Usuário não encontrado.");
-
-            return Request.CreateResponse(HttpStatusCode.OK, new { usuario.Nome, usuario.Permissoes, usuario.Email });
+            if (usuarioDaSessao == null)
+            {
+                return BadRequest("Usuario não encontrado");
+            }
+            var usuario = new { Nome = usuarioDaSessao.Nome, Email = usuarioDaSessao.Email, Permissoes = usuarioDaSessao.Permissoes };
+            return Ok(new { dados = usuario });
         }
     }
 }

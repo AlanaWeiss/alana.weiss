@@ -1,3 +1,5 @@
+
+@import url('https://fonts.googleapis.com/css?family=Raleway');
 *{
     box-sizing: border-box;
 }
@@ -5,9 +7,12 @@
 body{
     margin: 0;
     background-image: url("back.png");
+    font-family: 'Raleway', sans-serif;
 }
 .container{
     margin-top: 30px;
+
+    font-family: 'Raleway', sans-serif;
 }
 
 .clearfix{
@@ -24,6 +29,9 @@ body{
   padding: 23px;
 }
 
+.clearfix {
+  overflow: auto;
+}
 .lancamentos{
     padding-top: 30px;
     background-color: rgba(194, 148, 139, 0.1);
@@ -94,3 +102,51 @@ login .wrapper {
     text-align: center;
 }
 
+.tabela .tabelaCorpo td{
+    text-align: center;
+    vertical-align: middle;
+}
+btn{
+    color: white;
+}
+.btn-sucesso{
+    background-color: rgb(194, 148, 139);
+    color: white;
+}
+
+.btn-alterar{
+    background-color: rgb(170, 130, 122);
+    color: white;
+}
+
+.btn-excluir{
+    background-color: rgb(146, 111, 104);
+    color: white;
+}
+
+.btn-visualizar{
+    background-color: rgb(121, 93, 87);
+    color: white;
+}
+
+.btn-link a, .btn-link .a {
+    color: rgb(194, 148, 139);
+    text-decoration: none;
+    list-style: none;
+}
+
+.btn-revisar{
+    background-color: rgb(194, 162, 139);
+     color: white;
+}
+
+.btn-publicar{
+    background-color: rgb(202, 161, 154);
+     color: white;
+}
+
+.ola{
+    margin-right: 20px;
+    margin-top: 10px;
+   color: rgb(194, 148, 139); 
+}

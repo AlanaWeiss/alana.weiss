@@ -16,7 +16,7 @@ namespace EditoraCrescer.Infraesturtura.Repositorios
         {
             return contexto.Revisores.ToList();
         }
-        public Revisor ObterPorId(int id)
+        public Revisor ObterPorId(int? id)
         {
 
             return contexto.Revisores.Where(a => a.Id == id).FirstOrDefault();

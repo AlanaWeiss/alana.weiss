@@ -1,0 +1,75 @@
+<div class="voltar">
+  <button type="button" class="btn btn-link">
+    <a href="#!/livros">Home</a>
+  </button>
+  <p class="ola pull-right">Olá, {{user.Nome}}</p>
+  <button class="btn btn-link" ng-click="logout()"> <a href="">Logout</a></button>
+</div>  
+<div class="container"> 
+    <div class="buttons">
+        <button class="btn btn-sucesso" ng-click="clicouAdd()">Adicionar</button>
+    </div>
+    <div ng-show="mostrarAdicao">
+        <form novalidate name="adicionarLivro">
+            <div class="form-group">
+                <label for="titulo">Ttitulo do livro</label>
+                <input name="nome"type="text" ng-model="novoLivro.Titulo" class="form-control" required>
+                <span ng-show="adicionarLivro.nome.$error.required"> * </span>
+            </div>
+            <div class="form-group">
+                <label for="genero">Genero</label>
+                <input name="genero" type="text" ng-model="novoLivro.Genero" class="form-control" required>
+                <span ng-show="adicionarLivro.genero.$error.required"> * </span>
+            </div>
+            <div class="form-group">
+                <label for="descricao">Descrição</label>
+                <input name="descricao" type="text" max="140" ng-model="novoLivro.Descricao" class="form-control" required>
+                <span ng-show="adicionarLivro.descricao.$error.required"> * </span>
+
+            </div>
+            <div class="form-group">
+                <label for="autor">Autor</label>
+                <input name="autor" type="text" ng-model="novoLivro.Autor.Nome" class="form-control" required>
+                <span ng-show="adicionarLivro.autor.$error.required"> * </span>
+            </div>
+            <div class="form-group">
+                 <label for="capa">Capa (url da imagem)</label>
+                <input name="capa" type="text" ng-model="novoLivro.Capa" class="form-control" required>
+                <span ng-show="adicionarLivro.capa.$error.required"> * </span>
+            </div>
+          <button ng-if="botaoAdd" class="btn btn-success"  ng-click="adicionar()" type="submit" name="nome">Adicionar</button>          
+          <button ng-if="botaoAlt" class="btn btn-success"  ng-click="alterar()" type="submit" name="nome">Alterar</button>
+      </form>
+    </div>
+
+    <h2>Livros com pendências</h2>
+    <table class="table table-striped table-bordered table-hover table-condensed tabela">
+   <thead class="tabelaTitulo">
+       <tr>
+           <th>Isbn</th>
+           <th>Titulo</th>
+           <th>Autor</th>
+           <th>Genero</th>
+           <th>Capa</th>
+            <th></th>
+            <th></th>
+       </tr>
+   </thead>
+   <tbody class="tabelaCorpo">
+       <tr ng-repeat="livro in livros">
+           <td>{{livro.Isbn}}</td>
+           <td>{{livro.Titulo}}</td>
+           <td>{{livro.Autor.Nome}}</td>
+           <td>{{livro.Genero}}</td>
+           <td><img ng-src="{{livro.Capa}}" alt="" width="50px" class="imgTabela"></td>
+           <td>
+                <button class="btn btn-alterar" ng-click="clicouAlterar(livro)">Alterar</button>
+                <button class="btn btn-excluir" ng-click="excluir(livro)">Excluir</button>
+                <button class="btn btn-visualizar" ng-click="clicouVizualizar(livro.Isbn)">Vizualizar</button>
+          </td>
+           <td ng-if="revisorVe"><button type="submit" name="buttonedit" ng-click="revisar(livro)"  class="btn btn-revisar"> Revisar </button></td>
+           <td ng-show="publicadorVe && livro.DataRevisao!==null"><button class="btn btn-publicar" type="submit" ng-click="publicar(livro)"> Publicar</button></td>
+       </tr>
+   </tbody>
+</table>
+</div>
