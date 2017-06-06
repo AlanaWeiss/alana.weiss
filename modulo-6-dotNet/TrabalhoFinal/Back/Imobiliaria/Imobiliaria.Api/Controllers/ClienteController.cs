@@ -20,9 +20,8 @@ namespace Imobiliaria.Api.Controllers
         {
             var cliente = new Cliente(model.Id,model.Nome, model.Cpf, model.Endereco, model.Genero, model.DataNascimento);
 
-            if (repositorio.CriarCliente(cliente))
+            repositorio.CriarCliente(cliente);
                 return Ok(new { dados = cliente });
-            else return BadRequest();
         }
 
         [HttpGet]

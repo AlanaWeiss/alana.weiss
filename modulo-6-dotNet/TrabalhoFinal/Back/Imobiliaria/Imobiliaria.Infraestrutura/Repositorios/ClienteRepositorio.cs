@@ -11,17 +11,12 @@ namespace Imobiliaria.Infraestrutura.Repositorios
     {
         private Contexto contexto = new Contexto();
 
-        public bool CriarCliente(Cliente cliente)
+        public void CriarCliente(Cliente cliente)
         {
-            var jaExiste = contexto.Clientes.Count(x => x.Cpf == cliente.Cpf);
-            if (jaExiste > 0)
-            {
-
+            
                 contexto.Clientes.Add(cliente);
                 contexto.SaveChanges();
-                return true;
-            }
-            return false;
+           
         }
 
         public Cliente BuscarCpf(string cpf)
