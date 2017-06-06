@@ -51,7 +51,7 @@ namespace Imobiliaria.Infraestrutura.Repositorios
 
         public Usuario Obter(string email)
         {
-            return contexto.Usuarios.Where(u => u.Email == email)
+           return contexto.Usuarios.Where(u => u.Email == email)
                 .Include(a => a.Permissoes)
                 .FirstOrDefault();
         }

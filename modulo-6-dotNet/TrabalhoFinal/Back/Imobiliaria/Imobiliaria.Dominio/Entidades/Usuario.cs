@@ -7,19 +7,19 @@ using System.Threading.Tasks;
 
 namespace Imobiliaria.Dominio.Entidades
 {
-    public class Usuario
+    public class Usuario : EntidadeBasica
     {
         static readonly char[] _caracteresNovaSenha = "abcdefghijklmnopqrstuvzwyz1234567890*-_".ToCharArray();
         static readonly int _numeroCaracteresNovaSenha = 10;
 
-        public Guid Id { get; set; }
-        public string Nome { get; set; }
-        public string Email { get; set; }
-        public string Senha { get; set; }
-        public List<Permissao> Permissoes { get; set; }
-        public List<string> Mensagens { get; set; }
+        public Guid Id { get; private set; }
+        public string Nome { get; private set; }
+        public string Email { get; private set; }
+        public string Senha { get; private set; }
+        public List<Permissao> Permissoes { get; private set; }
 
-        public Usuario()
+        // Construtor padrão para o Entity Framework
+        protected Usuario()
         {
         }
 
@@ -31,7 +31,6 @@ namespace Imobiliaria.Dominio.Entidades
             if (!string.IsNullOrWhiteSpace(senha))
                 Senha = CriptografarSenha(senha);
             Permissoes = new List<Permissao>();
-            Mensagens = new List<string>();
         }
 
         public string ResetarSenha()
@@ -70,7 +69,7 @@ namespace Imobiliaria.Dominio.Entidades
                 Permissoes.Add(new Permissao(nome));
         }
 
-        public bool Validar()
+        public override bool Validar()
         {
             Mensagens.Clear();
 
