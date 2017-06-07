@@ -14,26 +14,26 @@ namespace Imobiliaria.Infraestrutura.Mapping
         {
             ToTable("Reserva");
             HasKey(x => x.Id);
-            
+
             HasRequired(x => x.Cliente)
                 .WithMany()
-                .HasForeignKey(x => x.IdCliente);
-            
+                .Map(x => x.MapKey("IdCliente"));
+
             HasRequired(x => x.Produto)
                 .WithMany()
-                .HasForeignKey(x => x.IdProduto);
+                .Map(x => x.MapKey("IdProduto"));
 
-
-            HasOptional(x => x.Pacote)
+            HasRequired(x => x.Pacote)
                 .WithMany()
-                .HasForeignKey(x => x.IdPacote);
+                .Map(x => x.MapKey("IdPacote"));
 
-            HasMany(x => x.Opcional).WithMany().Map(x =>
-            {
-                x.MapLeftKey("IdReserva");
-                x.MapRightKey("IdOpcicional");
-                x.ToTable("ReservaOpcioonal");
-            });
+            HasMany(x => x.Opcional).WithMany()
+                .Map(x =>
+                {
+                    x.MapLeftKey("IdReserva");
+                    x.MapRightKey("IdOpcional");
+                    x.ToTable("PedidoAdicional");
+                });
         }
     }
 }

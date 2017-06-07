@@ -1,4 +1,5 @@
-﻿using Imobiliaria.Api.Models;
+﻿using Imobiliaria.Api.App_Start;
+using Imobiliaria.Api.Models;
 using Imobiliaria.Dominio.Entidades;
 using Imobiliaria.Infraestrutura.Repositorios;
 using System;
@@ -11,6 +12,7 @@ using System.Web.Http;
 namespace Imobiliaria.Api.Controllers
 {
     [RoutePrefix("api/cliente")]
+    //[BasicAuthorization]
     public class ClienteController : ApiController
     {
         private readonly ClienteRepositorio repositorio = new ClienteRepositorio();

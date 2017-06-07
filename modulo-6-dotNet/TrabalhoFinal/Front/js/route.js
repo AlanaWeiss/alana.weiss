@@ -3,7 +3,7 @@ angular.module('app')
         $routeProvider
         .when('/home', {
             controller: 'homeController',
-            templateUrl: 'html/livros.html'
+            templateUrl: 'html/home.html'
         })
         .when('/login', {
             controller: 'loginController',
@@ -11,7 +11,7 @@ angular.module('app')
         })
         .when('/vendas', {
             controller: 'vendasController',
-            templateUrl: 'Hhtml/vendas.html',
+            templateUrl: 'html/vendas.html',
             resolve: {
                 autenticado: function (authService) {
                     return authService.isAutenticadoPromise();

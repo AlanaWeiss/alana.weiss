@@ -1,4 +1,5 @@
-﻿using Imobiliaria.Dominio.Entidades;
+﻿using Imobiliaria.Api.App_Start;
+using Imobiliaria.Dominio.Entidades;
 using Imobiliaria.Infraestrutura.Repositorios;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ using System.Web.Http;
 namespace Imobiliaria.Api.Controllers
 {
     [RoutePrefix("api/produto")]
+    [BasicAuthorization]
     public class ProdutoController : ApiController
     {
         private readonly ProdutoRepositorio repositorio = new ProdutoRepositorio();

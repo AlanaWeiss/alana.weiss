@@ -1,0 +1,82 @@
+<div class="container"> 
+    <div>
+        <button class="btn btn-link">
+        <a href="#!/home">Home</a>
+    </button>
+    <button class="btn btn-link">
+        Logout nao imp
+    </button>
+    </div>
+    
+    <input type="text" name="" value="" ng-model="buscarCpf">
+    <button type="submit" class="btn btn-success" ng-click="buscarCliente(buscarCpf)">Buscar</button>
+    <h4 class="">  Cliente: {{novaReserva.Cliente.Nome}}   </h4>
+
+    <div class="criar" ng-show="clienteNaoExiste">
+        <h4>Ops.. Esse cliente  não existe.</h4>
+        <form novalidate name="adicionarCliente">
+
+            <div class="form-group col-md-6">
+                <label for="nome">Nome:</label>
+                <input name="nome"type="text" ng-model="novoCliente.Nome" class="form-control" required>
+                <span ng-show="adicionarCliente.nome.$error.required"> * </span>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="nome">CPF:</label>
+                <input name="nome"type="text" ng-model="novoCliente.Cpf" class="form-control" required>
+                <span ng-show="adicionarCliente.nome.$error.required"> * </span>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="nome">Endereço:</label>
+                <input name="nome"type="text" ng-model="novoCliente.Endereco" class="form-control" required>
+                <span ng-show="adicionarCliente.nome.$error.required"> * </span>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="nome">Gênero:</label>
+                <input name="nome"type="text" ng-model="novoCliente.Genero" class="form-control" required>
+                <span ng-show="adicionarCliente.nome.$error.required"> * </span>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="nome">Data Nascimento:</label>
+                <input type="DateTime" name="bday" min="1999-01-01" ng-model="novoCliente.DataNascimento" placeholder="aaaa/mm/dd" class="form-control" required>
+                <span ng-show="adicionarCliente.nome.$error.required"> * </span>
+            </div>
+            <button type="submit" class="btn btn-danger" ng-click="criarCliente()">Criar</button>
+      </form> 
+    </div>
+    <label for="instrutor">Selecione o imóvel:</label>
+        <select  class="form-control" ng-model="novaReserva.Produto">
+           <option ng-repeat="produto in produtos" value="{{ produto }}"> {{ produto.Imovel }} </option>
+        </select>
+        <button type="button" class="btn btn-info" ng-click="escolherImovel()">Escolher Imovel</button>
+        <br>
+        <h6>Preço: {{novaReserva.Produto.Preco}}</h6>
+
+        <div ng-show="mostrarPacotes">
+            <label for="instrutor">Selecione o pacote:</label>
+        <select  class="form-control" ng-model="novaReserva.Pacote">
+           <option ng-repeat="pacote in pacotes" value="{{ pacote }}"> {{ pacote.Nome }}  ({{pacote.Descricao}})</option>
+        </select>
+         <button type="button" class="btn btn-info" ng-click="escolherPacote()">Escolher Pacote</button>
+        </div>
+       <div ng-show="mostrarOpcionais">
+            <label for="instrutor">Selecione os opcionais:</label>
+                    <select  class="form-control" ng-model="novaReserva.Opcionais" multiple>
+                        <option ng-repeat="opcional in opcionais" value="{{ opcional }}"> {{ opcional.Descricao }} </option>
+                    </select><br>
+         <button type="button" class="btn btn-info" ng-click="escolherOpcionais()">Escolher Opcionais</button>
+         </div>
+         <div ng-show="mostrarFinalizar">
+             <button type="button" class="btn btn-danger" ng-click="finalizar()">Finalizar</button>
+             <p>Ao finalizar uma nova reserva será gerada!</p>
+         </div>
+
+         <div ng-show="reserva">
+             {{novaReserva.Cliente}}
+             {{novaReserva.Produto}}
+         </div>
+</div>
+
+
+
+
