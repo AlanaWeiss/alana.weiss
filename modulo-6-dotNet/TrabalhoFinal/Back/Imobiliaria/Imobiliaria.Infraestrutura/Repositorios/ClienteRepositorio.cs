@@ -13,10 +13,10 @@ namespace Imobiliaria.Infraestrutura.Repositorios
 
         public void CriarCliente(Cliente cliente)
         {
-            
-                contexto.Clientes.Add(cliente);
-                contexto.SaveChanges();
-           
+
+            contexto.Clientes.Add(cliente);
+            contexto.SaveChanges();
+
         }
 
         public Cliente BuscarCpf(string cpf)
@@ -27,6 +27,6 @@ namespace Imobiliaria.Infraestrutura.Repositorios
         public List<Cliente> BuscarTodos()
         {
             return contexto.Clientes.ToList();
-        } 
+        }
     }
 }

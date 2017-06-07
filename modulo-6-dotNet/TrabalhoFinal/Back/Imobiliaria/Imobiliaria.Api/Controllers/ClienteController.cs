@@ -36,6 +36,6 @@ namespace Imobiliaria.Api.Controllers
         {
             return Ok(new { dados = repositorio.BuscarTodos() });
         }
-
+        
     }
 }
