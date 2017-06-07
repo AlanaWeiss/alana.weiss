@@ -24,6 +24,11 @@ namespace Imobiliaria.Infraestrutura.Repositorios
             return contexto.Clientes.Where(x => x.Cpf.Contains(cpf)).FirstOrDefault();
         }
 
+        public Cliente BuscarId(int id)
+        {
+            return contexto.Clientes.Where(x => x.Id == id).FirstOrDefault();
+        }
+
         public List<Cliente> BuscarTodos()
         {
             return contexto.Clientes.ToList();

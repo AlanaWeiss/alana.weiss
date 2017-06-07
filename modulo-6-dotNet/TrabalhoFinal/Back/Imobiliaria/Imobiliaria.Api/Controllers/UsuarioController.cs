@@ -47,7 +47,7 @@ namespace Imobiliaria.Api.Controllers
         // Exige que o usuário se autentique
 
         [HttpGet, Route("usuario")]
-        [BasicAuthorization(Roles = "Atendente")]
+        [BasicAuthorization]
         public IHttpActionResult Obter()
         {
             var usuarioDaSessao = _usuarioRepositorio.Obter(Thread.CurrentPrincipal.Identity.Name);

@@ -19,7 +19,7 @@ namespace Imobiliaria.Infraestrutura.Repositorios
 
         }
 
-        public Pacote BuscarPacote(int id)
+        public Pacote BuscarPacote(int? id)
         {
             return contexto.Pacotes.FirstOrDefault(x => x.Id == id);
         }

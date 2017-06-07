@@ -7,13 +7,13 @@ namespace Imobiliaria.Infraestrutura.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class recriarObanco : IMigrationMetadata
+    public sealed partial class gygygyg : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(recriarObanco));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(gygygyg));
         
         string IMigrationMetadata.Id
         {
-            get { return "201706062020301_recriarObanco"; }
+            get { return "201706071240033_gygygyg"; }
         }
         
         string IMigrationMetadata.Source

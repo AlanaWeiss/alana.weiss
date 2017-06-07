@@ -56,9 +56,17 @@
     <Compile Include="Mapping\ProdutoMap.cs" />
     <Compile Include="Mapping\ReservaMap.cs" />
     <Compile Include="Mapping\UsuarioMap.cs" />
-    <Compile Include="Migrations\201706062020301_recriarObanco.cs" />
-    <Compile Include="Migrations\201706062020301_recriarObanco.Designer.cs">
-      <DependentUpon>201706062020301_recriarObanco.cs</DependentUpon>
+    <Compile Include="Migrations\201706070252316_recriarOBancoAgain.cs" />
+    <Compile Include="Migrations\201706070252316_recriarOBancoAgain.Designer.cs">
+      <DependentUpon>201706070252316_recriarOBancoAgain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706071214005_ajustarBanco.cs" />
+    <Compile Include="Migrations\201706071214005_ajustarBanco.Designer.cs">
+      <DependentUpon>201706071214005_ajustarBanco.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706071240033_gygygyg.cs" />
+    <Compile Include="Migrations\201706071240033_gygygyg.Designer.cs">
+      <DependentUpon>201706071240033_gygygyg.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -66,6 +74,7 @@
     <Compile Include="Repositorios\OpcionalRepositorio.cs" />
     <Compile Include="Repositorios\PacoteRepositorio.cs" />
     <Compile Include="Repositorios\ProdutoRepositorio.cs" />
+    <Compile Include="Repositorios\ReservaRepositorio.cs" />
     <Compile Include="Repositorios\UsuarioRepositorio.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -79,8 +88,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201706062020301_recriarObanco.resx">
-      <DependentUpon>201706062020301_recriarObanco.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201706070252316_recriarOBancoAgain.resx">
+      <DependentUpon>201706070252316_recriarOBancoAgain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706071214005_ajustarBanco.resx">
+      <DependentUpon>201706071214005_ajustarBanco.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706071240033_gygygyg.resx">
+      <DependentUpon>201706071240033_gygygyg.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -12,7 +12,7 @@ namespace Imobiliaria.Infraestrutura.Mapping
     {
         public PermissaoMap()
         {
-            ToTable("PermissaoUsuario");
+            ToTable("Permissao");
         }
     }
 }

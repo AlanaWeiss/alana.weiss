@@ -17,6 +17,7 @@ namespace Imobiliaria.Infraestrutura
 
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<Permissao> Permissoes { get; set; }
         public DbSet<Produto> Produtos { get; set; }
         public DbSet<Opcional> Opcionais { get; set; }
         public DbSet<Pacote> Pacotes { get; set; }
@@ -31,6 +32,7 @@ namespace Imobiliaria.Infraestrutura
             modelBuilder.Configurations.Add(new OpcionalMap());
             modelBuilder.Configurations.Add(new PacoteMap());
             modelBuilder.Configurations.Add(new ReservaMap());
+            modelBuilder.Configurations.Add(new PermissaoMap());
         }
     }
 }

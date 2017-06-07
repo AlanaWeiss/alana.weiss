@@ -19,7 +19,7 @@ namespace Imobiliaria.Infraestrutura.Repositorios
 
         }
 
-        public Opcional BuscarOpcional(int id)
+        public Opcional BuscarOpcional(int? id)
         {
             return contexto.Opcionais.FirstOrDefault(x => x.Id == id);
         }

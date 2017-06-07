@@ -3,7 +3,7 @@ namespace Imobiliaria.Infraestrutura.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class recriarObanco : DbMigration
+    public partial class recriarOBancoAgain : DbMigration
     {
         public override void Up()
         {
@@ -39,6 +39,15 @@ namespace Imobiliaria.Infraestrutura.Migrations
                         Nome = c.String(),
                         Descricao = c.String(),
                         Preco = c.Decimal(nullable: false, precision: 18, scale: 2),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Permissao",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Nome = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -87,15 +96,6 @@ namespace Imobiliaria.Infraestrutura.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.Permissaos",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Nome = c.String(),
-                    })
-                .PrimaryKey(t => t.Id);
-            
-            CreateTable(
                 "dbo.ReservaOpcioonal",
                 c => new
                     {
@@ -117,7 +117,7 @@ namespace Imobiliaria.Infraestrutura.Migrations
                     })
                 .PrimaryKey(t => new { t.IdUsuario, t.IdPermissao })
                 .ForeignKey("dbo.Usuario", t => t.IdUsuario, cascadeDelete: true)
-                .ForeignKey("dbo.Permissaos", t => t.IdPermissao, cascadeDelete: true)
+                .ForeignKey("dbo.Permissao", t => t.IdPermissao, cascadeDelete: true)
                 .Index(t => t.IdUsuario)
                 .Index(t => t.IdPermissao);
             
@@ -125,7 +125,7 @@ namespace Imobiliaria.Infraestrutura.Migrations
         
         public override void Down()
         {
-            DropForeignKey("dbo.UsuarioPermissao", "IdPermissao", "dbo.Permissaos");
+            DropForeignKey("dbo.UsuarioPermissao", "IdPermissao", "dbo.Permissao");
             DropForeignKey("dbo.UsuarioPermissao", "IdUsuario", "dbo.Usuario");
             DropForeignKey("dbo.Reserva", "IdProduto", "dbo.Produto");
             DropForeignKey("dbo.Reserva", "IdPacote", "dbo.Pacote");
@@ -141,10 +141,10 @@ namespace Imobiliaria.Infraestrutura.Migrations
             DropIndex("dbo.Reserva", new[] { "IdCliente" });
             DropTable("dbo.UsuarioPermissao");
             DropTable("dbo.ReservaOpcioonal");
-            DropTable("dbo.Permissaos");
             DropTable("dbo.Usuario");
             DropTable("dbo.Reserva");
             DropTable("dbo.Produto");
+            DropTable("dbo.Permissao");
             DropTable("dbo.Pacote");
             DropTable("dbo.Opcional");
             DropTable("dbo.Cliente");

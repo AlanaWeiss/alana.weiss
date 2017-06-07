@@ -17,16 +17,16 @@ namespace Imobiliaria.Infraestrutura.Mapping
             
             HasRequired(x => x.Cliente)
                 .WithMany()
-                .Map(x => x.MapKey("IdCliente"));
+                .HasForeignKey(x => x.IdCliente);
             
             HasRequired(x => x.Produto)
                 .WithMany()
-                .Map(x => x.MapKey("IdProduto"));
+                .HasForeignKey(x => x.IdProduto);
 
 
             HasOptional(x => x.Pacote)
                 .WithMany()
-                .Map(x => x.MapKey("IdPacote"));
+                .HasForeignKey(x => x.IdPacote);
 
             HasMany(x => x.Opcional).WithMany().Map(x =>
             {
