@@ -61,7 +61,7 @@
         </div>
        <div ng-show="mostrarOpcionais">
             <label for="instrutor">Selecione os opcionais:</label>
-                    <select  class="form-control" ng-model="novaReserva.Opcionais" multiple>
+                    <select  class="form-control" ng-model="novaReserva.Opcional    " multiple>
                         <option ng-repeat="opcional in opcionais" value="{{ opcional }}"> {{ opcional.Descricao }} </option>
                     </select><br>
          <button type="button" class="btn btn-info" ng-click="escolherOpcionais()">Escolher Opcionais</button>

@@ -77,7 +77,7 @@ angular
       }
       
       function escolherOpcionais() {
-          $scope.novaReserva.Opcionais = JSON.parse($scope.novaReserva.Opcionais);
+          $scope.novaReserva.Opcional = JSON.parse($scope.novaReserva.Opcional);
           $scope.mostrarFinalizar = true;
           console.log('nova reserva', $scope.novaReserva);
       }
