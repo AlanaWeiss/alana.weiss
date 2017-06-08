@@ -11,9 +11,9 @@ angular.module('app')
       return $http({
           url: urlBase,
         method: 'GET',
-        // headers: {
-        //     Authorization: headerAuth
-        // }
+        headers: {
+            Authorization: headerAuth
+        }
       });
     };
 

@@ -1,4 +1,5 @@
-﻿using Imobiliaria.Dominio.Entidades;
+﻿using Imobiliaria.Api.App_Start;
+using Imobiliaria.Dominio.Entidades;
 using Imobiliaria.Infraestrutura.Repositorios;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,7 @@ using System.Web.Http;
 namespace Imobiliaria.Api.Controllers
 {
     [RoutePrefix("api/opcional")]
+    [BasicAuthorization]
     public class OpcionalController : ApiController
     {
         private readonly OpcionalRepositorio repositorio = new OpcionalRepositorio();

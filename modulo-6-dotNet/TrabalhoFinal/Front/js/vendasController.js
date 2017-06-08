@@ -1,6 +1,6 @@
 angular
 	.module('app')
-	.controller('vendasController', function ($scope, authService, $localStorage, $location, clienteService, produtoService,pacoteService, opcionalService) {
+	.controller('vendasController', function ($scope, authService, $localStorage, $location, clienteService, produtoService,pacoteService, opcionalService, reservaService) {
 	 $scope.novaReserva ={}
       $scope.auth = authService;
 	  $scope.user = authService.getUsuario();
@@ -79,11 +79,13 @@ angular
       function escolherOpcionais() {
           $scope.novaReserva.Opcionais = JSON.parse($scope.novaReserva.Opcionais);
           $scope.mostrarFinalizar = true;
+          console.log('nova reserva', $scope.novaReserva);
       }
 
-      function finalizar() {
-          console.log('nova reserva', $scope.novaReserva);
-          $scope.reserva = true;
+      function finalizar(novaReserva) {
+          console.log('nova reserva', novaReserva);
+          reservaService.criarReserva(novaReserva, $localStorage.headerAuth);
+          
       }
 
 	});

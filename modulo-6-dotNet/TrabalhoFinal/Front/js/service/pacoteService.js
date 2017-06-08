@@ -10,10 +10,10 @@ angular.module('app')
     function  getPacote(headerAuth) {
       return $http({
           url: urlBase,
-        method: 'GET'
-        // headers: {
-        //     Authorization: headerAuth
-        // }
+        method: 'GET',
+        headers: {
+            Authorization: headerAuth
+        }
       });
     };
 

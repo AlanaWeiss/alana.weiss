@@ -28,9 +28,15 @@ namespace Imobiliaria.Infraestrutura.Repositorios
 
         public Reserva DevolverReserva(int id)
         {
-            Reserva reserva = contexto.Reservas.Where(x => x.Id == id).FirstOrDefault();
-
-            AumentarQuantidade(reserva);
+            Reserva reserva = contexto.Reservas
+                .Include(X => X.Produto)
+                .Include(X => X.Pacote)
+                .Include(X => X.Cliente)
+                .Include(X => X.Opcional)
+                .Where(x => x.Id == id)
+                .FirstOrDefault();
+            
+            
             bool atrasou = DateTime.Now.Date > reserva.DataDevolucaoPrevista.Date;
 
             reserva.DataDevolucaoReal = DateTime.Now;
@@ -40,7 +46,9 @@ namespace Imobiliaria.Infraestrutura.Repositorios
                 reserva.ValorTotalReal = GerarValor(reserva, devolucao);
             else
                 reserva.ValorTotalReal = reserva.ValorTotal;
-            
+
+            AumentarQuantidade(reserva);
+
             contexto.Entry(reserva).State = EntityState.Modified;
             contexto.SaveChanges();
 
@@ -69,8 +77,7 @@ namespace Imobiliaria.Infraestrutura.Repositorios
 
         private void AumentarQuantidade(Reserva reserva)
         {
-            int produtoId = reserva.Produto.Id;
-            Produto produto = contexto.Produtos.Where(x => x.Id == produtoId).FirstOrDefault();
+            Produto produto = contexto.Produtos.Where(x => x.Id == reserva.Produto.Id).FirstOrDefault();
             produto.Quantidade++;
             contexto.SaveChanges();
 
