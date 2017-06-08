@@ -15,6 +15,7 @@ angular
       listarProdutos();
       listarPacote();
       listarOpcional();
+      listarReserva();
 
       function listar() {
         clienteService.listarClientes()
@@ -50,8 +51,8 @@ angular
       }
 
       function escolherImovel() {
-          $scope.novaReserva.Produto = JSON.parse($scope.novaReserva.Produto);
-          console.log($scope.novaReserva);
+          //$scope.novaReserva.Produto = JSON.parse($scope.novaReserva.Produto);
+          console.log($scope.novaReserva.Produto);
           $scope.mostrarPacotes = true;
       }
 
@@ -64,7 +65,7 @@ angular
       }
 
       function escolherPacote() {
-          $scope.novaReserva.Pacote = JSON.parse($scope.novaReserva.Pacote);
+         // $scope.novaReserva.Pacote = JSON.parse($scope.novaReserva.Pacote);
           $scope.mostrarOpcionais = true;
       }
 
@@ -77,7 +78,7 @@ angular
       }
       
       function escolherOpcionais() {
-          $scope.novaReserva.Opcional = JSON.parse($scope.novaReserva.Opcional);
+         // $scope.novaReserva.Opcional = JSON.parse($scope.novaReserva.Opcional);
           $scope.mostrarFinalizar = true;
           console.log('nova reserva', $scope.novaReserva);
       }
@@ -85,7 +86,13 @@ angular
       function finalizar(novaReserva) {
           console.log('nova reserva', novaReserva);
           reservaService.criarReserva(novaReserva, $localStorage.headerAuth);
-          
       }
 
+    function listarReserva() {
+          reservaService.listarReserva($localStorage.headerAuth)
+          .then( response => {
+              $scope.reservas = response.data.dados;
+              console.log(response.data);
+          })
+      }
 	});

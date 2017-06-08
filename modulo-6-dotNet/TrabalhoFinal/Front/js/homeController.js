@@ -7,7 +7,18 @@ angular
 
       if(authService.isAutenticado()){
         $scope.botaoLogout = true;
+        $scope.botaoLogin = false;
       }
-      else $scope.botaoLogout = false;
+      else{
+         $scope.botaoLogout = false;
+          $scope.botaoLogin = true;
+      }
+
+      console.log($scope.user);
+
+      $scope.gerente = authService.possuiPermissao('Balconista');
       
+      $scope.irParaVendo = function () {
+      $location.path('/vendas/');
+      }
 	});

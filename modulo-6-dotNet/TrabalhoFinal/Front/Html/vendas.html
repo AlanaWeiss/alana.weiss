@@ -46,7 +46,7 @@
     </div>
     <label for="instrutor">Selecione o imóvel:</label>
         <select  class="form-control" ng-model="novaReserva.Produto">
-           <option ng-repeat="produto in produtos" value="{{ produto }}"> {{ produto.Imovel }} </option>
+           <option ng-repeat="produto in produtos" ng-value="{{ produto }}"> {{ produto.Imovel }} </option>
         </select>
         <button type="button" class="btn btn-info" ng-click="escolherImovel()">Escolher Imovel</button>
         <br>
@@ -55,14 +55,14 @@
         <div ng-show="mostrarPacotes">
             <label for="instrutor">Selecione o pacote:</label>
         <select  class="form-control" ng-model="novaReserva.Pacote">
-           <option ng-repeat="pacote in pacotes" value="{{ pacote }}"> {{ pacote.Nome }}  ({{pacote.Descricao}})</option>
+           <option ng-repeat="pacote in pacotes" ng-value="pacote"> {{ pacote.Nome }}  ({{pacote.Descricao}})</option>
         </select>
          <button type="button" class="btn btn-info" ng-click="escolherPacote()">Escolher Pacote</button>
         </div>
        <div ng-show="mostrarOpcionais">
             <label for="instrutor">Selecione os opcionais:</label>
                     <select  class="form-control" ng-model="novaReserva.Opcional    " multiple>
-                        <option ng-repeat="opcional in opcionais" value="{{ opcional }}"> {{ opcional.Descricao }} </option>
+                        <option ng-repeat="opcional in opcionais" ng-value="{{ opcional }}"> {{ opcional.Descricao }} </option>
                     </select><br>
          <button type="button" class="btn btn-info" ng-click="escolherOpcionais()">Escolher Opcionais</button>
          </div>
@@ -71,10 +71,29 @@
              <p>Ao finalizar uma nova reserva será gerada!</p>
          </div>
 
-         <div ng-show="reserva">
-             {{novaReserva.Cliente}}
-             {{novaReserva.Produto}}
-         </div>
+         <table class="table table-hover">
+            <thead>
+                <tr>
+                <th>#</th>
+                <th>Cliente</th>
+                <th>Produto</th>
+                <th>Pacote</th>
+                <th>Devolucao</th>
+                <th>Preço Previsto</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="reserva in reservas">
+                    <td>{{reserva.Id}}</td>
+                <td>{{reserva.Cliente.Nome}}</td>
+                <td>{{reserva.Produto.Imovel}}</td>
+                <td>{{reserva.Pacote.Nome}}</td>
+                <td>{{reserva.DataDevolucaoPrevista}}</td>
+                <td>{{reserva.ValorTotal}}</td>
+                </tr>
+                <tr>
+            </tbody>
+        </table>
 </div>
 
 
