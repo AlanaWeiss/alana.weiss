@@ -51,13 +51,14 @@
         <button type="button" class="btn btn-info" ng-click="escolherImovel()">Escolher Imovel</button>
         <br>
         <h6>Preço: {{novaReserva.Produto.Preco}}</h6>
-
+        <hr>
         <div ng-show="mostrarPacotes">
             <label for="instrutor">Selecione o pacote:</label>
         <select  class="form-control" ng-model="novaReserva.Pacote">
            <option ng-repeat="pacote in pacotes" ng-value="pacote"> {{ pacote.Nome }}  ({{pacote.Descricao}})</option>
         </select>
          <button type="button" class="btn btn-info" ng-click="escolherPacote()">Escolher Pacote</button>
+         <hr>
         </div>
        <div ng-show="mostrarOpcionais">
             <label for="instrutor">Selecione os opcionais:</label>
@@ -65,8 +66,12 @@
                         <option ng-repeat="opcional in opcionais" ng-value="{{ opcional }}"> {{ opcional.Descricao }} </option>
                     </select><br>
          <button type="button" class="btn btn-info" ng-click="escolherOpcionais()">Escolher Opcionais</button>
+         <hr>
          </div>
+         
          <div ng-show="mostrarFinalizar">
+            <button type="button" class="btn btn-danger" ng-click="calcularOrcamento(novaReserva)">Gerar Orçamento</button>
+             <h4>Preço reserva: {{reservaOrcamento.ValorTotal}}</h4>
              <button type="button" class="btn btn-danger" ng-click="finalizar(novaReserva)">Finalizar</button>
              <p>Ao finalizar uma nova reserva será gerada!</p>
          </div>

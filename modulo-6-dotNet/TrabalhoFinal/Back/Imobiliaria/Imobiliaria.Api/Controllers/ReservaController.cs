@@ -44,6 +44,29 @@ namespace Imobiliaria.Api.Controllers
         }
 
         [HttpPost]
+        [Route("orcamento")]
+        public IHttpActionResult Orcamento(ReservaModel model)
+        {
+            Produto produto = produtoRepo.BuscarProduto(model.Produto.Id);
+            Pacote pacote = pacoteRepo.BuscarPacote(model.Pacote.Id);
+            Cliente cliente = clienteRepo.BuscarId(model.Cliente.Id);
+
+            var opcional = new List<Opcional>();
+            model.Opcional.ForEach(x => opcional.Add(opcionalRepo.BuscarOpcional(x.Id)));
+
+            var reserva = new Reserva(cliente, produto, pacote, opcional);
+
+            bool possivelCriar = repositorio.VerSeEhPossivelCriar(reserva);
+            if (possivelCriar)
+            {
+                repositorio.CriarOrcamento(reserva);
+                return Ok(new { dados = reserva });
+            }
+
+            return BadRequest("Ops.. temos um problema");
+        }
+
+        [HttpPost]
         [Route("devolver/{id}")]
         public IHttpActionResult DevolverProduto(int id)
         {

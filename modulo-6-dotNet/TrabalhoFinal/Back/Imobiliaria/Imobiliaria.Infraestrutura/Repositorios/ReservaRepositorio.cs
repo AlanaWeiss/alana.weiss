@@ -20,6 +20,15 @@ namespace Imobiliaria.Infraestrutura.Repositorios
             contexto.SaveChanges();
             return reserva;
         }
+        
+        public Reserva CriarOrcamento(Reserva reserva)
+        {
+            DiminuirQuantidade(reserva);
+            reserva.ValorTotal = GerarValor(reserva, reserva.DataDevolucaoPrevista);
+            //contexto.Reservas.Add(reserva);
+            //contexto.SaveChanges();
+            return reserva;
+        }
 
         public List<Reserva> Reservas()
         {

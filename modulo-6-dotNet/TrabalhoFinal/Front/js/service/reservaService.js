@@ -44,11 +44,23 @@ angular.module('app')
       });
     }
 
+    function calcularOrcamento(reserva, headerAuth) {
+        return $http({
+          url: urlBase + "orcamento",
+        method: 'POST',
+        headers: {
+            Authorization: headerAuth
+        },
+        data: reserva
+      });
+    }
+
 
   return {
     listarReserva: getReserva,
     buscarProduto: getId,
     criarReserva: criarReserva,
-    devolverReserva: devolverReserva
+    devolverReserva: devolverReserva,
+    orcamento : calcularOrcamento
   };
 });

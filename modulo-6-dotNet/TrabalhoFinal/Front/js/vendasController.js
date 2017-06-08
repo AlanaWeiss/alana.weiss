@@ -95,4 +95,11 @@ angular
               console.log(response.data);
           })
       }
+
+      function calcularOrcamento(novaReserva) {
+          reservaService.orcamento(novaReserva, $localStorage.headerAuth).then(response => {
+              $scope.reservaOrcamento = response.data.dados;
+              console.log( $scope.reservaOrcamento);
+          })
+      }
 	});
