@@ -9,7 +9,7 @@ namespace Imobiliaria.Infraestrutura.Repositorios
 {
     public class ReservaRepositorio
     {
-        private Contexto contexto = new Contexto();
+        private  Contexto contexto = new Contexto();
         public Reserva CriarReserva(Reserva reserva)
         {
             DiminuirQuantidade(reserva);
@@ -21,8 +21,8 @@ namespace Imobiliaria.Infraestrutura.Repositorios
 
         private void DiminuirQuantidade(Reserva reserva)
         {
-           int produtoId = reserva.Produto.Id;
-            Produto produto = contexto.Produtos.Where(x=> x.Id == produtoId).FirstOrDefault();
+            int produtoId = reserva.Produto.Id;
+            Produto produto = contexto.Produtos.Where(x => x.Id == produtoId).FirstOrDefault();
             produto.Quantidade--;
             contexto.SaveChanges();
 
@@ -41,7 +41,7 @@ namespace Imobiliaria.Infraestrutura.Repositorios
 
         private Decimal GerarValor(Reserva reserva, DateTime devolucao)
         {
-            int diasReserva= (devolucao.Date - reserva.DataPedido.Date).Days;
+            int diasReserva = (devolucao.Date - reserva.DataPedido.Date).Days;
             Produto produto = reserva.Produto;
 
             Pacote pacote = reserva.Pacote;
@@ -62,7 +62,33 @@ namespace Imobiliaria.Infraestrutura.Repositorios
                     precoOpcionais = opcionais.Sum(x => x.Preco);
             }
 
-            return ( precoPacote + precoOpcionais) * diasReserva;
+            return (precoPacote + precoOpcionais) * diasReserva;
+        }
+
+        public bool VerSeEhPossivelCriar(Reserva reserva)
+        {
+            Produto produto = contexto.Produtos.Where(x => x.Id == reserva.Produto.Id).FirstOrDefault();
+
+            if (produto.Quantidade < 0)
+                return false;
+
+
+            if (reserva.Opcional.Count > 0)
+            {
+                // verifica se tem opcionais em estoque
+                foreach (var opcional in reserva.Opcional)
+                {
+                    Opcional aux = contexto.Opcionais.Where(x => x.Id == opcional.Id).FirstOrDefault();
+
+                    if (aux == null)
+                        return false;
+
+                    if (aux.Quantidade <= 0)
+                        return false;
+
+                }
+            }
+            return true;
         }
     }
 }

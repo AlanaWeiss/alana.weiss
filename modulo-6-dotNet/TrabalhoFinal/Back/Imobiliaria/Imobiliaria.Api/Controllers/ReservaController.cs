@@ -30,9 +30,15 @@ namespace Imobiliaria.Api.Controllers
             model.Opcional.ForEach(x => opcional.Add(opcionalRepo.BuscarOpcional(x.Id)));
 
             var reserva = new Reserva(cliente, produto, pacote, opcional);
-            
-            repositorio.CriarReserva(reserva);
-            return Ok(new { dados = reserva });
+
+            bool possivelCriar = repositorio.VerSeEhPossivelCriar(reserva);
+            if (possivelCriar)
+            {
+                repositorio.CriarReserva(reserva);
+                return Ok(new { dados = reserva });
+            }
+
+            return BadRequest("Ops.. temos um problema");
         }
     }
 }
