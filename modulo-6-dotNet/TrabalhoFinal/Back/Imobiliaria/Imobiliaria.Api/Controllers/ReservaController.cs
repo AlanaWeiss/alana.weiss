@@ -40,5 +40,20 @@ namespace Imobiliaria.Api.Controllers
 
             return BadRequest("Ops.. temos um problema");
         }
+
+        [HttpPost]
+        [Route("devolver/{id}")]
+        public IHttpActionResult DevolverProduto(int id)
+        {
+            var reserva = repositorio.DevolverReserva(id);
+            return Ok(new { dados = reserva });
+        }
+
+        [HttpGet]
+        public IHttpActionResult BuscarReservas()
+        {
+            return Ok(new { dados = repositorio.Reservas() });
+        
+        }
     }
 }
