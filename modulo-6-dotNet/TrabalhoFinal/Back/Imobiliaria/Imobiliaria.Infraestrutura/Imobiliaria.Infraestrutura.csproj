@@ -68,6 +68,22 @@
     <Compile Include="Migrations\201706071240033_gygygyg.Designer.cs">
       <DependentUpon>201706071240033_gygygyg.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706072323077_eww77qeq.cs" />
+    <Compile Include="Migrations\201706072323077_eww77qeq.Designer.cs">
+      <DependentUpon>201706072323077_eww77qeq.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706080135490_inteiro.cs" />
+    <Compile Include="Migrations\201706080135490_inteiro.Designer.cs">
+      <DependentUpon>201706080135490_inteiro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706080138247_ineito.cs" />
+    <Compile Include="Migrations\201706080138247_ineito.Designer.cs">
+      <DependentUpon>201706080138247_ineito.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706080141277_valorDecimal.cs" />
+    <Compile Include="Migrations\201706080141277_valorDecimal.Designer.cs">
+      <DependentUpon>201706080141277_valorDecimal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositorios\ClienteRepositorio.cs" />
@@ -96,6 +112,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706071240033_gygygyg.resx">
       <DependentUpon>201706071240033_gygygyg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706072323077_eww77qeq.resx">
+      <DependentUpon>201706072323077_eww77qeq.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706080135490_inteiro.resx">
+      <DependentUpon>201706080135490_inteiro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706080138247_ineito.resx">
+      <DependentUpon>201706080138247_ineito.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706080141277_valorDecimal.resx">
+      <DependentUpon>201706080141277_valorDecimal.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

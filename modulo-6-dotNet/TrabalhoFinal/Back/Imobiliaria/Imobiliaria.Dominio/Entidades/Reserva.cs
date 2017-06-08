@@ -18,5 +18,21 @@ namespace Imobiliaria.Dominio.Entidades
          public DateTime? DataDevolucaoReal { get; set; }
          public decimal ValorTotal { get; set; }
          public decimal ValorTotalReal { get; set; }
+
+        public Reserva()
+        { }
+
+        public Reserva(Cliente cliente, Produto produto, Pacote pacote, List<Opcional> opcional)
+        {
+            Cliente = cliente;
+            Produto = produto;
+            Pacote = pacote;
+            Opcional = opcional;
+            DataPedido = DateTime.Now;
+            Id = 0;
+            DataDevolucaoPrevista = DateTime.Now.AddDays(1);
+            ValorTotal = 0;
+            ValorTotalReal = 0;
+        }
     }
 }

@@ -1,59 +1,68 @@
-﻿using Imobiliaria.Dominio.Entidades;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Imobiliaria.Dominio.Entidades;
 
 namespace Imobiliaria.Infraestrutura.Repositorios
 {
     public class ReservaRepositorio
     {
         private Contexto contexto = new Contexto();
-        private ClienteRepositorio clienteRepo = new ClienteRepositorio();
-        private PacoteRepositorio pacoreRepo = new PacoteRepositorio();
-        private ProdutoRepositorio ProdutoRepo = new ProdutoRepositorio();
-        private OpcionalRepositorio OpcionalRepo = new OpcionalRepositorio();
+        public Reserva CriarReserva(Reserva reserva)
+        {
+            DiminuirQuantidade(reserva);
+            reserva.ValorTotal = GerarValor(reserva, reserva.DataDevolucaoPrevista);
+            contexto.Reservas.Add(reserva);
+            contexto.SaveChanges();
+            return reserva;
+        }
 
-        //public Reserva CriarReserva(Reserva reserva)
-        //{
-        //    contexto.Reservas.Add(reserva);
-        //    contexto.SaveChanges();
-        //    return reserva;
+        private void DiminuirQuantidade(Reserva reserva)
+        {
+           int produtoId = reserva.Produto.Id;
+            Produto produto = contexto.Produtos.Where(x=> x.Id == produtoId).FirstOrDefault();
+            produto.Quantidade--;
+            contexto.SaveChanges();
 
-        //}
+            List<Opcional> opcionais = new List<Opcional>();
 
-        //public Reserva BuscarReserva(int id)
-        //{
-        //    return contexto.Reservas.FirstOrDefault(x => x.Id == id);
+            foreach (var opcional in reserva.Opcional)
+            {
+                opcionais.Add(contexto.Opcionais.Where(x => x.Id == opcional.Id).FirstOrDefault());
+            }
+            foreach (var opcional in opcionais)
+            {
+                opcional.Quantidade--;
+            }
+            contexto.SaveChanges();
+        }
 
-        //}
+        private Decimal GerarValor(Reserva reserva, DateTime devolucao)
+        {
+            int diasReserva= (devolucao.Date - reserva.DataPedido.Date).Days;
+            Produto produto = reserva.Produto;
 
-        //public List<Reserva> BuscarTodos()
-        //{
-        //    var reservas = contexto.Reservas.ToList();
-            
+            Pacote pacote = reserva.Pacote;
 
-        //    return reservas;
-        //}
-        //public List<Reserva> BuscarPorCpf(string cpf)
-        //{
-        //    return contexto.Reservas.Where(x => x.Cliente.Cpf == cpf)
-        //        .Include(X => X.Cliente)
-        //        .Include(x => x.Produto)
-        //        .Include(X => X.Pacote)
-        //        .Include(X => X.Opcional)
-        //        .ToList();
-        //}
+            var precoPacote = pacote == null ? 0 : pacote.Preco;
 
-        //public Reserva DeletarReserva(int id)
-        //{
-        //    Reserva pacote = contexto.Reservas.FirstOrDefault(x => x.Id == id);
+            var precoOpcionais = 0;
 
-        //    contexto.Reservas.Remove(pacote);
-        //    contexto.SaveChanges();
-        //    return pacote;
-        //}
+            List<Opcional> opcionais = new List<Opcional>();
+            if (reserva.Opcional != null)
+            {
+                foreach (var opcional in reserva.Opcional)
+                {
+                    opcionais.Add(contexto.Opcionais.Where(x => x.Id == opcional.Id).FirstOrDefault());
+                }
+
+                if (opcionais.Count > 0)
+                    precoOpcionais = opcionais.Sum(x => x.Preco);
+            }
+
+            return ( precoPacote + precoOpcionais) * diasReserva;
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Imobiliaria.Dominio.Entidades;
+﻿using Imobiliaria.Api.Models;
+using Imobiliaria.Dominio.Entidades;
 using Imobiliaria.Infraestrutura.Repositorios;
 using System;
 using System.Collections.Generic;
@@ -13,38 +14,25 @@ namespace Imobiliaria.Api.Controllers
     public class ReservaController : ApiController
     {
         private readonly ReservaRepositorio repositorio = new ReservaRepositorio();
+        private ClienteRepositorio clienteRepo = new ClienteRepositorio();
+        private ProdutoRepositorio produtoRepo = new ProdutoRepositorio();
+        private PacoteRepositorio pacoteRepo = new PacoteRepositorio();
+        private OpcionalRepositorio opcionalRepo = new OpcionalRepositorio();
 
         [HttpPost]
-        public IHttpActionResult CriarPacote(Reserva reserva)
+        public IHttpActionResult CriarReserva(ReservaModel model)
         {
-            return Ok(new { dados = repositorio.CriarReserva(reserva) });
-        }
+            Produto produto = produtoRepo.BuscarProduto(model.Produto.Id);
+            Pacote pacote = pacoteRepo.BuscarPacote(model.Pacote.Id);
+            Cliente cliente = clienteRepo.BuscarId(model.Cliente.Id);
 
-        [HttpGet]
-        [Route("{id}")]
-        public IHttpActionResult BuscarPacote(int id)
-        {
-            return Ok(new { dados = repositorio.BuscarReserva(id) });
-        }
+            var opcional = new List<Opcional>();
+            model.Opcional.ForEach(x => opcional.Add(opcionalRepo.BuscarOpcional(x.Id)));
 
-        [HttpGet]
-        [Route("{cpf}")]
-        public IHttpActionResult BuscarPacote(string cpf)
-        {
-            return Ok(new { dados = repositorio.BuscarPorCpf(cpf) });
-        }
-
-        [HttpGet]
-        public IHttpActionResult BuscarTodosPacotes()
-        {
-            return Ok(new { dados = repositorio.BuscarTodos() });
-        }
-
-        [HttpDelete]
-        [Route("{id}")]
-        public IHttpActionResult DeletarProduto(int id)
-        {
-            return Ok(new { dados = repositorio.DeletarReserva(id) });
+            var reserva = new Reserva(cliente, produto, pacote, opcional);
+            
+            repositorio.CriarReserva(reserva);
+            return Ok(new { dados = reserva });
         }
     }
 }

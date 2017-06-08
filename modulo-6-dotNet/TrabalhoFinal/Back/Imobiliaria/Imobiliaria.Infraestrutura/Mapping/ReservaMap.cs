@@ -22,8 +22,8 @@ namespace Imobiliaria.Infraestrutura.Mapping
             HasRequired(x => x.Produto)
                 .WithMany()
                 .Map(x => x.MapKey("IdProduto"));
-
-            HasRequired(x => x.Pacote)
+            
+            HasOptional(x => x.Pacote)
                 .WithMany()
                 .Map(x => x.MapKey("IdPacote"));
 
@@ -32,7 +32,7 @@ namespace Imobiliaria.Infraestrutura.Mapping
                 {
                     x.MapLeftKey("IdReserva");
                     x.MapRightKey("IdOpcional");
-                    x.ToTable("PedidoAdicional");
+                    x.ToTable("ReservaAdicional");
                 });
         }
     }
