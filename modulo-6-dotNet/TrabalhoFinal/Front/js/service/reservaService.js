@@ -37,6 +37,16 @@ angular.module('app')
       });
     }
 
+    function relatorio(data, headerAuth) {
+      return $http({
+        url: urlBase + "relatorio/" + data ,
+        method: 'GET',
+        headers: {
+            Authorization: headerAuth
+        }
+      });
+    }
+
     function getId(id) {
       return $http.get(urlBase + id);
     }
@@ -82,6 +92,7 @@ angular.module('app')
     devolverReserva: devolverReserva,
     orcamento : calcularOrcamento,
     naoDevolvidas : naoDevolvidas,
-    atrasadas : atrasadas
+    atrasadas : atrasadas,
+    relatorio : relatorio
   };
 });

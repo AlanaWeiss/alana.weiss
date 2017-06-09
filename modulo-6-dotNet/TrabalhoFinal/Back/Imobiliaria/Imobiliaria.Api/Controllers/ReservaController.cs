@@ -98,7 +98,7 @@ namespace Imobiliaria.Api.Controllers
         }
 
         [HttpGet]
-        [Route("relatorio/{data}")]
+        [Route("relatorio/{data:datetime}")]
         public IHttpActionResult ObterTotalReservasMensais(DateTime data)
         {
             return Ok(new { dados = repositorio.ObterTotalReservasMensais(data) });

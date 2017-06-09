@@ -191,13 +191,15 @@ namespace Imobiliaria.Infraestrutura.Repositorios
         public List<Reserva> ObterTotalReservasMensais(DateTime dataRecebida)
         {
             DateTime dataInicial = dataRecebida.AddDays(-30);
-            return contexto.Reservas
+            var reservas = contexto.Reservas
                     .Where(x => x.DataDevolucaoReal != null && x.DataDevolucaoReal >= dataInicial && x.DataDevolucaoReal <= dataRecebida)
                     .Include(x => x.Cliente)
                     .Include(x => x.Produto)
                     .Include(x => x.Pacote)
                     .Include(x => x.Opcional)
                     .ToList();
+
+            return reservas;
         }
 
     }

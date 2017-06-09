@@ -3,6 +3,7 @@ using Imobiliaria.Dominio.Entidades;
 using Imobiliaria.Infraestrutura.Repositorios;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -50,6 +51,8 @@ namespace Imobiliaria.Api.Controllers
         [BasicAuthorization]
         public IHttpActionResult Obter()
         {
+
+            Debug.WriteLine("esntei");
             var usuarioDaSessao = _usuarioRepositorio.Obter(Thread.CurrentPrincipal.Identity.Name);
 
             if (usuarioDaSessao == null)

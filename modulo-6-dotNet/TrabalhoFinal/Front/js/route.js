@@ -44,7 +44,8 @@ angular.module('app')
                     return authService.isAutenticadoPromise();
                 }
             }
-      .when('/relatorio', {
+        })
+          .when('/relatorio', {
             controller: 'relatorioController',
             templateUrl: 'html/relatorio.html',
             resolve: {
@@ -52,7 +53,6 @@ angular.module('app')
                     return authService.isAutenticadoPromise();
                 }
             }
-        })  })
-
+        })
         .otherwise('/home');
 });

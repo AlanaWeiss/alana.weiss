@@ -1,0 +1,31 @@
+<div class="container">
+
+    <input  type="Date" name="" value="" ng-model="dataProcura">
+    <button type="button" ng-click="procurar()" class="btn btn-success">Buscar</button>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+            <th>#</th>
+            <th>Cliente</th>
+            <th>Produto</th>
+            <th>Pacote</th>
+            <th>Devolucao</th>
+            <th>Data Pedido</th>
+            <th>Preço original da reserva</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="reserva in finalizadas">
+            <td>{{reserva.Id}}</td>
+            <td>{{reserva.Cliente.Nome}}</td>
+            <td>{{reserva.Produto.Imovel}}</td>
+            <td>{{reserva.Pacote.Nome}}</td>
+            <td>{{reserva.DataDevolucaoPrevista | date : "dd/MM/yyyy"}}</td>
+            <td>{{reserva.DataPedido | date : "dd/MM/yyyy"}}</td>
+            <td>{{reserva.ValorTotal}}</td>
+            </tr>
+            <tr>
+        </tbody>
+    </table>
+</div>
