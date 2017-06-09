@@ -1,8 +1,11 @@
 <div class="container">
-
+    <button class="btn btn-link">
+        <a href="#!/home">Home</a>
+    </button>
+    <h3>Atrasadas</h3>
     <div ng-if="valorTotal">
        <h3>Preço total da reserva: {{devolvida.ValorTotalReal}}</h3>
-       <button ng-click="valorTotal()">Ok</button>
+       <button ng-click="relistar()">Atualizar</button>
     </div>
     <table class="table table-hover">
         <thead>

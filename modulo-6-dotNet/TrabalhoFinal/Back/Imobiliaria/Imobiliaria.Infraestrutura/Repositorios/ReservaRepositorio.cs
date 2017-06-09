@@ -17,20 +17,18 @@ namespace Imobiliaria.Infraestrutura.Repositorios
             DiminuirQuantidade(reserva);
             reserva.ValorTotal = GerarValor(reserva, reserva.DataDevolucaoPrevista);
             contexto.Reservas.Add(reserva);
-            //contexto.Entry(reserva.Cliente).State = System.Data.Entity.EntityState.Unchanged;
-            //contexto.Entry(reserva.Produto).State = System.Data.Entity.EntityState.Unchanged;
-            //contexto.Entry(reserva.Pacote).State = System.Data.Entity.EntityState.Unchanged;
-            //contexto.Entry(reserva.Opcional).State = System.Data.Entity.EntityState.Unchanged;
+            //contexto.Entry(reserva.Cliente).State = EntityState.Unchanged;
+            //contexto.Entry(reserva.Produto).State = EntityState.Unchanged;
+            //contexto.Entry(reserva.Pacote).State = EntityState.Unchanged;
+            //contexto.Entry(reserva.Opcional).State = EntityState.Unchanged;
             contexto.SaveChanges();
             return reserva;
         }
         
         public Reserva CriarOrcamento(Reserva reserva)
         {
-            DiminuirQuantidade(reserva);
             reserva.ValorTotal = GerarValor(reserva, reserva.DataDevolucaoPrevista);
-            //contexto.Reservas.Add(reserva);
-            //contexto.SaveChanges();
+            
             return reserva;
         }
 

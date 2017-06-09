@@ -40,7 +40,7 @@ angular
           $scope.novoCliente.Id = 1;
           clienteService.criarCliente($scope.novoCliente).then(response => {
               listar();
-              $scope.novaReserva.Cliente = $scope.novoCliente;
+              //$scope.novaReserva.Cliente = $scope.novoCliente;
             })
            listar();
            listar;

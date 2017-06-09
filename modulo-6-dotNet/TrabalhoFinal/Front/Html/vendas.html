@@ -3,12 +3,10 @@
         <button class="btn btn-link">
         <a href="#!/home">Home</a>
     </button>
-    <button class="btn btn-link">
-        Logout nao imp
-    </button>
     </div>
-    
-    <input type="text" name="" value="" ng-model="buscarCpf">
+    <h3>Criar reserva</h3>
+    <label for="cliente"> Cpf Cliente:</label>
+    <input type="text" name="cliente" value="" ng-model="buscarCpf">
     <button type="submit" class="btn btn-success" ng-click="buscarCliente(buscarCpf)">Buscar</button>
     <h4 class="">  Cliente: {{novaReserva.Cliente.Nome}}   </h4>
 
@@ -43,10 +41,11 @@
             </div>
             <button type="submit" class="btn btn-danger" ng-click="criarCliente()">Criar</button>
       </form> 
+      <hr>
     </div>
     <label for="instrutor">Selecione o imóvel:</label>
         <select  class="form-control" ng-model="novaReserva.Produto">
-           <option ng-repeat="produto in produtos" ng-value="{{ produto }}"> {{ produto.Imovel }} </option>
+           <option ng-repeat="produto in produtos" ng-value="{{ produto }}" > {{ produto.Imovel }} </option>
         </select>
         <button type="button" class="btn btn-info" ng-click="escolherImovel()">Escolher Imovel</button>
         <br>

@@ -1,7 +1,13 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
 *{
     box-sizing: border-box;
 }
 
 body{
     background-image: url("confectionary.png");
+    font-family: 'Montserrat', sans-serif;
+}
+
+.logo{
+    text-align: center;
 }

@@ -98,6 +98,7 @@ namespace Imobiliaria.Api.Controllers
         }
 
         [HttpGet]
+        [BasicAuthorization(Roles = "Gerente")]
         [Route("relatorio/{data:datetime}")]
         public IHttpActionResult ObterTotalReservasMensais(DateTime data)
         {
