@@ -27,6 +27,16 @@ angular.module('app')
       });
     }
 
+    function atrasadas(headerAuth) {
+      return $http({
+        url: urlBase + "atrasadas",
+        method: 'GET',
+        headers: {
+            Authorization: headerAuth
+        }
+      });
+    }
+
     function getId(id) {
       return $http.get(urlBase + id);
     }
@@ -71,6 +81,7 @@ angular.module('app')
     criarReserva: criarReserva,
     devolverReserva: devolverReserva,
     orcamento : calcularOrcamento,
-    naoDevolvidas : naoDevolvidas
+    naoDevolvidas : naoDevolvidas,
+    atrasadas : atrasadas
   };
 });

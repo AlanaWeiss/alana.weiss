@@ -3,7 +3,7 @@ namespace Imobiliaria.Infraestrutura.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class recriarOBancoAgain : DbMigration
+    public partial class refazerBanco : DbMigration
     {
         public override void Up()
         {
@@ -26,7 +26,7 @@ namespace Imobiliaria.Infraestrutura.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Descricao = c.String(),
-                        Preco = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        Preco = c.Int(nullable: false),
                         Quantidade = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
@@ -38,7 +38,7 @@ namespace Imobiliaria.Infraestrutura.Migrations
                         Id = c.Int(nullable: false, identity: true),
                         Nome = c.String(),
                         Descricao = c.String(),
-                        Preco = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        Preco = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -57,7 +57,7 @@ namespace Imobiliaria.Infraestrutura.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Imovel = c.String(),
-                        Preco = c.Decimal(nullable: false, precision: 18, scale: 2),
+                        Preco = c.Int(nullable: false),
                         Quantidade = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
@@ -96,17 +96,17 @@ namespace Imobiliaria.Infraestrutura.Migrations
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.ReservaOpcioonal",
+                "dbo.ReservaAdicional",
                 c => new
                     {
                         IdReserva = c.Int(nullable: false),
-                        IdOpcicional = c.Int(nullable: false),
+                        IdOpcional = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => new { t.IdReserva, t.IdOpcicional })
+                .PrimaryKey(t => new { t.IdReserva, t.IdOpcional })
                 .ForeignKey("dbo.Reserva", t => t.IdReserva, cascadeDelete: true)
-                .ForeignKey("dbo.Opcional", t => t.IdOpcicional, cascadeDelete: true)
+                .ForeignKey("dbo.Opcional", t => t.IdOpcional, cascadeDelete: true)
                 .Index(t => t.IdReserva)
-                .Index(t => t.IdOpcicional);
+                .Index(t => t.IdOpcional);
             
             CreateTable(
                 "dbo.UsuarioPermissao",
@@ -129,18 +129,18 @@ namespace Imobiliaria.Infraestrutura.Migrations
             DropForeignKey("dbo.UsuarioPermissao", "IdUsuario", "dbo.Usuario");
             DropForeignKey("dbo.Reserva", "IdProduto", "dbo.Produto");
             DropForeignKey("dbo.Reserva", "IdPacote", "dbo.Pacote");
-            DropForeignKey("dbo.ReservaOpcioonal", "IdOpcicional", "dbo.Opcional");
-            DropForeignKey("dbo.ReservaOpcioonal", "IdReserva", "dbo.Reserva");
+            DropForeignKey("dbo.ReservaAdicional", "IdOpcional", "dbo.Opcional");
+            DropForeignKey("dbo.ReservaAdicional", "IdReserva", "dbo.Reserva");
             DropForeignKey("dbo.Reserva", "IdCliente", "dbo.Cliente");
             DropIndex("dbo.UsuarioPermissao", new[] { "IdPermissao" });
             DropIndex("dbo.UsuarioPermissao", new[] { "IdUsuario" });
-            DropIndex("dbo.ReservaOpcioonal", new[] { "IdOpcicional" });
-            DropIndex("dbo.ReservaOpcioonal", new[] { "IdReserva" });
+            DropIndex("dbo.ReservaAdicional", new[] { "IdOpcional" });
+            DropIndex("dbo.ReservaAdicional", new[] { "IdReserva" });
             DropIndex("dbo.Reserva", new[] { "IdProduto" });
             DropIndex("dbo.Reserva", new[] { "IdPacote" });
             DropIndex("dbo.Reserva", new[] { "IdCliente" });
             DropTable("dbo.UsuarioPermissao");
-            DropTable("dbo.ReservaOpcioonal");
+            DropTable("dbo.ReservaAdicional");
             DropTable("dbo.Usuario");
             DropTable("dbo.Reserva");
             DropTable("dbo.Produto");

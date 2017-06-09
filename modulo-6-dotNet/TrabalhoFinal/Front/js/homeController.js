@@ -24,5 +24,13 @@ angular
     
     $scope.irDevolver = function () {
       $location.path('/devolver/');
+    }
+    
+    $scope.atrasadas = function () {
+      $location.path('/atrasadas/');
+    }
+    
+    $scope.relatorio = function () {
+      $location.path('/relatorio/');
       }
 	});

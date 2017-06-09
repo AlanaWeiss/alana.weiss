@@ -17,6 +17,10 @@ namespace Imobiliaria.Infraestrutura.Repositorios
             DiminuirQuantidade(reserva);
             reserva.ValorTotal = GerarValor(reserva, reserva.DataDevolucaoPrevista);
             contexto.Reservas.Add(reserva);
+            //contexto.Entry(reserva.Cliente).State = System.Data.Entity.EntityState.Unchanged;
+            //contexto.Entry(reserva.Produto).State = System.Data.Entity.EntityState.Unchanged;
+            //contexto.Entry(reserva.Pacote).State = System.Data.Entity.EntityState.Unchanged;
+            //contexto.Entry(reserva.Opcional).State = System.Data.Entity.EntityState.Unchanged;
             contexto.SaveChanges();
             return reserva;
         }
@@ -165,5 +169,36 @@ namespace Imobiliaria.Infraestrutura.Repositorios
             }
             return true;
         }
+
+        public object ReservasAtrasadas()
+        {
+            DateTime dataAtual = DateTime.Now;
+            return contexto.Reservas
+                            .Where(x => x.DataDevolucaoReal == null && x.DataDevolucaoPrevista < dataAtual)
+                            .OrderBy(x => x.DataDevolucaoPrevista)
+                            .Select(x => new {
+                                Id = x.Id,
+                                Cliente = x.Cliente,
+                                Produto = x.Produto.Imovel,
+                                Pacote = x.Pacote,
+                                ValorTotal = x.ValorTotal,
+                                DataPedido = x.DataPedido,
+                                DataDevolucaoPrevista = x.DataDevolucaoPrevista,
+                                DiasAtrasados = DbFunctions.DiffDays(x.DataDevolucaoPrevista, dataAtual)
+                            }).ToList();
+        }
+
+        public List<Reserva> ObterTotalReservasMensais(DateTime dataRecebida)
+        {
+            DateTime dataInicial = dataRecebida.AddDays(-30);
+            return contexto.Reservas
+                    .Where(x => x.DataDevolucaoReal != null && x.DataDevolucaoReal >= dataInicial && x.DataDevolucaoReal <= dataRecebida)
+                    .Include(x => x.Cliente)
+                    .Include(x => x.Produto)
+                    .Include(x => x.Pacote)
+                    .Include(x => x.Opcional)
+                    .ToList();
+        }
+
     }
 }

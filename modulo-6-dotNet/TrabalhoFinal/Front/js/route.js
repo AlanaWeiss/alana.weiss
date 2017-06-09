@@ -36,5 +36,23 @@ angular.module('app')
                 }
             }
         })
+        .when('/atrasadas', {
+            controller: 'atrasadasController',
+            templateUrl: 'html/atrasadas.html',
+            resolve: {
+                autenticado: function (authService) {
+                    return authService.isAutenticadoPromise();
+                }
+            }
+      .when('/relatorio', {
+            controller: 'relatorioController',
+            templateUrl: 'html/relatorio.html',
+            resolve: {
+                autenticado: function (authService) {
+                    return authService.isAutenticadoPromise();
+                }
+            }
+        })  })
+
         .otherwise('/home');
 });

@@ -88,5 +88,22 @@ namespace Imobiliaria.Api.Controllers
             return Ok(new { dados = repositorio.ReservasNaoDevolvidas() });
 
         }
+
+        [HttpGet]
+        [Route("atrasadas")]
+        public IHttpActionResult ReservasAtrasadas()
+        {
+            return Ok(new { dados = repositorio.ReservasAtrasadas() });
+
+        }
+
+        [HttpGet]
+        [Route("relatorio/{data}")]
+        public IHttpActionResult ObterTotalReservasMensais(DateTime data)
+        {
+            return Ok(new { dados = repositorio.ObterTotalReservasMensais(data) });
+
+        }
+
     }
 }

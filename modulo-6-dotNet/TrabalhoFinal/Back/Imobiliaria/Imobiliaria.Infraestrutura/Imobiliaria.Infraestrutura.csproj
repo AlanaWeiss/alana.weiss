@@ -56,33 +56,9 @@
     <Compile Include="Mapping\ProdutoMap.cs" />
     <Compile Include="Mapping\ReservaMap.cs" />
     <Compile Include="Mapping\UsuarioMap.cs" />
-    <Compile Include="Migrations\201706070252316_recriarOBancoAgain.cs" />
-    <Compile Include="Migrations\201706070252316_recriarOBancoAgain.Designer.cs">
-      <DependentUpon>201706070252316_recriarOBancoAgain.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201706071214005_ajustarBanco.cs" />
-    <Compile Include="Migrations\201706071214005_ajustarBanco.Designer.cs">
-      <DependentUpon>201706071214005_ajustarBanco.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201706071240033_gygygyg.cs" />
-    <Compile Include="Migrations\201706071240033_gygygyg.Designer.cs">
-      <DependentUpon>201706071240033_gygygyg.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201706072323077_eww77qeq.cs" />
-    <Compile Include="Migrations\201706072323077_eww77qeq.Designer.cs">
-      <DependentUpon>201706072323077_eww77qeq.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201706080135490_inteiro.cs" />
-    <Compile Include="Migrations\201706080135490_inteiro.Designer.cs">
-      <DependentUpon>201706080135490_inteiro.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201706080138247_ineito.cs" />
-    <Compile Include="Migrations\201706080138247_ineito.Designer.cs">
-      <DependentUpon>201706080138247_ineito.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201706080141277_valorDecimal.cs" />
-    <Compile Include="Migrations\201706080141277_valorDecimal.Designer.cs">
-      <DependentUpon>201706080141277_valorDecimal.cs</DependentUpon>
+    <Compile Include="Migrations\201706091226326_refazerBanco.cs" />
+    <Compile Include="Migrations\201706091226326_refazerBanco.Designer.cs">
+      <DependentUpon>201706091226326_refazerBanco.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -104,26 +80,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201706070252316_recriarOBancoAgain.resx">
-      <DependentUpon>201706070252316_recriarOBancoAgain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706071214005_ajustarBanco.resx">
-      <DependentUpon>201706071214005_ajustarBanco.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706071240033_gygygyg.resx">
-      <DependentUpon>201706071240033_gygygyg.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706072323077_eww77qeq.resx">
-      <DependentUpon>201706072323077_eww77qeq.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706080135490_inteiro.resx">
-      <DependentUpon>201706080135490_inteiro.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706080138247_ineito.resx">
-      <DependentUpon>201706080138247_ineito.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201706080141277_valorDecimal.resx">
-      <DependentUpon>201706080141277_valorDecimal.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201706091226326_refazerBanco.resx">
+      <DependentUpon>201706091226326_refazerBanco.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
