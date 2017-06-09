@@ -66,7 +66,7 @@ namespace Imobiliaria.Api.Controllers
             return BadRequest("Ops.. temos um problema");
         }
 
-        [HttpPost]
+        [HttpPut]
         [Route("devolver/{id}")]
         public IHttpActionResult DevolverProduto(int id)
         {
@@ -79,6 +79,14 @@ namespace Imobiliaria.Api.Controllers
         {
             return Ok(new { dados = repositorio.Reservas() });
         
+        }
+
+        [HttpGet]
+        [Route("devolucoes")]
+        public IHttpActionResult BuscarNaoDevolvidas()
+        {
+            return Ok(new { dados = repositorio.ReservasNaoDevolvidas() });
+
         }
     }
 }

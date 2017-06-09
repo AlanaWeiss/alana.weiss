@@ -20,5 +20,9 @@ angular
       
       $scope.irParaVendo = function () {
       $location.path('/vendas/');
+    }
+    
+    $scope.irDevolver = function () {
+      $location.path('/devolver/');
       }
 	});

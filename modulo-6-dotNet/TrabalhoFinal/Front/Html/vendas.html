@@ -75,30 +75,6 @@
              <button type="button" class="btn btn-danger" ng-click="finalizar(novaReserva)">Finalizar</button>
              <p>Ao finalizar uma nova reserva será gerada!</p>
          </div>
-
-         <table class="table table-hover">
-            <thead>
-                <tr>
-                <th>#</th>
-                <th>Cliente</th>
-                <th>Produto</th>
-                <th>Pacote</th>
-                <th>Devolucao</th>
-                <th>Preço Previsto</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr ng-repeat="reserva in reservas">
-                    <td>{{reserva.Id}}</td>
-                <td>{{reserva.Cliente.Nome}}</td>
-                <td>{{reserva.Produto.Imovel}}</td>
-                <td>{{reserva.Pacote.Nome}}</td>
-                <td>{{reserva.DataDevolucaoPrevista}}</td>
-                <td>{{reserva.ValorTotal}}</td>
-                </tr>
-                <tr>
-            </tbody>
-        </table>
 </div>
 
 

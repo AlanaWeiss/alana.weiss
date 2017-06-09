@@ -18,5 +18,23 @@ angular.module('app')
                 }
             }
         })
+        .when('/devolver', {
+            controller: 'devolverController',
+            templateUrl: 'html/reservaDevolver.html',
+            resolve: {
+                autenticado: function (authService) {
+                    return authService.isAutenticadoPromise();
+                }
+            }
+        })
+        .when('/devolvido', {
+            controller: 'devolverController',
+            templateUrl: 'html/devolvido.html',
+            resolve: {
+                autenticado: function (authService) {
+                    return authService.isAutenticadoPromise();
+                }
+            }
+        })
         .otherwise('/home');
 });

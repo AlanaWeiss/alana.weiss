@@ -17,6 +17,15 @@ angular.module('app')
       });
     };
 
+    function naoDevolvidas(headerAuth) {
+      return $http({
+        url: urlBase + "devolucoes",
+        method: 'GET',
+        headers: {
+            Authorization: headerAuth
+        }
+      });
+    }
 
     function getId(id) {
       return $http.get(urlBase + id);
@@ -35,12 +44,12 @@ angular.module('app')
 
     function devolverReserva(reserva, headerAuth) {
         return $http({
-          url: urlBase + reserva.id,
+          url: urlBase + "devolver/" + reserva.Id,
         method: 'PUT',
         headers: {
             Authorization: headerAuth
-        },
-        data: reserva
+        }//,
+        //data: reserva
       });
     }
 
@@ -61,6 +70,7 @@ angular.module('app')
     buscarProduto: getId,
     criarReserva: criarReserva,
     devolverReserva: devolverReserva,
-    orcamento : calcularOrcamento
+    orcamento : calcularOrcamento,
+    naoDevolvidas : naoDevolvidas
   };
 });

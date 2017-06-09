@@ -1,0 +1,32 @@
+<div class="container">
+
+    <div ng-if="valorTotal">
+       <h3>Preço total da reserva: {{devolvida.ValorTotalReal}}</h3>
+       <button ng-click="valorTotal()">Ok</button>
+    </div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+            <th>#</th>
+            <th>Cliente</th>
+            <th>Produto</th>
+            <th>Pacote</th>
+            <th>Devolucao</th>
+            <th>Preço Previsto</th>
+            <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="reserva in reservas | orderBy: 'DataDevolucaoPrevista'">
+            <td>{{reserva.Id}}</td>
+            <td>{{reserva.Cliente.Nome}}</td>
+            <td>{{reserva.Produto.Imovel}}</td>
+            <td>{{reserva.Pacote.Nome}}</td>
+            <td>{{reserva.DataDevolucaoPrevista}}</td>
+            <td>{{reserva.ValorTotal}}</td>
+            <td><button type="button" class="btn btn-danger" ng-click="devolverReserva(reserva)">Devolver</button></td>
+            </tr>
+            <tr>
+        </tbody>
+    </table>
+</div>

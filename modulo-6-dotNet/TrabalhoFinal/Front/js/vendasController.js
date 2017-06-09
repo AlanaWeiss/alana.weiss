@@ -9,7 +9,8 @@ angular
       $scope.escolherImovel = escolherImovel;
       $scope.escolherPacote = escolherPacote;
       $scope.escolherOpcionais = escolherOpcionais;
-      $scope.finalizar = finalizar;
+      $scope.finalizar = finalizar; 
+      $scope.calcularOrcamento = calcularOrcamento;
 
       listar();
       listarProdutos();
@@ -86,6 +87,7 @@ angular
       function finalizar(novaReserva) {
           console.log('nova reserva', novaReserva);
           reservaService.criarReserva(novaReserva, $localStorage.headerAuth);
+          delete $scope.novaReserva;
       }
 
     function listarReserva() {

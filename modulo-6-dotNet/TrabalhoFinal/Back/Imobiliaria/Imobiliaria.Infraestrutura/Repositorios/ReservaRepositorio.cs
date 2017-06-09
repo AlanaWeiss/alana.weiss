@@ -35,6 +35,17 @@ namespace Imobiliaria.Infraestrutura.Repositorios
             return contexto.Reservas.Include(X => X.Produto).Include(X => X.Pacote).Include(X => X.Cliente).Include(X => X.Opcional).ToList();
         }
 
+        public List<Reserva> ReservasNaoDevolvidas()
+        {
+            return contexto.Reservas
+                .Include(X => X.Produto)
+                .Include(X => X.Pacote)
+                .Include(X => X.Cliente)
+                .Include(X => X.Opcional)
+                .Where(x=> x.DataDevolucaoReal == null)
+                .ToList();
+        }
+
         public Reserva DevolverReserva(int id)
         {
             Reserva reserva = contexto.Reservas
