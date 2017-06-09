@@ -38,7 +38,10 @@ angular
 
       function criarCliente() {
           $scope.novoCliente.Id = 1;
-          clienteService.criarCliente($scope.novoCliente).then(response => listar());
+          clienteService.criarCliente($scope.novoCliente).then(response => {
+              listar();
+              $scope.novaReserva.Cliente = $scope.novoCliente;
+            })
            listar();
            listar;
       }
@@ -85,7 +88,8 @@ angular
       }
 
       function finalizar(novaReserva) {
-          console.log('nova reserva', novaReserva);
+          debugger;
+          console.log('nova reserva2', novaReserva);
           reservaService.criarReserva(novaReserva, $localStorage.headerAuth);
           delete $scope.novaReserva;
       }

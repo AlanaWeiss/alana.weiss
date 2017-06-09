@@ -16,7 +16,7 @@ angular
 
       console.log($scope.user);
 
-      $scope.gerente = authService.possuiPermissao('Balconista');
+      $scope.gerente = authService.possuiPermissao('Gerente');
       
       $scope.irParaVendo = function () {
       $location.path('/vendas/');
