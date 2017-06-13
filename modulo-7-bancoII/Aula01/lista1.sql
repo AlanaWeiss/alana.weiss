@@ -30,5 +30,12 @@ from PedidoItem pedi inner join Produto p on pedi.IDProduto = p.IDProduto
     AND p.IDProduto = :id
   );
 
+-- refatoração/correção da ultima questão
+select sum(item.quantidade) qtde
+from pedidoitem item
+inner join pedido ped on ped.idpedido = item.idpedido
+where item.idproduto = :id
+and ped.datapedido >= trunc(sysdate, 'yyyy');
+
 COMMIT;
 
