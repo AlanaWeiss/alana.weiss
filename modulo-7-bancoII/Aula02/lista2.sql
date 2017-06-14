@@ -16,9 +16,47 @@ DECLARE
 BEGIN
  
    FOR reg IN C_ListaCli LOOP
+     DBMS_OUTPUT.PUT_LINE( '-----------------');
      DBMS_OUTPUT.PUT_LINE( 'Cidade: ' || reg.nome || '-'|| reg.uf);
     FOR i in C_ListaCliCid(reg.nome,reg.uf) LOOP
       DBMS_OUTPUT.PUT_LINE( i.nome);
       END LOOP;
    END LOOP;  
 END;
+
+--Faça uma rotina que permita atualizar o valor do pedido a partir dos seus itens.
+--Esta rotina deve receber por parametro o IDPedido e então verificar o valor total de seus itens (quantidade x valor unitário).
+DECLARE
+vValorTotal pedido.valorpedido%type;
+vIdPedido pedido.idpedido%type;
+
+ CURSOR C_Pedido(pIDPedido in number) IS
+     Select quantidade,
+            precoUnitario
+     From   PedidoItem
+     where IdPedido = pIDPedido;
+     
+BEGIN
+ vIdPedido := 162;
+ vValorTotal := 0.0;
+    FOR reg in C_Pedido(vIdPedido) LOOP 
+        vValorTotal := vValorTotal + (reg.quantidade * reg.precounitario); 
+    END LOOP;
+      DBMS_OUTPUT.PUT_LINE( vValorTotal);
+      update pedido 
+      set valorpedido = vValorTotal
+      where IdPedido = vIdPedido;
+END;
+
+--
+
+
+
+
+
+
+
+
+
+
+
