@@ -48,10 +48,25 @@ BEGIN
       where IdPedido = vIdPedido;
 END;
 
---
+--Crie uma rotina que atualize todos os clientes que não realizaram nenhum pedido nos últimos 6 meses 
+--(considere apenas o mês, dia 01 do 6º mês anterior). Definir o atributo Situacao para I.
 
-
-
+DECLARE
+    CURSOR C_ClientesSemPedidos IS
+        select c.IDCliente, c.Nome, c.situacao
+        from cliente c inner join pedido p on p.idcliente = c.idcliente
+        where idpedido not in (
+                                select idpedido
+                                from pedidoitem 
+                                where p.datapedido >= add_months(trunc(sysdate), -6));
+                                
+BEGIN
+    FOR reg IN C_ClientesSemPedidos LOOP
+        UPDATE cliente 
+        set situacao = 'I'
+        where idcliente = reg.idcliente;
+    END LOOP;
+END;
 
 
 
