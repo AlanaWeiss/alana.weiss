@@ -79,13 +79,13 @@ DECLARE
         JOIN Pedido ped ON ped.IDPEDIDO = pi.IDPEDIDO 
         WHERE TO_CHAR(ped.DATAPEDIDO, 'MM') = Mes AND TO_CHAR(ped.DATAPEDIDO, 'YYYY') = Ano
         GROUP BY p.IdProduto;
-    CURSOR C_MateriaisProduto(IdProduto IN NUMBER) IS
+    CURSOR C_MateriaisDoProduto(IdProduto IN NUMBER) IS
         SELECT m.IdMaterial, m.Descricao, pm.Quantidade FROM Material m
         JOIN ProdutoMaterial pm ON m.IdMaterial = pm.IdMaterial AND pm.IdProduto = IdProduto;
 BEGIN
-    FOR reg IN C_ListaProdutos(2, 2, 2014) LOOP
+    FOR reg IN C_ListaProdutos(10, 6, 2016) LOOP
         FOR item IN C_MateriaisProduto(reg.IdProduto) LOOP
-            DBMS_OUTPUT.PUT_LINE(item.Descricao || ' -> ' || (item.Quantidade * reg.Quantidade_Produto));
+            DBMS_OUTPUT.PUT_LINE(item.Descricao || ' - ' || (item.Quantidade * reg.Quantidade_Produto));
         END LOOP;
     END LOOP;
 END;
