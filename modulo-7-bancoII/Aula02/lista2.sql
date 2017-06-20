@@ -1,5 +1,7 @@
+--Cidades Duplicadas e clientes relacionados a elas
+
 DECLARE
- CURSOR C_ListaCli IS
+ CURSOR C_ListaCidade IS
      Select Nome, 
             count(nome) as registros ,
             Uf
@@ -8,24 +10,28 @@ DECLARE
     having count(nome)>1 
      Order  by 1;
      
-  CURSOR C_ListaCliCid (pNomecidade in string, pUfCidade in string) IS
-        Select cliente.Nome
+  CURSOR C_ListaCliente (pNomecidade in varchar2, pUfCidade in varchar2) IS
+        Select cliente.Nome, cliente.IDCidade
         from Cliente 
-        inner join Cidade on cidade.nome = pNomecidade and cidade.uf = pUfCidade
-        where cliente.idcidade = cidade.idcidade;
+        inner join Cidade on cliente.idcidade = cidade.idcidade
+        where cidade.nome = pNomecidade and cidade.uf = pUfCidade;
 BEGIN
  
-   FOR reg IN C_ListaCli LOOP
+   FOR reg IN C_ListaCidade LOOP
      DBMS_OUTPUT.PUT_LINE( '-----------------');
      DBMS_OUTPUT.PUT_LINE( 'Cidade: ' || reg.nome || '-'|| reg.uf);
-    FOR i in C_ListaCliCid(reg.nome,reg.uf) LOOP
-      DBMS_OUTPUT.PUT_LINE( i.nome);
+    FOR i in C_ListaCliente(reg.nome,reg.uf) LOOP
+      DBMS_OUTPUT.PUT_LINE( i.nome || i.idcidade);
       END LOOP;
    END LOOP;  
 END;
 
+create index IX_Cidade_NomeUF on Cidade(Nome, Uf);
+create index IX_Cliente_Cidade on Cliente(IDCidade);
+
 --Faça uma rotina que permita atualizar o valor do pedido a partir dos seus itens.
 --Esta rotina deve receber por parametro o IDPedido e então verificar o valor total de seus itens (quantidade x valor unitário).
+
 DECLARE
 vValorTotal pedido.valorpedido%type;
 vIdPedido pedido.idpedido%type;
