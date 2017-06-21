@@ -5,6 +5,7 @@
  */
 package br.com.cwi.lista1;
 
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -34,12 +35,13 @@ public class Exibicao {
              System.out.println(invertida);
              System.out.println(contarVogais);
              System.out.println(stringPalindroma);*/
-            
+           /* 
             CalendarUtils calendarUtil = new CalendarUtils();
             String dateIn = scanner.nextLine();
             Date date = (Date)formatter.parse(dateIn);
             
-            System.out.println(calendarUtil.diaSemana(date).toString());
+            System.out.println(calendarUtil.diaSemana(date).toString());*/
+           System.out.println(new Parcelator().calcular(new BigDecimal(1000), 10, 10, new Date("06/30/2016")));
             
         } catch (Exception e) {
             //...
