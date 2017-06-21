@@ -5,6 +5,9 @@
  */
 package br.com.cwi.lista1;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Scanner;
 
 /**
@@ -12,15 +15,16 @@ import java.util.Scanner;
  * @author alana'
  */
 public class Exibicao {
+    private static final SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
     public static void main(String[] args) {
         boolean resultado;
         String invertida;
         int contarVogais;
         boolean stringPalindroma;
+        
        
          try (final Scanner scanner = new Scanner(System.in)) {
-            String inputString = scanner.nextLine ();
-            
+           /* String inputString = scanner.nextLine ();
             resultado       = new ExercicioString().isEmpty(inputString);
             invertida       = new ExercicioString().inverter(inputString);
             contarVogais    = new ExercicioString().contaVogais(inputString);
@@ -29,7 +33,14 @@ public class Exibicao {
              System.out.println(resultado);
              System.out.println(invertida);
              System.out.println(contarVogais);
-             System.out.println(stringPalindroma);
+             System.out.println(stringPalindroma);*/
+            
+            CalendarUtils calendarUtil = new CalendarUtils();
+            String dateIn = scanner.nextLine();
+            Date date = (Date)formatter.parse(dateIn);
+            
+            System.out.println(calendarUtil.diaSemana(date).toString());
+            
         } catch (Exception e) {
             //...
             } 
