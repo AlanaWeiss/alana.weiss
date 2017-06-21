@@ -16,7 +16,7 @@ public class ExercicioString implements StringUtils {
     
    
     public boolean isEmpty(String string) {
-        return string.isEmpty();
+        return string == null || string.trim().isEmpty();
     }
 
    
