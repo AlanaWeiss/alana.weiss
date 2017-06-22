@@ -29,6 +29,8 @@ public class TesteDao {
 
     private static final String INSERT_TESTE = " INSERT INTO TESTE (ID, NOME) VALUES (?,?)";
 
+    /**Método criar a tabela d=no banco
+    */
      public static final void create(){
         try (final Statement statement = ConectionUtils.getConnection().createStatement()) {
                 statement.executeQuery(CREATE_TABLE);
@@ -36,7 +38,9 @@ public class TesteDao {
                 System.err.format("SQLException: %s", e);
             }
     }
-    
+     
+    /**Método dropar a tabela do banco
+    */
     public static final void drop(){
         try (final Statement statement = ConectionUtils.getConnection().createStatement()) {
                 statement.executeQuery(DROP_TABLE);
@@ -45,6 +49,8 @@ public class TesteDao {
             }
     }
     
+    /**Método para inserir dados na tabela
+    */
     public static final void insert(){
         
             try (final PreparedStatement preparedStatement = ConectionUtils.getConnection().prepareStatement(INSERT_TESTE)) {
