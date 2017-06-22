@@ -21,6 +21,9 @@ public class FileUtilsImpl implements FileUtils{
     @Override
     public boolean mk(String string) {
         try {
+            if (!string.contains(".txt")) {
+                return new File(string).mkdir();
+            }else 
             return new File(string).createNewFile();
         } catch (IOException ex) {
             Logger.getLogger(FileUtilsImpl.class.getName()).log(Level.SEVERE, null, ex);
