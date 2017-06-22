@@ -10,5 +10,5 @@ package br.com.crescer.lista2;
  * @author alana'
  */
 public interface WriterUtils {
-    void write(String file, String conteudo);
+    void write(String file, String conteudo) throws Exception;
 }
