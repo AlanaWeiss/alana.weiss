@@ -10,5 +10,5 @@ package br.com.crescer.lista2;
  * @author alana'
  */
 public interface ReaderUtils {
-    String read(String string);
+    String read(String string) throws Exception;
 }
