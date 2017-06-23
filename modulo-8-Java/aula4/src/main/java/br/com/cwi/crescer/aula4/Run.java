@@ -17,15 +17,22 @@ public class Run {
     public static void main(String[] args) {
         final EntityManagerFactory emf = Persistence.createEntityManagerFactory("CRESCER");
         final EntityManager em = emf.createEntityManager();
-        em.getTransaction().begin();
         
+        /* PARA INSERIR NO BANCO
         final Cliente cliente = new Cliente(); 
         cliente.setId(1l);
         cliente.setNome("Carlos");
 
+        em.getTransaction().begin();
         em.persist(cliente);
         
         em.getTransaction().commit();
+        
+        */
+        //PARA BUSCAR UM CLIENTE
+        final Cliente cliente = em.find(Cliente.class, 1l); 
+        System.out.println(cliente.getNome());
+        
         em.close();
         emf.close();
     }
