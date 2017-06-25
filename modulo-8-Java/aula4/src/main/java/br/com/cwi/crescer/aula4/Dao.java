@@ -5,10 +5,20 @@
  */
 package br.com.cwi.crescer.aula4;
 
+import java.util.List;
+
 /**
  *
- * @author alana.weiss
+ * @author alana'
  */
-public class Hibernate {
-    
+public interface Dao<Entity, ID> {
+
+    Entity save(Entity e);
+
+    void remove(Entity e);
+
+    Entity loadById(ID id);
+
+    List<Entity> findAll();
+
 }
