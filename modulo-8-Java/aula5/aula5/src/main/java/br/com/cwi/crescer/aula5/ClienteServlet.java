@@ -38,7 +38,9 @@ public class ClienteServlet extends HttpServlet {
             out.append("<form method=\"POST\"> <input type=\"text\" name=\"nome\" value=\"\" />");
             out.append("<input type=\"submit\"  value=\"\" />");
             out.append("</form>");
-            nomes.forEach(nome -> out.append(nome));
+            out.append("<table class=\"table table-hover\"><thead><tr><th>Nome</th></tr></thead><tbody>");
+            nomes.forEach(nome -> out.append("<tr><td>").append(nome).append("</td></tr>"));
+            out.append("</tbody></table>");
             out.append("</body>");
             out.append("</html>");
         }
@@ -51,7 +53,7 @@ public class ClienteServlet extends HttpServlet {
             nomes.add(nome);
         }
         
-       //redirecionar
+       resp.sendRedirect("/aula5/cliente");
     }
 
 }

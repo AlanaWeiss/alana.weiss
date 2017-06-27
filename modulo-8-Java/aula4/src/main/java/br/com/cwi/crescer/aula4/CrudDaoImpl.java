@@ -53,5 +53,9 @@ public class CrudDaoImpl<T, ID> implements Dao<T, ID> {
     public List<T> findAll() {
         return session.createCriteria(classe).list();
     }
-
+    
+    public void close(){
+        em.close();
+        emf.close();
+    }
 }
