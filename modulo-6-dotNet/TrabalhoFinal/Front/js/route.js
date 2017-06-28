@@ -1,4 +1,4 @@
-angular.module('app')
+angular.module('livraria')
     .config(function ($routeProvider) {
         $routeProvider
         .when('/home', {
