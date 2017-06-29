@@ -9,5 +9,17 @@ angular.module('app')
             controller: 'perfilController',
             templateUrl: 'html/perfil.html'
         })
-        .otherwise('/perfil');
+        .when('/login', {
+            controller: 'loginController',
+            templateUrl: 'html/login.html'
+        })
+        .when('/cadastrar', {
+            controller: 'cadastrarController',
+            templateUrl: 'html/cadastrar.html'
+        })
+        .when('/amigos', {
+            controller: 'amigosController',
+            templateUrl: 'html/amigos.html'
+        })
+        .otherwise('/home');
 });

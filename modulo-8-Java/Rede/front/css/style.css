@@ -8,7 +8,8 @@ body {
     margin: 0;
     font-family: 'Montserrat', sans-serif;
     padding-left: 300px;
- background-color:#757778;
+ /*background-color:#757778;*/
+ background-image: url("http://lol-wallpapers.com/wp-content/uploads/2017/01/Snowdown-Background-League-of-Legends-Artwork-Wallpaper-lol.jpg");
       background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
@@ -63,4 +64,158 @@ body {
 .menu .menu-items .menu-item .menu-link.active {
     border-right: 4px solid #ffffff;
     background: rgba(117, 119, 120, 0.1);
+}
+
+.login{
+    width: 500px;
+    height: 400px;
+    text-align: center;
+    margin: 0 270px;
+    background-color: rgba(52, 73, 94, 0.7);
+    margin-top: 150px;
+    border-radius: 7px;
+    opacity: 0.8;
+
+}
+
+.login img{
+    width: 160px;
+    height: 160px;
+    margin-top: -60px;
+    /*margin-right: 10px;*/
+    margin-bottom: 30px;
+}
+
+.login input{
+    width: 300px;
+    height: 45px;
+    font-size: 18px;
+    margin-bottom: 20px;
+    padding-left: 110px;
+    border-radius: 5px;
+}
+
+.login .btn-login{
+    font-size: 18px;
+    margin-top: 30px;
+    background-color: #fff;
+    margin-bottom: 10px;
+}
+
+.login span{
+    font-size: 18px;
+}
+
+.login .link{
+    font-size: 15px;
+    color: #fff;
+}
+
+.login .link:hover{
+    color: grey;
+}
+
+.cadastro{
+    width: 500px;
+    height: 900px;
+    text-align: center;
+    margin: 0 270px;
+    background-color: rgba(52, 73, 94, 0.7);
+    margin-top: 150px;
+    border-radius: 7px;
+    opacity: 0.8;
+
+}
+
+.cadastro img{
+    width: 160px;
+    height: 160px;
+    margin-top: -60px;
+    /*margin-right: 10px;*/
+    margin-bottom: 30px;
+}
+
+.cadastro input{
+    width: 300px;
+    height: 45px;
+    font-size: 18px;
+    margin-bottom: 20px;
+    /*padding-left: 110px;*/
+    border-radius: 5px;
+    text-align: center;
+}
+
+.cadastro .btn-login{
+    font-size: 18px;
+    margin-top: 30px;
+    background-color: #fff;
+    margin-bottom: 10px;
+}
+
+.cadastro span, .cadastro label{
+    font-size: 18px;
+}
+
+.container{
+    margin-top: 30px;
+    height: 100vh;
+    background-color: rgba(192, 192, 192, 0.5);
+}
+
+.container .publicar{
+    padding: 30px;
+    margin-top: 15px;
+    background-color: rgba(192, 192, 192, 0.8);
+}
+
+.collapse #collapse-compartilhar{
+    margin-top: 50px;
+}
+
+.publicar button{
+    margin-bottom: 20px;
+}
+
+.publicar .pub-btn{
+    margin-top: 20px;
+    background-color: #2f3947;
+}
+
+.publicar .btn-info{
+    background-color: #2f3947;
+}
+
+.publicar .profile-img{
+    border-radius: 50%;
+    width: 100px;
+}
+
+.container .publicar .postagem{
+    padding: 30px;
+    margin-top: 15px;
+    background-color: rgba(47, 57, 71, 0.5);
+}
+
+.container .publicar label{
+    font-size: 18px;
+}
+
+.container .publicar input{
+    width: 300px;
+    height: 35px;
+    font-size: 18px;
+    /*padding-left: 110px;*/
+    border-radius: 5px;
+    text-align: center;
+}
+
+.container .publicar form button{
+   margin-top: 15px;
+}
+
+.container .amigo{
+    padding: 30px;
+    margin-top: 15px;
+    background-color: rgba(47, 57, 71, 0.5);
+    margin-right: 5px;
 }
