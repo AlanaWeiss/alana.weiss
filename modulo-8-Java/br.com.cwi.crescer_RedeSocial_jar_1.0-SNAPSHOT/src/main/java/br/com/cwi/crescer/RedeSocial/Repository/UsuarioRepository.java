@@ -3,12 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.cwi.crescer.redesocial.Entity;
+package br.com.cwi.crescer.aula7.Repository;
+
+import br.com.cwi.crescer.aula7.Entity.Ator;
+import org.springframework.data.repository.CrudRepository;
 
 /**
  *
  * @author alana.weiss
  */
-public class Usuario {
+public interface AtorRepository extends CrudRepository<Ator, Long> {
     
 }
