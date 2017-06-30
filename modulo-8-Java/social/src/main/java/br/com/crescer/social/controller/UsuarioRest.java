@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.cwi.crescer.RedeSocial.Controller;
+package br.com.crescer.social.controller;
 
-import br.com.cwi.crescer.RedeSocial.Entity.Usuario;
-import br.com.cwi.crescerRedeSocial.Service.UsuarioService;
+import br.com.crescer.social.entity.Usuario;
+import br.com.crescer.social.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;

@@ -3,11 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.cwi.crescerRedeSocial.Service;
+package br.com.crescer.social.service;
 
-import br.com.cwi.crescer.RedeSocial.Entity.Usuario;
-import br.com.cwi.crescer.RedeSocial.Repository.UsuarioRepository;
+import br.com.crescer.social.entity.Usuario;
+import br.com.crescer.social.repository.UsuarioRepository;
+import java.math.BigDecimal;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 /**
@@ -23,6 +25,7 @@ public class UsuarioService {
     }
     
     public Usuario save(Usuario a){
+        a.setSenha(new BCryptPasswordEncoder().encode(a.getSenha()));
         return repository.save(a);
     }
     
@@ -41,5 +44,13 @@ public class UsuarioService {
         Usuario at;
         at = (Usuario) repository.findOne(a.getIdusuario());
         repository.delete(at);
+    }
+    
+    public Usuario findByEmail(String email) {
+    return repository.findOneByEmail(email);
+  }
+    
+    public Usuario findByIdUsuario(BigDecimal idusuario){
+        return repository.findOneByIdusuario(idusuario);
     }
 }

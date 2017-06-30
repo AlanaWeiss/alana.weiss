@@ -3,16 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.cwi.crescer.RedeSocial.Repository;
+package br.com.crescer.social.repository;
 
-import br.com.cwi.crescer.RedeSocial.Entity.Usuario;
+
+import br.com.crescer.social.entity.Amizade;
+import br.com.crescer.social.entity.Usuario;
 import java.math.BigDecimal;
+import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 
 /**
  *
  * @author alana.weiss
  */
-public interface UsuarioRepository extends CrudRepository<Usuario, BigDecimal> {
+
+public interface AmizadeRepository extends CrudRepository<Amizade, BigDecimal> {
     
 }
