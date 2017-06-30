@@ -3,11 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.cwi.crescer.aula7.Service;
+package br.com.cwi.crescerRedeSocial.Service;
 
-import br.com.cwi.crescer.aula7.Repository.AtorRepository;
-import br.com.cwi.crescer.aula7.Entity.Ator;
-import java.util.List;
+import br.com.cwi.crescer.RedeSocial.Entity.Usuario;
+import br.com.cwi.crescer.RedeSocial.Repository.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,21 +15,31 @@ import org.springframework.stereotype.Service;
  * @author alana.weiss
  */
 @Service
-public class AtorService {
+public class UsuarioService {
     @Autowired
-    AtorRepository repository;
-    public Iterable<Ator> find(){
+    UsuarioRepository repository;
+    public Iterable<Usuario> find(){
         return repository.findAll();
     }
     
-    public Ator save(Ator a){
+    public Usuario save(Usuario a){
         return repository.save(a);
     }
     
-    public Ator update(Ator a){
-        Ator at;
-        at = (Ator) repository.findOne(a.getId());
+    public Usuario update(Usuario a){
+        Usuario at;
+        at = (Usuario) repository.findOne(a.getIdusuario());
         at.setNome(a.getNome());
+        at.setDatanascimento(a.getDatanascimento());
+        at.setEmail(a.getEmail());
+        at.setNick(a.getNick());
+        at.setOrganizacao(a.getOrganizacao());
         return repository.save(at);
+    }
+    
+    public void delete(Usuario a){
+        Usuario at;
+        at = (Usuario) repository.findOne(a.getIdusuario());
+        repository.delete(at);
     }
 }

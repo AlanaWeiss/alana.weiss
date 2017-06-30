@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.cwi.crescer.aula7.Controller;
+package br.com.cwi.crescer.RedeSocial.Controller;
 
-import br.com.cwi.crescer.aula7.Service.AtorService;
-import br.com.cwi.crescer.aula7.Entity.Ator;
+import br.com.cwi.crescer.RedeSocial.Entity.Usuario;
+import br.com.cwi.crescerRedeSocial.Service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,26 +19,31 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @author alana.weiss
  */
 @Controller
-public class AtorRest {
+public class UsuarioRest {
 
     @Autowired
-    AtorService service;
+    UsuarioService service;
 
     @ResponseBody
-    @RequestMapping(value = "/", method = RequestMethod.GET)
-    public Iterable<Ator> list() {
+    @RequestMapping(value = "/usuario", method = RequestMethod.GET)
+    public Iterable<Usuario> list() {
         return service.find();
     }
 
     @ResponseBody
-    @RequestMapping(value = "/ator", method = RequestMethod.POST)
-    public Ator list(@RequestBody Ator a) {
+    @RequestMapping(value = "/usuario", method = RequestMethod.POST)
+    public Usuario list(@RequestBody Usuario a) {
         return service.save(a);
     }
     
     @ResponseBody
-    @RequestMapping(value = "/ator", method = RequestMethod.PUT)
-    public Ator update(@RequestBody Ator a) {
+    @RequestMapping(value = "/usuario", method = RequestMethod.PUT)
+    public Usuario update(@RequestBody Usuario a) {
         return service.update(a);
+    }
+    
+    @RequestMapping(value = "/usuario", method = RequestMethod.DELETE)
+    public void delete(@RequestBody Usuario a) {
+        service.delete(a);
     }
 }
