@@ -50,7 +50,7 @@ public class UsuarioService {
     return repository.findOneByEmail(email);
   }
     
-    public Usuario findByIdUsuario(BigDecimal idusuario){
-        return repository.findOneByIdusuario(idusuario);
+    public Usuario findByIdusuario(BigDecimal idusuario){
+        return repository.findOne(idusuario);
     }
 }

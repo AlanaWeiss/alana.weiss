@@ -18,5 +18,8 @@ import org.springframework.data.repository.CrudRepository;
  */
 
 public interface AmizadeRepository extends CrudRepository<Amizade, BigDecimal> {
-    
+    public Amizade findByIdsolicitanteAndStatus(BigDecimal id, String status);
+//    public List<Usuario> findbyIdSolicitante(BigDecimal id);
+    public Long countByIdsolicitadoAndStatus(Usuario usuario, Character status);
+    public List<Amizade> findAllByIdsolicitanteOrIdsolicitado(Usuario usuario, Usuario usuario2);
 }

@@ -77,8 +77,10 @@ public class Usuario implements Serializable {
     @NotNull
     @Column(name = "IDUSUARIO")
     private BigDecimal idusuario;
+    @JsonIgnore
     @OneToMany(mappedBy = "idusuario")
     private Collection<Post> postCollection;
+    @JsonIgnore
     @OneToMany(mappedBy = "idusuario")
     private Collection<Curtida> curtidaCollection;
     @JsonIgnore
