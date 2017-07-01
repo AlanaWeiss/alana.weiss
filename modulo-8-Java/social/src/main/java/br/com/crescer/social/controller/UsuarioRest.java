@@ -7,11 +7,19 @@ package br.com.crescer.social.controller;
 
 import br.com.crescer.social.entity.Usuario;
 import br.com.crescer.social.service.UsuarioService;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
@@ -19,30 +27,37 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @author alana.weiss
  */
 @Controller
+@RequestMapping(value = "/usuario")
 public class UsuarioRest {
 
     @Autowired
     UsuarioService service;
 
     @ResponseBody
-    @RequestMapping(value = "/usuario", method = RequestMethod.GET)
-    public Iterable<Usuario> list() {
-        return service.find();
+     @GetMapping
+    public Map<String, Object> listarUsuarios(Authentication authentication) {
+        User u = Optional.ofNullable(authentication)
+                .map(Authentication::getPrincipal)
+                .map(User.class::cast)
+                .orElse(null);
+        final HashMap<String, Object> hashMap = new HashMap<>();
+        hashMap.put("dados", u);
+        return hashMap;
     }
 
     @ResponseBody
-    @RequestMapping(value = "/usuario", method = RequestMethod.POST)
+    @PostMapping
     public Usuario list(@RequestBody Usuario a) {
         return service.save(a);
     }
     
     @ResponseBody
-    @RequestMapping(value = "/usuario", method = RequestMethod.PUT)
+    @PutMapping
     public Usuario update(@RequestBody Usuario a) {
         return service.update(a);
     }
     
-    @RequestMapping(value = "/usuario", method = RequestMethod.DELETE)
+    @DeleteMapping
     public void delete(@RequestBody Usuario a) {
         service.delete(a);
     }

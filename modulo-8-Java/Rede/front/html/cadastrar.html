@@ -1,18 +1,18 @@
 <div class="corpo">
     <div class="cadastro">
         <img src="http://www.freeiconspng.com/uploads/league-of-legends-icon-5.png" alt="">
-        <form novalidate name="formLogin">
+        <form novalidate name="formCadastro">
             <label for="user">Qual seu nome?</label><br>
             <input type="text" name="user" value="" placeholder="Marilene da Silva" ng-model="user.nome" required><br>
             
             <label for="idade">Qual sua idade?</label><br>
-            <input type="number" name="idade" value="" placeholder="17" ng-model="user.idade" required><br>
+            <input type="date" name="idade" value=""  ng-model="user.datanascimento" required><br>
 
             <label for="email">Qual seu email?</label><br>
             <input type="email" name="email" value="" placeholder="marile@terra.com" ng-model="user.email" required><br>
 
             <label for="password">Digite sua senha</label><br>
-            <input type="password" name="password" value="" placeholder="Senha" ng-model="user.password" required><br>
+            <input type="password" name="password" value="" placeholder="Senha" ng-model="user.senha" required><br>
 
             <label for="org">Qual sua organização?</label><br>
             <input type="text" name="org" placeholder="Free Agent" ng-model="user.organizacao"><br>
@@ -20,10 +20,13 @@
             <label for="nick">Qual seu nick no LOL?</label><br>
             <input type="text" name="nick" value="" placeholder="TheMissFreak" ng-model="user.nick"><br>
 
-            <label for="url">Insira a url da sua foto</label><br>
-            <input type="text" name="url" value="" placeholder="Url da foto" ng-model="user.urlFoto">
+            <label for="url">Sexo</label><br>
+            <select>
+                <option value="feminino">Feminino</option>
+                <option value="masculino">Masculino</option>
+            </select>
             <br>
-            <button type="submit" class="btn btn-login">Cadastrar</button>
+            <button type="submit" class="btn btn-login" ng-click="cadastrar()">Cadastrar</button>
             <br>
         </form>
     </div>
