@@ -36,10 +36,12 @@ public class UsuarioRest {
     @ResponseBody
      @GetMapping
     public Map<String, Object> listarUsuarios(Authentication authentication) {
-        User u = Optional.ofNullable(authentication)
-                .map(Authentication::getPrincipal)
-                .map(User.class::cast)
-                .orElse(null);
+        Usuario u = Optional.ofNullable(authentication)
+            .map(Authentication::getPrincipal)
+            .map(User.class::cast)
+            .map(User::getUsername)
+            .map(service::findByEmail)
+            .orElse(null);
         final HashMap<String, Object> hashMap = new HashMap<>();
         hashMap.put("dados", u);
         return hashMap;

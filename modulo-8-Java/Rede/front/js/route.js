@@ -8,6 +8,7 @@ angular.module('app')
         .when('/perfil', {
             controller: 'perfilController',
             templateUrl: 'html/perfil.html'
+            
         })
         .when('/login', {
             controller: 'loginController',

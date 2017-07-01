@@ -1,7 +1,4 @@
 angular.module('app')
-    .controller('perfilController', function ($scope, $rootScope) {
-    $rootScope.user = {nome: "alana", idade: 19};
-    console.log($rootScope.user);
-
-    $rootScope.isAutenticado = true;
+    .controller('perfilController', function ($scope, authService, $location) {
+    $scope.user = authService.getUsuario();
 });
