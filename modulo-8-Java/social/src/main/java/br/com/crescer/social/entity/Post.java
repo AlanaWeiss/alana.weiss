@@ -5,6 +5,7 @@
  */
 package br.com.crescer.social.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -47,6 +48,7 @@ public class Post implements Serializable {
     @Size(max = 400)
     @Column(name = "MENSAGEM")
     private String mensagem;
+    @JsonFormat(pattern="dd/MM/yyyy")
     @Column(name = "DATAPUBLICACAO")
     @Temporal(TemporalType.TIMESTAMP)
     private Date datapublicacao;

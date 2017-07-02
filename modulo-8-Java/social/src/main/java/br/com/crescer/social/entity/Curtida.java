@@ -5,6 +5,7 @@
  */
 package br.com.crescer.social.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Collection;
@@ -41,6 +42,7 @@ public class Curtida implements Serializable {
     @NotNull
     @Column(name = "IDCURTIDA")
     private BigDecimal idcurtida;
+    @JsonIgnore
     @OneToMany(mappedBy = "curtidas")
     private Collection<Post> postCollection;
     @JoinColumn(name = "IDUSUARIO", referencedColumnName = "IDUSUARIO")

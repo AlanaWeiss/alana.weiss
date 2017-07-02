@@ -5,19 +5,18 @@
  */
 package br.com.crescer.social.controller;
 
-import br.com.crescer.social.entity.Amizade;
 import br.com.crescer.social.entity.Usuario;
 import br.com.crescer.social.service.AmizadeService;
 import br.com.crescer.social.service.UsuarioService;
-import java.math.BigDecimal;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -41,8 +40,16 @@ public class UsuarioRest {
 
     @ResponseBody
      @GetMapping
-    public Usuario listarUsuarios(Authentication authentication) {
-        return logado.getDetalhes();
+        public Map<String, Object> listarUsuarios(Authentication authentication) {
+        Usuario u = Optional.ofNullable(authentication)
+                .map(Authentication::getPrincipal)
+                .map(User.class::cast)
+                .map(User::getUsername)
+                .map(service::findByEmail)
+                .orElse(null);
+        final HashMap<String, Object> hashMap = new HashMap<>();
+        hashMap.put("dados", u);
+        return hashMap;
     }
 
     @ResponseBody
