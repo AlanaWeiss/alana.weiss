@@ -1,4 +1,4 @@
 angular.module('app')
-    .controller('homeController', function ($scope, $rootScope, $location) {
-   
+    .controller('homeController', function ($scope, authService, $location) {
+    $scope.user = authService.getUsuario();
 });
