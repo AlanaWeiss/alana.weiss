@@ -40,17 +40,17 @@
         <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#collapse-compartilhar">Compartilhar experiência</button>
         <div id="collapse-compartilhar" class="collapse clearfix">
             <form class="form-group">
-                <textarea class="form-control" rows="10" cols="120" ng-model="post.mensagem"></textarea>
+                <textarea class="form-control" rows="5" cols="120" ng-model="post.mensagem"></textarea>
                 <button type="submit" class="btn btn-info pull-right pub-btn" ng-click="publicar()"> Publicar</button>
             </form>
         </div>
     </div>
 
     <div class="publicar">
-        <div class="postagem">
-            <img class="profile-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkSHSA6CLkQr93fJmJ-W2LwFYp_gLnhI5ugT7RFbrfiWzC7vXN1xXc5dDF" alt="">
-            <h6>Nome da criarutra</h6>
-            <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos minus asperiores aperiam, nesciunt quisquam? Velit nulla ex ea consequatur, facere molestias aliquid laborum perferendis explicabo quia, cupiditate placeat consectetur incidunt.</p>
+        <div class="postagem" ng-repeat="post in posts | orderBy: post.data">
+            <h4>{{post.idusuario.nome}}</h4>
+            <!--<h6>{{post.data}}</h6>-->
+            <p>{{post.mensagem}}</p>
             <br>
         </div>
     </div>

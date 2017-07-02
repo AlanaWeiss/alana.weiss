@@ -22,5 +22,9 @@ angular.module('app')
             controller: 'amigosController',
             templateUrl: 'html/amigos.html'
         })
+        .when('/vizualizar', {
+            controller: 'perfilAmigoController',
+            templateUrl: 'html/perfilAmigo.html'
+        })
         .otherwise('/home');
 });

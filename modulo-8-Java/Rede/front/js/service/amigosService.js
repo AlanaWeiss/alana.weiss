@@ -1,25 +1,21 @@
 angular.module('app')
-  .factory('homeService', function ($http) {
+  .factory('amigosService', function ($http) {
 
-    let urlBase = 'http://localhost:9090/api/publicacao/';
+    let urlBase = 'http://localhost:9090/api/';
 
     // let clientes;
 
     //getProduto().then(response => clientes = response.dados);
 
-    function getPost(user) {
+    function getAmigos(user) {
       return $http({
-        url: urlBase + 'amigos/'+user.idusuario,
+        url: urlBase + 'amizade/pendentes/'+user.idusuario,
         method: 'GET'
+        // headers: {
+        //   Authorization: headerAuth
+        // }
       });
     };
-
-    function getPostUsuario(user) {
-      return $http({
-        url: urlBase + user.idusuario,
-        method: 'GET'
-      });
-    }
 
 
     function criarPublicacao(publicacao) {
@@ -33,6 +29,6 @@ angular.module('app')
 
     return {
       criarPublicacao: criarPublicacao,
-      getPost : getPost
+      getAmigos : getAmigos
     };
   });

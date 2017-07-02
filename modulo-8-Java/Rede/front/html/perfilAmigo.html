@@ -18,7 +18,7 @@
             </a>
         </li>
         <li class="menu-item">
-            <a class="menu-link active" href="#">
+            <a class="menu-link" href="#!/amigos">
                 <!--<img src="icons/question.svg" alt="">-->
                 Amigos
             </a>
@@ -26,28 +26,24 @@
     </ul>
 </nav>
 
-
 <div class="container">
-    <div class="publicar clearfix">
-         <form class="">
-        <div class="form-group">
-            <label for="">Procure um amigo</label>
-          <input type="text" class="" placeholder="joao felipe">
-        <button type="submit" class="btn btn-default">Procurar</button>
+    <div class="publicar">
+        <div class="informacoes">
+            <h3><bold><em>{{user.nome}}</em></bold></h3>
+            <h4>Nick Lol: {{user.nick}}</h4>
+            <p>Email: {{user.email}}</p>
+            <p>Sexo: {{user.sexo}}</p>
+            <p>Organizacao: {{user.organizacao}}</p>
         </div>
-      </form>
     </div>
-
-    <div class="publicar clearfix ">
-        <div class="amigo pull-left" ng-repeat="amigo in amigos">
-            <div class="infos">
-                <h4 class="titulo">{{amigo.nome}}</h4>
-                <p>Email: {{amigo.email}}</p>
-                <!--<p>Aniversario: {{new Date(amigo.datanascimento)}}</p>-->
-                <p>Organização: {{amigo.organizacao}}</p>
-                <p>Nick Lol: {{amigo.nick}}</p>
-            </div>
+    <div class="publicar">
+        <div class="informacoes">
+            <div class="postagem" ng-repeat="post in posts | orderBy: post.data">
+            <h4>{{post.idusuario.nome}}</h4>
+            <!--<h6>{{post.data}}</h6>-->
+            <p>{{post.mensagem}}</p>
             <br>
+        </div>
         </div>
     </div>
 </div>

@@ -32,27 +32,16 @@ public class AmizadeService {
     public Amizade save(Amizade a){
        return repository.save(a);
     }
-//    
-//    public List<Amizade> findAll() {
-//    return (List<Amizade>) repository.findAll();
-//  }
+      public Amizade save2(Amizade b){
+        
+       return repository.save(b);
+    }
 
   
   public Amizade findById(BigDecimal id) {
     return repository.findOne(id);
   }
-//  
-//  
-//  public Long countByIdUsuarioAndStatus(BigDecimal idUsuario, Character aceito) {
-//    final Usuario usuario = new Usuario();
-//    usuario.setIdusuario(idUsuario);
-//    
-//    return repository.countByIdsolicitadoAndStatus(usuario, aceito);
-//  }
-//  
-//  public Amizade findAmizade(BigDecimal id, String status){
-//          return repository.findByIdsolicitanteAndStatus(id, status);
-//  }
+
   
    public List<Amizade> findAllByIdUsuario(BigDecimal idUsuario) {
     final Usuario usuario = new Usuario();

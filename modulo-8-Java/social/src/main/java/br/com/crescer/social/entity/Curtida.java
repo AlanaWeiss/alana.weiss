@@ -45,6 +45,7 @@ public class Curtida implements Serializable {
     @JsonIgnore
     @OneToMany(mappedBy = "curtidas")
     private Collection<Post> postCollection;
+    @JsonIgnore
     @JoinColumn(name = "IDUSUARIO", referencedColumnName = "IDUSUARIO")
     @ManyToOne
     private Usuario idusuario;

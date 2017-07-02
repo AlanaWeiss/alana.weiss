@@ -2,6 +2,7 @@ angular.module('app')
     .controller('homeController', function ($scope, authService, $location, homeService, toastr) {
     $scope.user = authService.getUsuario();
     console.log($scope.user);
+    listar();
 
     $scope.logout = function () {
     authService.logout();
@@ -13,7 +14,16 @@ angular.module('app')
         console.log($scope.post);
          homeService.criarPublicacao($scope.post).then( function (){
               toastr.success('Publicado com sucesso!');
+              listar();
+              $scope.post = {};
              
         });
+    }
+
+    function listar() {
+        homeService.getPost($scope.user).then(function (response) {
+            $scope.posts = response.data;
+            console.log($scope.posts);
+        })
     }
 });
