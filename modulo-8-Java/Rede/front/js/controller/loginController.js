@@ -1,20 +1,20 @@
 angular.module('app')
-    .controller('loginController', function ($scope, authService, $location) {
+    .controller('loginController', function ($scope, authService, $location,toastr) {
    
    $scope.login = function (usuario) {
 
     if ($scope.formLogin.$valid) {
     authService.login(usuario)
       .then(function (response) {
-            alert('Login com sucesso!');
+            toastr.success('Login com sucesso!');
             $location.path('/home');
           
         },
         function (response) {
-          alert('Login ou Senha inválidos!');
+          toastr.success('Login ou Senha inválidos!');
         });
     } else {
-        alert('Preencha todos os dados corretamente.', 'Dados inválidos!');
+        toastr.error('Preencha todos os dados corretamente.', 'Dados inválidos!');
     }
   };
 

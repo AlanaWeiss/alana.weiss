@@ -25,6 +25,11 @@
                 Convites
             </a>
         </li>
+        <li class="menu-item">
+            <a class="menu-link" data-ng-click="logout()">
+                Logout
+            </a>
+        </li>
     </ul>
 </nav>
 
@@ -35,8 +40,8 @@
         <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#collapse-compartilhar">Compartilhar experiência</button>
         <div id="collapse-compartilhar" class="collapse clearfix">
             <form class="form-group">
-                <textarea class="form-control" rows="10" cols="120"></textarea>
-                <button type="submit" class="btn btn-info pull-right pub-btn "> Publicar</button>
+                <textarea class="form-control" rows="10" cols="120" ng-model="post.mensagem"></textarea>
+                <button type="submit" class="btn btn-info pull-right pub-btn" ng-click="publicar()"> Publicar</button>
             </form>
         </div>
     </div>
