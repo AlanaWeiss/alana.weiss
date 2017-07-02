@@ -7,7 +7,9 @@ package br.com.crescer.social.repository;
 
 
 import br.com.crescer.social.entity.Post;
+import br.com.crescer.social.entity.Usuario;
 import java.math.BigDecimal;
+import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 
 /**
@@ -16,5 +18,6 @@ import org.springframework.data.repository.CrudRepository;
  */
 
 public interface PostRepository extends CrudRepository<Post, BigDecimal> {
-    
+    public List<Post> findAllByIdusuario(Usuario u);
+    public List<Post> findByIdusuarioInOrderByIdpostDesc(List<Usuario> amigos);
 }

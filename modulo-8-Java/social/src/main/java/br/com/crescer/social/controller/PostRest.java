@@ -6,30 +6,48 @@
 package br.com.crescer.social.controller;
 
 import br.com.crescer.social.entity.Post;
+import br.com.crescer.social.entity.Usuario;
 import br.com.crescer.social.service.PostService;
+import br.com.crescer.social.service.UsuarioService;
+import java.math.BigDecimal;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  *
  * @author alana.weiss
  */
-@Controller
+@RestController
 @RequestMapping(value = "/publicacao")
 public class PostRest {
 
     @Autowired
     PostService service;
+    @Autowired
+    UsuarioService uservice;
 
     
-    @ResponseBody
     @PostMapping
-    public Post list(@RequestBody Post a) {
+    public Post publicar(@RequestBody Post a) {
         return service.save(a);
+    }
+    
+    @GetMapping(value = "/{id}")
+    public List<Post> getPostUsuario(@PathVariable BigDecimal id){
+        Usuario u = uservice.findByIdusuario(id);
+        return service.findAllByIdusuario(u);
+    }
+    
+    @GetMapping(value = "/amigos/{id}")
+    public List<Post> getPostUsuarioEAmigos(@PathVariable BigDecimal id){
+        Usuario u = uservice.findByIdusuario(id);
+        return service.findPostAmigosEUsuario(u);
     }
 //    
 //    @ResponseBody

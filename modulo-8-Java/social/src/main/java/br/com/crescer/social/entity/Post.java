@@ -48,7 +48,7 @@ public class Post implements Serializable {
     @Size(max = 400)
     @Column(name = "MENSAGEM")
     private String mensagem;
-    @JsonFormat(pattern="dd/MM/yyyy")
+   // @JsonFormat(pattern="dd/MM/yyyy")
     @Column(name = "DATAPUBLICACAO")
     @Temporal(TemporalType.TIMESTAMP)
     private Date datapublicacao;
