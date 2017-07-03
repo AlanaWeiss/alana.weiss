@@ -52,6 +52,8 @@
             <hr>
             <!--<h6>{{post.data}}</h6>-->
             <p>{{post.mensagem}}</p>
+            <button type="submit"ng-click="curtir(post.idpost)" class="btn btn-que" ng-disabled="curtido" >Curtir</button>
+            <button type="submit"ng-click="descurtir(post.idpost)" class="btn btn-que" ng-disabled="descurtido">Descurtir</button>
             <br>
         </div>
     </div>

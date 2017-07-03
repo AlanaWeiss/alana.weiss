@@ -246,3 +246,8 @@ body {
     color: black;
     margin-bottom: 15px;    
 }
+
+.publicar .postagem .btn-que{
+    color:black;
+    opacity: 0.5;
+}
