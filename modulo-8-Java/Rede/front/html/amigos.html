@@ -50,7 +50,7 @@
     <div class="publicar clearfix ">
         <div class="amigo pull-left" ng-repeat="amigo in amigos">
             <div class="infos">
-                <h4 class="titulo">{{amigo.nome}}</h4>
+                <h4 class="titulo" ng-click="perfilAmigo(amigo.idusuario)">{{amigo.nome}}</h4>
                 <p>Email: {{amigo.email}}</p>
                 <!--<p>Aniversario: {{new Date(amigo.datanascimento)}}</p>-->
                 <p>Organização: {{amigo.organizacao}}</p>

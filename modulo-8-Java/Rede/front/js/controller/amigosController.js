@@ -33,4 +33,8 @@ angular.module('app')
                     toastr.success('Solicitado!');
                 })
          }
+
+         $scope.perfilAmigo = function (idusuario){
+            $location.path('/vizualizar/' + idusuario);
+         }
 });

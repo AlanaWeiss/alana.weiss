@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -49,16 +50,5 @@ public class PostRest {
         Usuario u = uservice.findByIdusuario(id);
         return service.findPostAmigosEUsuario(u);
     }
-//    
-//    @ResponseBody
-//    @PutMapping
-//    public Usuario update(@RequestBody Usuario a) {
-//        return service.update(a);
-//    }
-//    
-//    @DeleteMapping
-//    public void delete(@RequestBody Usuario a) {
-//        service.delete(a);
-//    }
-    
+  
 }

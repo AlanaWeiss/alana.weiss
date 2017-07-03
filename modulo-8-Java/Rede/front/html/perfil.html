@@ -1,3 +1,5 @@
+<div class="container">
+
 
 			<nav class="menu">
 				<div class="profile">
@@ -28,4 +30,25 @@
 					</li>
 				</ul>
 			</nav>
-	
+
+			 <div class="publicar">
+        <div class="informacoes">
+            <h3><bold><em>{{userA.nome}}</em></bold></h3>
+            <h4>Nick Lol: {{userA.nick}}</h4>
+            <p>Email: {{userA.email}}</p>
+            <p>Sexo: {{userA.sexo}}</p>
+            <p>Organizacao: {{userA.organizacao}}</p>
+        </div>
+		<button type="submit" ng-click="alterar()">Alterar dados</button>
+    </div>
+    <div class="publicar">
+        <div class="informacoes">
+            <div class="postagem" ng-repeat="post in posts | orderBy: post.data">
+            <h4>{{post.idusuario.nome}}</h4>
+            <!--<h6>{{post.data}}</h6>-->
+            <p>{{post.mensagem}}</p>
+            <br>
+        </div>
+        </div>
+    </div>
+	</div>

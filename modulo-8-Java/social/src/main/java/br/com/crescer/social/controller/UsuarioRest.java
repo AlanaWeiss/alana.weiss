@@ -8,6 +8,7 @@ package br.com.crescer.social.controller;
 import br.com.crescer.social.entity.Usuario;
 import br.com.crescer.social.service.AmizadeService;
 import br.com.crescer.social.service.UsuarioService;
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
@@ -17,6 +18,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -72,5 +74,9 @@ public class UsuarioRest {
         return service.findBySearch(busca);
     }
             
+    @GetMapping("/{id}")
+    public Usuario findUsuario(@PathVariable BigDecimal id) {
+        return service.findByIdusuario(id);
+    }
     
 }

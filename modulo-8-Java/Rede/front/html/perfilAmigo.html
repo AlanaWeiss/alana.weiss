@@ -1,5 +1,5 @@
 
-<div class="container">]
+<div class="container">
     <div class="row">
 
 <nav class="menu col-md-3">
@@ -11,20 +11,22 @@
     <ul class="menu-items">
         <li class="menu-item">
             <a class="menu-link" href="#!/perfil">
-                <!--<img src="icons/letter.svg" alt="">-->
                 Perfil
             </a>
         </li>
         <li class="menu-item">
             <a class="menu-link" href="#!/home">
-                <!--<img src="icons/home.svg" alt="">-->
                 Home
             </a>
         </li>
         <li class="menu-item">
             <a class="menu-link" href="#!/amigos">
-                <!--<img src="icons/question.svg" alt="">-->
                 Amigos
+            </a>
+        </li>
+        <li class="menu-item">
+            <a class="menu-link active" href="#!/vizualizar">
+                Perfil Amigo
             </a>
         </li>
     </ul>
@@ -32,17 +34,18 @@
 </div>
     <div class="publicar">
         <div class="informacoes">
-            <h3><bold><em>{{user.nome}}</em></bold></h3>
-            <h4>Nick Lol: {{user.nick}}</h4>
-            <p>Email: {{user.email}}</p>
-            <p>Sexo: {{user.sexo}}</p>
-            <p>Organizacao: {{user.organizacao}}</p>
+            <h3><bold><em>{{userA.nome}}</em></bold></h3>
+            <h4>Nick Lol: {{userA.nick}}</h4>
+            <p>Email: {{userA.email}}</p>
+            <p>Sexo: {{userA.sexo}}</p>
+            <p>Organizacao: {{userA.organizacao}}</p>
         </div>
     </div>
     <div class="publicar">
         <div class="informacoes">
             <div class="postagem" ng-repeat="post in posts | orderBy: post.data">
             <h4>{{post.idusuario.nome}}</h4>
+            <hr>
             <!--<h6>{{post.data}}</h6>-->
             <p>{{post.mensagem}}</p>
             <br>

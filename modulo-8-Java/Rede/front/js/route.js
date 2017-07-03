@@ -8,7 +8,10 @@ angular.module('app')
         .when('/perfil', {
             controller: 'perfilController',
             templateUrl: 'html/perfil.html'
-            
+        })
+        .when('/alterar/:idusuario', {
+            controller: 'perfilController',
+            templateUrl: 'html/alterar.html'
         })
         .when('/login', {
             controller: 'loginController',
@@ -22,7 +25,7 @@ angular.module('app')
             controller: 'amigosController',
             templateUrl: 'html/amigos.html'
         })
-        .when('/vizualizar', {
+        .when('/vizualizar/:idusuario', {
             controller: 'perfilAmigoController',
             templateUrl: 'html/perfilAmigo.html'
         })

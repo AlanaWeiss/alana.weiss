@@ -1,0 +1,30 @@
+<div class="corpo">
+    <div class="cadastro">
+        <img src="http://download.seaicons.com/icons/fazie69/league-of-legends/512/Riven-Championship-icon.png" alt="">
+        <form novalidate name="formCadastro">
+            <label for="user">Nome?</label><br>
+            <input type="text" name="user" value="" placeholder="Marilene da Silva" ng-model="user.nome" required><br>
+            
+            <label for="idade">Data de nascimento</label><br>
+            <input type="date" name="idade" value=""  ng-model="user.datanascimento" required><br>
+
+            <label for="email">Email</label><br>
+            <input type="email" name="email" value="" placeholder="marile@terra.com" ng-model="user.email" required><br>
+
+            <label for="org">Organização</label><br>
+            <input type="text" name="org" placeholder="Free Agent" ng-model="user.organizacao"><br>
+
+            <label for="nick">Nick no LOL</label><br>
+            <input type="text" name="nick" value="" placeholder="TheMissFreak" ng-model="user.nick"><br>
+
+            <label for="url">Sexo</label><br>
+            <select>
+                <option ng-value="feminino">Feminino</option>
+                <option ng-value="masculino">Masculino</option>
+            </select>
+            <br>
+            <button type="submit" class="btn btn-login" ng-click="salvarAlteracao()">Cadastrar</button>
+            <br>
+        </form>
+    </div>
+</div>

@@ -54,4 +54,9 @@ public class CurtidaService {
         Post p = postServive.findPostById(idpost);
         return repository.findByIdpostAndIdusuario(p,u);
     }
+    
+//    public List<Curtida> findAllPost(BigDecimal idpost){
+//        Post p = postServive.findPostById(idpost);
+//        return repository.findAllByIdpost(p);
+//    }
 }

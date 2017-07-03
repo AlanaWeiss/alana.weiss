@@ -16,7 +16,7 @@ angular.module('app')
 
     function getPostUsuario(user) {
       return $http({
-        url: urlBase + user.idusuario,
+        url: urlBase + user,
         method: 'GET'
       });
     }
@@ -33,6 +33,7 @@ angular.module('app')
 
     return {
       criarPublicacao: criarPublicacao,
-      getPost : getPost
+      getPost : getPost,
+      getPostUsuario : getPostUsuario
     };
   });
