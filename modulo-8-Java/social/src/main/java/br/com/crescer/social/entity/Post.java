@@ -5,9 +5,10 @@
  */
 package br.com.crescer.social.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -17,16 +18,18 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author alana.weiss
+ * @author alana'
  */
 @Entity
 @Table(name = "POST")
@@ -34,8 +37,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Post.findAll", query = "SELECT p FROM Post p")
     , @NamedQuery(name = "Post.findByIdpost", query = "SELECT p FROM Post p WHERE p.idpost = :idpost")
-    , @NamedQuery(name = "Post.findByMensagem", query = "SELECT p FROM Post p WHERE p.mensagem = :mensagem")
-    , @NamedQuery(name = "Post.findByData", query = "SELECT p FROM Post p WHERE p.datapublicacao = :datapublicacao")})
+    , @NamedQuery(name = "Post.findByDatapublicacao", query = "SELECT p FROM Post p WHERE p.datapublicacao = :datapublicacao")
+    , @NamedQuery(name = "Post.findByMensagem", query = "SELECT p FROM Post p WHERE p.mensagem = :mensagem")})
 public class Post implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -45,19 +48,18 @@ public class Post implements Serializable {
     @NotNull
     @Column(name = "IDPOST")
     private BigDecimal idpost;
-    @Size(max = 400)
-    @Column(name = "MENSAGEM")
-    private String mensagem;
-   // @JsonFormat(pattern="dd/MM/yyyy")
     @Column(name = "DATAPUBLICACAO")
     @Temporal(TemporalType.TIMESTAMP)
     private Date datapublicacao;
-    @JoinColumn(name = "CURTIDAS", referencedColumnName = "IDCURTIDA")
-    @ManyToOne
-    private Curtida curtidas;
+    @Size(max = 400)
+    @Column(name = "MENSAGEM")
+    private String mensagem;
     @JoinColumn(name = "IDUSUARIO", referencedColumnName = "IDUSUARIO")
     @ManyToOne
     private Usuario idusuario;
+    @JsonIgnore
+    @OneToMany(mappedBy = "idpost")
+    private Collection<Curtida> curtidaCollection;
 
     public Post() {
     }
@@ -74,6 +76,14 @@ public class Post implements Serializable {
         this.idpost = idpost;
     }
 
+    public Date getDatapublicacao() {
+        return datapublicacao;
+    }
+
+    public void setDatapublicacao(Date datapublicacao) {
+        this.datapublicacao = datapublicacao;
+    }
+
     public String getMensagem() {
         return mensagem;
     }
@@ -82,28 +92,21 @@ public class Post implements Serializable {
         this.mensagem = mensagem;
     }
 
-    public Date getData() {
-        return datapublicacao;
-    }
-
-    public void setData(Date data) {
-        this.datapublicacao = data;
-    }
-
-    public Curtida getCurtidas() {
-        return curtidas;
-    }
-
-    public void setCurtidas(Curtida curtidas) {
-        this.curtidas = curtidas;
-    }
-
     public Usuario getIdusuario() {
         return idusuario;
     }
 
     public void setIdusuario(Usuario idusuario) {
         this.idusuario = idusuario;
+    }
+
+    @XmlTransient
+    public Collection<Curtida> getCurtidaCollection() {
+        return curtidaCollection;
+    }
+
+    public void setCurtidaCollection(Collection<Curtida> curtidaCollection) {
+        this.curtidaCollection = curtidaCollection;
     }
 
     @Override
@@ -128,8 +131,7 @@ public class Post implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.cwi.crescer.RedeSocial.Entity.Post[ idpost=" + idpost + " ]";
+        return "br.com.crescer.social.entity.Post[ idpost=" + idpost + " ]";
     }
     
 }
-

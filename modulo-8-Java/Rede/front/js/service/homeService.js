@@ -24,7 +24,7 @@ angular.module('app')
 
     function criarPublicacao(publicacao) {
       return $http({
-        url: urlBase + 'publicacao',
+        url: urlBase,
         method: 'POST',
         data: publicacao
       });

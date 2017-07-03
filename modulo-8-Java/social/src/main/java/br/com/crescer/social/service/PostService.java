@@ -34,7 +34,7 @@ public class PostService {
     }
     
     public Post save(Post a){
-        a.setData(new Date());
+        a.setDatapublicacao(new Date());
        return repository.save(a);
     }
     

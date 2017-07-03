@@ -8,7 +8,6 @@ package br.com.crescer.social.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,15 +16,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author alana.weiss
+ * @author alana'
  */
 @Entity
 @Table(name = "CURTIDA")
@@ -43,8 +40,9 @@ public class Curtida implements Serializable {
     @Column(name = "IDCURTIDA")
     private BigDecimal idcurtida;
     @JsonIgnore
-    @OneToMany(mappedBy = "curtidas")
-    private Collection<Post> postCollection;
+    @JoinColumn(name = "IDPOST", referencedColumnName = "IDPOST")
+    @ManyToOne
+    private Post idpost;
     @JsonIgnore
     @JoinColumn(name = "IDUSUARIO", referencedColumnName = "IDUSUARIO")
     @ManyToOne
@@ -65,13 +63,12 @@ public class Curtida implements Serializable {
         this.idcurtida = idcurtida;
     }
 
-    @XmlTransient
-    public Collection<Post> getPostCollection() {
-        return postCollection;
+    public Post getIdpost() {
+        return idpost;
     }
 
-    public void setPostCollection(Collection<Post> postCollection) {
-        this.postCollection = postCollection;
+    public void setIdpost(Post idpost) {
+        this.idpost = idpost;
     }
 
     public Usuario getIdusuario() {
@@ -104,7 +101,7 @@ public class Curtida implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.cwi.crescer.RedeSocial.Entity.Curtida[ idcurtida=" + idcurtida + " ]";
+        return "br.com.crescer.social.entity.Curtida[ idcurtida=" + idcurtida + " ]";
     }
     
 }

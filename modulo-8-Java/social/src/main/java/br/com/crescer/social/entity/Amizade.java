@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author alana.weiss
+ * @author alana'
  */
 @Entity
 @Table(name = "AMIZADE")
@@ -41,12 +41,12 @@ public class Amizade implements Serializable {
     private BigDecimal idamizade;
     @Column(name = "STATUS")
     private Character status;
-    @JoinColumn(name = "IDSOLICITANTE", referencedColumnName = "IDUSUARIO")
-    @ManyToOne
-    private Usuario idsolicitante;
     @JoinColumn(name = "IDSOLICITADO", referencedColumnName = "IDUSUARIO")
     @ManyToOne
     private Usuario idsolicitado;
+    @JoinColumn(name = "IDSOLICITANTE", referencedColumnName = "IDUSUARIO")
+    @ManyToOne
+    private Usuario idsolicitante;
 
     public Amizade() {
     }
@@ -71,20 +71,20 @@ public class Amizade implements Serializable {
         this.status = status;
     }
 
-    public Usuario getIdsolicitante() {
-        return idsolicitante;
-    }
-
-    public void setIdsolicitante(Usuario idsolicitante) {
-        this.idsolicitante = idsolicitante;
-    }
-
     public Usuario getIdsolicitado() {
         return idsolicitado;
     }
 
     public void setIdsolicitado(Usuario idsolicitado) {
         this.idsolicitado = idsolicitado;
+    }
+
+    public Usuario getIdsolicitante() {
+        return idsolicitante;
+    }
+
+    public void setIdsolicitante(Usuario idsolicitante) {
+        this.idsolicitante = idsolicitante;
     }
 
     @Override
@@ -109,6 +109,7 @@ public class Amizade implements Serializable {
 
     @Override
     public String toString() {
-        return "br.com.cwi.crescer.RedeSocial.Entity.Amizade[ idamizade=" + idamizade + " ]";
+        return "br.com.crescer.social.entity.Amizade[ idamizade=" + idamizade + " ]";
     }
+    
 }
