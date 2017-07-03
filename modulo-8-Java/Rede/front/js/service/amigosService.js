@@ -7,7 +7,7 @@ angular.module('app')
 
     //getProduto().then(response => clientes = response.dados);
 
-    function getAmigos(user) {
+    function getAmigosPendentes(user) {
       return $http({
         url: urlBase + 'amizade/pendentes/'+user.idusuario,
         method: 'GET'
@@ -17,18 +17,43 @@ angular.module('app')
       });
     };
 
-
-    function criarPublicacao(publicacao) {
+    function getAmigos(user) {
       return $http({
-        url: urlBase + 'publicacao',
+        url: urlBase + 'amizade/aceitos/'+user.idusuario,
+        method: 'GET'
+        // headers: {
+        //   Authorization: headerAuth
+        // }
+      });
+    };
+
+    function buscarUsuario(stringBusca) {
+      return $http({
+        url: urlBase + 'usuario/search?busca=' + stringBusca,
+        method: 'GET'
+      });
+    }
+
+    function solicitarAmizade(amizade) {
+      return $http({
+        url: urlBase + 'amizade',
         method: 'POST',
-        data: publicacao
+        data: amizade
+      });
+    }
+
+    function aceitarAmizade(amizade) {
+      return $http({
+        url: urlBase + 'amizade/aceitar/' + amizade,
+        method: 'PUT'
       });
     }
 
 
     return {
-      criarPublicacao: criarPublicacao,
-      getAmigos : getAmigos
+      buscarUsuario: buscarUsuario,
+      getAmigos : getAmigos,
+      solicitarAmizade : solicitarAmizade,
+      getAmigosPendentes:getAmigosPendentes
     };
   });

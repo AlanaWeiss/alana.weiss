@@ -30,6 +30,7 @@ public class AmizadeService {
     }
     
     public Amizade save(Amizade a){
+        a.setStatus('p');
        return repository.save(a);
     }
       public Amizade save2(Amizade b){
@@ -48,5 +49,18 @@ public class AmizadeService {
     usuario.setIdusuario(idUsuario);
     Usuario usuario2 = usuario;
     return repository.findAllByIdsolicitanteOrIdsolicitado(usuario, usuario2);
+  }
+   
+   public Amizade aceitar(BigDecimal id){
+       final Amizade am = repository.findOne(id);
+       am.setStatus('a');
+       return repository.save(am);
+   }
+   
+  public List<Amizade>  findAllByIdUsuarioAndStatus(BigDecimal idUsuario) {
+    final Usuario usuario = new Usuario();
+    usuario.setIdusuario(idUsuario);
+    Usuario usuario2 = usuario;
+    return repository.findAllByIdsolicitanteOrIdsolicitadoAndStatus(usuario, usuario2, 'a');
   }
 }

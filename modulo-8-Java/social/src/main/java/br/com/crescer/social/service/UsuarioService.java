@@ -8,6 +8,7 @@ package br.com.crescer.social.service;
 import br.com.crescer.social.entity.Usuario;
 import br.com.crescer.social.repository.UsuarioRepository;
 import java.math.BigDecimal;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -25,6 +26,8 @@ public class UsuarioService {
     }
     
     public Usuario save(Usuario a){
+        if(repository.findOneByEmailIgnoreCase(a.getEmail()) != null)
+            throw new RuntimeException("Email já está em uso");
         a.setSenha(new BCryptPasswordEncoder().encode(a.getSenha()));
         return repository.save(a);
     }
@@ -52,5 +55,13 @@ public class UsuarioService {
     
     public Usuario findByIdusuario(BigDecimal idusuario){
         return repository.findOne(idusuario);
+    }
+    
+    public Iterable<Usuario> findAll(BigDecimal idusuario){
+        return repository.findAll();
+    }
+    
+     public Iterable<Usuario> findBySearch(String search) {
+        return repository.findByNomeContainingIgnoreCase(search);
     }
 }

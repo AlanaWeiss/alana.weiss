@@ -29,13 +29,22 @@
 
 <div class="container">
     <div class="publicar clearfix">
-         <form class="">
-        <div class="form-group">
-            <label for="">Procure um amigo</label>
-          <input type="text" class="" placeholder="joao felipe">
-        <button type="submit" class="btn btn-default">Procurar</button>
-        </div>
-      </form>
+        <form class="">
+            <div class="form-group">
+                <label for="">Procure um amigo</label>
+                <input type="text" class="" placeholder="joao felipe" ng-model="stringBusca">
+                <button type="submit" class="btn btn-default" ng-click="buscar(stringBusca)">Procurar</button>
+            </div>
+            <div  ng-if="mostraResultado">
+                <div class="amigo pull-left" ng-repeat="amigo in resultadoBusca">
+                    <div class="infos">
+                        <h4 class="titulo">{{amigo.nome}}</h4>
+                        <button type="submit" class="btn btn-info" ng-click="solicitar(amigo.idusuario)">Enviar solicitação</button>
+                    </div>
+                    <br>
+                </div>
+            </div>
+        </form>
     </div>
 
     <div class="publicar clearfix ">

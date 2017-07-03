@@ -1,0 +1,39 @@
+<nav class="menu">
+    <div class="profile">
+        <div class="profile-image"></div>
+        <span class="profile-name">Olá {{user.nome}}!</span>
+    </div>
+
+    <ul class="menu-items">
+        <li class="menu-item">
+            <a class="menu-link" href="#!/perfil">
+                <!--<img src="icons/letter.svg" alt="">-->
+                Perfil
+            </a>
+        </li>
+        <li class="menu-item">
+            <a class="menu-link" href="#!/home">
+                <!--<img src="icons/home.svg" alt="">-->
+                Home
+            </a>
+        </li>
+        <li class="menu-item">
+            <a class="menu-link active" href="#">
+                Amigos
+            </a>
+        </li>
+    </ul>
+</nav>
+
+
+<div class="container">
+       <div class="publicar clearfix ">
+        <div class="amigo pull-left" ng-repeat="amigo in pendentes">
+            <div class="infos">
+                <h4 class="titulo">{{amigo.nome}}</h4>
+                <button type="submit" ng-click="aceitar(amigo)">Aceitar</button>
+            </div>
+            <br>
+        </div>
+    </div>
+</div>

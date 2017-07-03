@@ -18,4 +18,6 @@ import org.springframework.data.repository.CrudRepository;
 public interface UsuarioRepository extends CrudRepository<Usuario, BigDecimal> {
     public Usuario findOneByEmail(String email);
     public Usuario findByIdusuario(BigDecimal idusuario);
+    public Iterable<Usuario> findByNomeContainingIgnoreCase(String search);
+    public Usuario findOneByEmailIgnoreCase(String email);
 }

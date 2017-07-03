@@ -26,5 +26,9 @@ angular.module('app')
             controller: 'perfilAmigoController',
             templateUrl: 'html/perfilAmigo.html'
         })
+        .when('/pendentes', {
+            controller: 'pendentesController',
+            templateUrl: 'html/pendentes.html'
+        })
         .otherwise('/home');
 });

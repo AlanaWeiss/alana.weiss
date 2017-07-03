@@ -12,22 +12,23 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.User;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  *
  * @author alana.weiss
  */
-@Controller
+@RestController
 @RequestMapping(value = "/usuario")
 public class UsuarioRest {
 
@@ -38,7 +39,6 @@ public class UsuarioRest {
     @Autowired
     UsuarioLogado logado;
 
-    @ResponseBody
      @GetMapping
         public Map<String, Object> listarUsuarios(Authentication authentication) {
         Usuario u = Optional.ofNullable(authentication)
@@ -52,13 +52,11 @@ public class UsuarioRest {
         return hashMap;
     }
 
-    @ResponseBody
     @PostMapping
     public Usuario list(@RequestBody Usuario a) {
         return service.save(a);
     }
     
-    @ResponseBody
     @PutMapping
     public Usuario update(@RequestBody Usuario a) {
         return service.update(a);
@@ -68,5 +66,11 @@ public class UsuarioRest {
     public void delete(@RequestBody Usuario a) {
         service.delete(a);
     }
+    
+    @GetMapping("/search")
+    public Iterable<Usuario> findBySearch(@RequestParam String busca) {
+        return service.findBySearch(busca);
+    }
+            
     
 }
