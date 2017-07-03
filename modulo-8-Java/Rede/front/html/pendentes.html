@@ -28,10 +28,13 @@
 
 <div class="container">
        <div class="publicar clearfix ">
-        <div class="amigo pull-left" ng-repeat="amigo in pendentes">
+            <div ng-if="mensagem">
+                <h3>Você não tem novas solicitações...</h3>
+            </div>
+        <div class="amigo pull-left" ng-repeat="amizade in pendentes">
             <div class="infos">
-                <h4 class="titulo">{{amigo.nome}}</h4>
-                <button type="submit" ng-click="aceitar(amigo)">Aceitar</button>
+                <h4 class="titulo">{{amizade.idsolicitante.nome}}</h4>
+                <button type="submit" ng-click="aceitar(amizade)">Aceitar</button>
             </div>
             <br>
         </div>

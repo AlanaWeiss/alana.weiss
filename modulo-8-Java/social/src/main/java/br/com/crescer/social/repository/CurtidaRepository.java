@@ -7,7 +7,9 @@ package br.com.crescer.social.repository;
 
 
 import br.com.crescer.social.entity.Curtida;
+import br.com.crescer.social.entity.Post;
 import java.math.BigDecimal;
+import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 
 /**
@@ -16,4 +18,5 @@ import org.springframework.data.repository.CrudRepository;
  */
 
 public interface CurtidaRepository extends CrudRepository<Curtida, BigDecimal> {
+    public List<Curtida> findByIdpost(Post p);
 }

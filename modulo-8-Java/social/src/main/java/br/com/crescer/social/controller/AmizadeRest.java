@@ -68,15 +68,11 @@ public class AmizadeRest {
   }
   
   @GetMapping(value = "/pendentes/{id}")
-  public List<Usuario> amigosUser(@PathVariable BigDecimal id){
+  public List<Amizade> amigosUser(@PathVariable BigDecimal id){
       Usuario user = serviceUser.findByIdusuario(id);
-        List<Amizade> amizade = service.findAllByIdUsuario(id);
-        List<Usuario> amigos = amizade.stream().filter(e -> e.getStatus() == 'p')
-                 .map(e -> e.getIdsolicitado())
-                 .filter(e -> e.getIdusuario()!= user.getIdusuario())
-                 .collect(Collectors.toList());
+        List<Amizade> amizade = service.findAmizadesIdSolicitado(id);
         
-        return amigos;
+        return amizade;
   }
   
   @GetMapping(value = "/aceitos/{id}")
@@ -87,6 +83,11 @@ public class AmizadeRest {
                  .map(e -> e.getIdsolicitado())
                  .filter(e -> e.getIdusuario()!= user.getIdusuario())
                  .collect(Collectors.toList());
+        List<Usuario> amigos2 = amizade.stream().filter(e -> e.getStatus() == 'a')
+                 .map(e -> e.getIdsolicitante())
+                 .filter(e -> e.getIdusuario()!= user.getIdusuario())
+                 .collect(Collectors.toList());
+        amigos.addAll(amigos2);
         return amigos;
   }
 }

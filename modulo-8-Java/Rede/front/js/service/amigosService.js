@@ -54,6 +54,7 @@ angular.module('app')
       buscarUsuario: buscarUsuario,
       getAmigos : getAmigos,
       solicitarAmizade : solicitarAmizade,
-      getAmigosPendentes:getAmigosPendentes
+      getAmigosPendentes:getAmigosPendentes,
+      aceitarAmizade:aceitarAmizade
     };
   });

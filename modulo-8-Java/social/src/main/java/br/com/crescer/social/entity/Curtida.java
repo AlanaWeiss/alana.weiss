@@ -39,11 +39,11 @@ public class Curtida implements Serializable {
     @NotNull
     @Column(name = "IDCURTIDA")
     private BigDecimal idcurtida;
-    @JsonIgnore
+    
     @JoinColumn(name = "IDPOST", referencedColumnName = "IDPOST")
     @ManyToOne
     private Post idpost;
-    @JsonIgnore
+    
     @JoinColumn(name = "IDUSUARIO", referencedColumnName = "IDUSUARIO")
     @ManyToOne
     private Usuario idusuario;

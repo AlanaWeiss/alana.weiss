@@ -6,13 +6,13 @@
 package br.com.crescer.social.controller;
 
 import br.com.crescer.social.entity.Curtida;
-import br.com.crescer.social.entity.Post;
 import br.com.crescer.social.entity.Usuario;
 import br.com.crescer.social.service.CurtidaService;
 import br.com.crescer.social.service.UsuarioService;
 import java.math.BigDecimal;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -35,31 +35,17 @@ public class CurtidaRest {
 
     
     @PostMapping
-    public Curtida publicar(@RequestBody Curtida a) {
+    public Curtida curtir(@RequestBody Curtida a) {
         return service.save(a);
+    }    
+    
+    @GetMapping(value = "/{id}")
+    public List<Curtida> getCurtidasPot(@PathVariable BigDecimal id){
+        return service.findAllByIdPost(id);
     }
     
-//    @GetMapping(value = "/{id}")
-//    public List<Post> getPostUsuario(@PathVariable BigDecimal id){
-//        Usuario u = uservice.findByIdusuario(id);
-//        return service.findAllByIdusuario(u);
-//    }
-//    
-//    @GetMapping(value = "/amigos/{id}")
-//    public List<Post> getPostUsuarioEAmigos(@PathVariable BigDecimal id){
-//        Usuario u = uservice.findByIdusuario(id);
-//        return service.findPostAmigosEUsuario(u);
-//    }
-//    
-//    @ResponseBody
-//    @PutMapping
-//    public Usuario update(@RequestBody Usuario a) {
-//        return service.update(a);
-//    }
-//    
-//    @DeleteMapping
-//    public void delete(@RequestBody Usuario a) {
-//        service.delete(a);
-//    }
-    
+    @DeleteMapping(value = "/descurtir/{id}")
+    public void descurtir(@PathVariable BigDecimal id){
+     service.descurtir(id);
+    }
 }

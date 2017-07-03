@@ -8,6 +8,7 @@ import br.com.crescer.social.entity.Amizade;
 import br.com.crescer.social.entity.Post;
 import br.com.crescer.social.entity.Usuario;
 import br.com.crescer.social.repository.PostRepository;
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -50,5 +51,9 @@ public class PostService {
                  .collect(Collectors.toList());
         amigosEUsuario.add(u);
         return repository.findByIdusuarioInOrderByIdpostDesc(amigosEUsuario);
+    }
+    
+    public Post findPostById(BigDecimal id){
+        return repository.findOne(id);
     }
 }

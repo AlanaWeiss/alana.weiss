@@ -23,4 +23,5 @@ public interface AmizadeRepository extends CrudRepository<Amizade, BigDecimal> {
     public Long countByIdsolicitadoAndStatus(Usuario usuario, Character status);
     public List<Amizade> findAllByIdsolicitanteOrIdsolicitado(Usuario usuario, Usuario usuario2);
     public List<Amizade> findAllByIdsolicitanteOrIdsolicitadoAndStatus(Usuario q, Usuario w, Character e);
+    public List<Amizade> findAllByIdsolicitadoAndStatus(Usuario u, Character s);
 }
