@@ -27,6 +27,9 @@ public class CurtidaService {
     @Autowired
     PostService postServive;
     
+    @Autowired
+    UsuarioService userServive;
+    
     public Iterable<Curtida> find(){
         return repository.findAll();
     }
@@ -44,5 +47,11 @@ public class CurtidaService {
     public void descurtir(BigDecimal id){ 
         Curtida c = repository.findOne(id);
         repository.delete(c);
+    }
+    
+    public Curtida findCurtidaUsuario(BigDecimal idUsuario, BigDecimal idpost){
+        Usuario u = userServive.findByIdusuario(idUsuario);
+        Post p = postServive.findPostById(idpost);
+        return repository.findByIdpostAndIdusuario(p,u);
     }
 }

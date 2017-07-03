@@ -45,7 +45,7 @@ public class PostService {
     
     public List<Post> findPostAmigosEUsuario(Usuario u){
         List<Amizade> amizade = amizadeServive.findAllByIdUsuario(u.getIdusuario());
-        List<Usuario> amigosEUsuario = amizade.stream().filter(e -> e.getStatus() == 'p')
+        List<Usuario> amigosEUsuario = amizade.stream().filter(e -> e.getStatus() == 'a')
                  .map(e -> e.getIdsolicitado())
                  .filter(e -> e.getIdusuario()!= u.getIdusuario())
                  .collect(Collectors.toList());

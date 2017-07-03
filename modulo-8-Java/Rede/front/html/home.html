@@ -1,3 +1,5 @@
+
+
 <nav class="menu">
     <div class="profile">
         <div class="profile-image"></div>
@@ -32,10 +34,8 @@
         </li>
     </ul>
 </nav>
-
-
 <div class="container">
-    <div class="publicar">
+    <div class="publicar pendentes">
         <h2>Como foi seu jogo?</h2>
         <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#collapse-compartilhar">Compartilhar experiência</button>
         <div id="collapse-compartilhar" class="collapse clearfix">
@@ -52,8 +52,8 @@
             <hr>
             <!--<h6>{{post.data}}</h6>-->
             <p>{{post.mensagem}}</p>
-            <button type="submit"ng-click="curtir(post.idpost)" class="btn btn-que" ng-disabled="curtido" >Curtir</button>
-            <button type="submit"ng-click="descurtir(post.idpost)" class="btn btn-que" ng-disabled="descurtido">Descurtir</button>
+            <button type="submit"ng-click="curtir(post.idpost)" class="btn btn-que" ng-if="!post.curtido">Curtir</button>
+            <button type="submit"ng-click="descurtir(post.idpost)" class="btn btn-que" ng-if="post.curtido">Descurtir</button>
             <br>
         </div>
     </div>

@@ -11,15 +11,31 @@ angular.module('app')
       });
     }
 
-    function descurtir(idcurtida) {
+    function descurtir(curtida) {
       return $http({
-        url: urlBase + 'descurtir/' + idcurtida,
+        url: urlBase + 'descurtir/' + curtida,
         method: 'DELETE'
+      });
+    }
+
+    function buscarCurtida(idPost, idUsuario) {
+      return $http({
+        url: urlBase + 'user/' + idUsuario + '?idPost=' + idPost,
+        method: 'GET'
+      });
+    }
+
+    function getCurtidas(idPost) {
+      return $http({
+        url: urlBase + idPost,
+        method: 'GET'
       });
     }
 
     return {
       curtir : curtir,
-      descurtir : descurtir
+      descurtir : descurtir,
+      buscarCurtida : buscarCurtida,
+      getCurtidas : getCurtidas
     };
   });
