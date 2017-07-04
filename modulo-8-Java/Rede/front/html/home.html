@@ -25,6 +25,7 @@
         <li class="menu-item">
             <a class="menu-link" href="#!/pendentes">
                 Convites
+                <div ng-if="temSolicitacao" class="p pull-right"></div>
             </a>
         </li>
         <li class="menu-item">
@@ -47,7 +48,7 @@
     </div>
 
     <div class="publicar">
-        <div class="postagem" ng-repeat="post in posts | orderBy: post.data">
+        <div class="postagem" ng-repeat="post in posts | orderBy: '-post.idpost'">
             <h4>{{post.idusuario.nome}} - {{post.idusuario.nick}}</h4>
             <hr>
             <!--<h6>{{post.data}}</h6>-->

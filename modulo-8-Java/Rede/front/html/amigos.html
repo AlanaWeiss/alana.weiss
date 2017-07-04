@@ -36,10 +36,13 @@
                 <button type="submit" class="btn btn-default" ng-click="buscar(stringBusca)">Procurar</button>
             </div>
             <div  ng-if="mostraResultado">
-                <div class="amigo pull-left" ng-repeat="amigo in resultadoBusca">
+                <div class="amigo pull-left" ng-repeat="resultado in resultadoBusca">
                     <div class="infos">
-                        <h4 class="titulo">{{amigo.nome}}</h4>
-                        <button type="submit" class="btn btn-info" ng-click="solicitar(amigo.idusuario)">Enviar solicitação</button>
+                        <h4 class="titulo">{{resultado.nome}}</h4>
+                        <button type="submit" class="btn btn-info" ng-if="!resultado.ehAmigo" ng-click="solicitar(resultado.idusuario)">Enviar solicitação</button>
+                        <p ng-if="resultado.amigos">Já são amigos</p>
+                        <p ng-if="resultado.jaConvidado">Solicitação já enviada</p>
+                        <button type="submit" class="btn btn-info" ng-if="resultado.usuarioLogado">Ir para perfil</button>
                     </div>
                     <br>
                 </div>

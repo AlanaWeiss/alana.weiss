@@ -1,5 +1,5 @@
 angular.module('app')
-    .controller('homeController', function ($scope, authService, $location, homeService, toastr, curtidaService) {
+    .controller('homeController', function ($scope, authService, $location, homeService, toastr, curtidaService, amigosService) {
         $scope.user = authService.getUsuario();
         console.log($scope.user);
         listar();
@@ -30,6 +30,14 @@ angular.module('app')
 
                 $scope.posts = response.data;
                 console.log($scope.posts);
+                amigosService.getAmigosPendentes($scope.user).then(function (response) {
+                    $scope.pendentes = response.data;
+                    console.log( $scope.pendentes)
+                    if ($scope.pendentes.length > 0) {
+                        $scope.temSolicitacao = true;
+                        $scope.quantidade = $scope.pendentes.length;
+                    }
+                })
                 $scope.posts.forEach(function (post) {
                     getCurtidas(post)
                 }, this);

@@ -17,6 +17,13 @@ angular.module('app')
       });
     };
 
+    function getJaConvidado(user) {
+      return $http({
+        url: urlBase + 'amizade/convidados/'+user.idusuario,
+        method: 'GET'
+      });
+    }
+
     function getAmigos(user) {
       return $http({
         url: urlBase + 'amizade/aceitos/'+user.idusuario,
@@ -55,6 +62,7 @@ angular.module('app')
       getAmigos : getAmigos,
       solicitarAmizade : solicitarAmizade,
       getAmigosPendentes:getAmigosPendentes,
-      aceitarAmizade:aceitarAmizade
+      aceitarAmizade:aceitarAmizade,
+      getJaConvidado : getJaConvidado
     };
   });

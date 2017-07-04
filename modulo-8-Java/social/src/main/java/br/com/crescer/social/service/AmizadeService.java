@@ -58,6 +58,13 @@ public class AmizadeService {
     return repository.findAllByIdsolicitadoAndStatus(usuario,status);
   }
    
+   public List<Amizade> findAmizadesIdSolicitante(BigDecimal idUsuario) {
+    final Usuario usuario = new Usuario();
+    usuario.setIdusuario(idUsuario);
+    Character status = 'p';
+    return repository.findAllByIdsolicitanteAndStatus(usuario,status);
+  }
+   
    public Amizade aceitar(BigDecimal id){
        final Amizade am = repository.findOne(id);
        am.setStatus('a');
@@ -70,9 +77,11 @@ public class AmizadeService {
     Usuario usuario2 = usuario;
     return repository.findAllByIdsolicitanteOrIdsolicitadoAndStatus(usuario, usuario2, 'a');
   }
-//  
-//  public List<Amizade> findByUsuarioSolicitado(Usuario u){
-//      return repository.findAllByIdsolicitado(u);
-//  }
   
+  
+  public List<Amizade> findByUsuarioSolicitado(BigDecimal idusuario){
+      final Usuario u = new Usuario();
+      u.setIdusuario(idusuario);
+      return repository.findAllByIdsolicitado(u);
+  }
 }
