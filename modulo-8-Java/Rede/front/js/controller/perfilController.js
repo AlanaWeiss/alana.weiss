@@ -26,7 +26,7 @@ angular.module('app')
             debugger;
             usuarioService.alterarUsuario($scope.user)
                 .then(function (response) {
-                   $location.path('/perfil');
+                   $location.path('/perfil/' + $scope.user.idusuario);
                     toastr.success('Perfil Alterado');
                 })
         }

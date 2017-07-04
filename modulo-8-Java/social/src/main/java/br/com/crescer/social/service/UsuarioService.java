@@ -5,9 +5,11 @@
  */
 package br.com.crescer.social.service;
 
+import br.com.crescer.social.entity.Amizade;
 import br.com.crescer.social.entity.Usuario;
 import br.com.crescer.social.repository.UsuarioRepository;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -19,20 +21,26 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class UsuarioService {
+
     @Autowired
     UsuarioRepository repository;
-    public Iterable<Usuario> find(){
+
+    @Autowired
+    AmizadeService service;
+
+    public Iterable<Usuario> find() {
         return repository.findAll();
     }
-    
-    public Usuario save(Usuario a){
-        if(repository.findOneByEmailIgnoreCase(a.getEmail()) != null)
+
+    public Usuario save(Usuario a) {
+        if (repository.findOneByEmailIgnoreCase(a.getEmail()) != null) {
             throw new RuntimeException("Email já está em uso");
+        }
         a.setSenha(new BCryptPasswordEncoder().encode(a.getSenha()));
         return repository.save(a);
     }
-    
-    public Usuario update(Usuario a){
+
+    public Usuario update(Usuario a) {
         Usuario at;
         at = (Usuario) repository.findOne(a.getIdusuario());
         at.setNome(a.getNome());
@@ -42,26 +50,43 @@ public class UsuarioService {
         at.setOrganizacao(a.getOrganizacao());
         return repository.save(at);
     }
-    
-    public void delete(Usuario a){
+
+    public void delete(Usuario a) {
         Usuario at;
         at = (Usuario) repository.findOne(a.getIdusuario());
         repository.delete(at);
     }
-    
+
     public Usuario findByEmail(String email) {
-    return repository.findOneByEmail(email);
-  }
-    
-    public Usuario findByIdusuario(BigDecimal idusuario){
+        return repository.findOneByEmail(email);
+    }
+
+    public Usuario findByIdusuario(BigDecimal idusuario) {
         return repository.findOne(idusuario);
     }
-    
-    public Iterable<Usuario> findAll(BigDecimal idusuario){
+
+    public Iterable<Usuario> findAll(BigDecimal idusuario) {
         return repository.findAll();
     }
-    
-     public Iterable<Usuario> findBySearch(String search) {
+
+    public Iterable<Usuario> findBySearch(String search) {
         return repository.findByNomeContainingIgnoreCase(search);
+    }
+
+    public List<Usuario> findByIdUsuarioNotIn(BigDecimal id) {
+        List<BigDecimal> amigos = new ArrayList<>();
+        amigos.add(id);
+         service.findAllByIdUsuario(id)
+                .stream()
+                .map(Amizade::getIdsolicitante)
+                .map(Usuario::getIdusuario)
+                .forEach(amigos::add);
+         service.findAllByIdUsuario(id)
+                .stream()
+                .map(Amizade::getIdsolicitado)
+                .map(Usuario::getIdusuario)
+                .forEach(amigos::add);
+
+        return repository.findByIdusuarioNotIn(amigos);
     }
 }

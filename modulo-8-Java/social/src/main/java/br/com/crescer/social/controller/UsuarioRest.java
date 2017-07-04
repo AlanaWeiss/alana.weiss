@@ -5,15 +5,16 @@
  */
 package br.com.crescer.social.controller;
 
+import br.com.crescer.social.entity.Amizade;
 import br.com.crescer.social.entity.Usuario;
 import br.com.crescer.social.service.AmizadeService;
 import br.com.crescer.social.service.UsuarioService;
 import java.math.BigDecimal;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -79,4 +80,8 @@ public class UsuarioRest {
         return service.findByIdusuario(id);
     }
     
+    @GetMapping("/naoAmigo/{id}")
+    public List<Usuario> findNaoAmigos(@PathVariable BigDecimal id){
+        return service.findByIdUsuarioNotIn(id);
+    }
 }

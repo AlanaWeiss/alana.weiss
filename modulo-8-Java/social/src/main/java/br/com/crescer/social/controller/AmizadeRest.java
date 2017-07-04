@@ -75,6 +75,14 @@ public class AmizadeRest {
         return amizade;
   }
   
+  @GetMapping(value = "/convidados/{id}")
+  public List<Amizade> convidadosUser(@PathVariable BigDecimal id){
+      Usuario user = serviceUser.findByIdusuario(id);
+        List<Amizade> amizade = service.findAmizadesIdSolicitante(id);
+        
+        return amizade;
+  }
+  
   @GetMapping(value = "/aceitos/{id}")
   public List<Usuario> amigosAceitosUser(@PathVariable BigDecimal id){
       Usuario user = serviceUser.findByIdusuario(id);

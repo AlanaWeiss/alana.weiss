@@ -49,6 +49,10 @@ public class PostService {
                  .map(e -> e.getIdsolicitado())
                  .filter(e -> e.getIdusuario()!= u.getIdusuario())
                  .collect(Collectors.toList());
+        amigosEUsuario.addAll(amizade.stream().filter(e -> e.getStatus() == 'a')
+                 .map(e -> e.getIdsolicitante())
+                 .filter(e -> e.getIdusuario()!= u.getIdusuario())
+                 .collect(Collectors.toList()));
         amigosEUsuario.add(u);
         return repository.findByIdusuarioInOrderByIdpostDesc(amigosEUsuario);
     }
