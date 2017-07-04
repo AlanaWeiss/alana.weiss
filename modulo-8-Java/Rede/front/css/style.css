@@ -70,7 +70,7 @@ body {
     width: 500px;
     height: 400px;
     text-align: center;
-    margin: 0 270px;
+    margin: 0 12%;
     background-color: rgba(52, 73, 94, 0.7);
     margin-top: 150px;
     border-radius: 7px;
@@ -91,7 +91,7 @@ body {
     height: 45px;
     font-size: 18px;
     margin-bottom: 20px;
-    padding-left: 110px;
+    text-align: center;
     border-radius: 5px;
 }
 
@@ -193,7 +193,7 @@ body {
 .container .publicar .postagem{
     padding: 30px;
     margin-top: 15px;
-    background-color: rgba(47, 57, 71, 0.5);
+    background-color: white;
 }
 
 .container .publicar label{
@@ -221,7 +221,7 @@ body {
 }
 
 .postagem, .publicar{
-    color: #cddcdb;
+    color: black;
     font-size: 18px;
 }
 
