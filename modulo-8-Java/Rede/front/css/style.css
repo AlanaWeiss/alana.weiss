@@ -194,6 +194,7 @@ body {
     padding: 30px;
     margin-top: 15px;
     background-color: white;
+    border-radius: 7px;
 }
 
 .container .publicar label{
