@@ -1,8 +1,12 @@
 angular.module('app')
     .controller('perfilController', function ($scope, $location, authService, $location, usuarioService, toastr, $routeParams,homeService) {
+        if(!authService.isAutenticado()){
+            $location.path("/login");
+        }
         $scope.user = authService.getUsuario();
         $scope.user.datanascimento = new Date($scope.user.datanascimento);
         var id = $scope.user.idusuario;
+        
         listar(id);
         console.log(id);
         function listar(id) {

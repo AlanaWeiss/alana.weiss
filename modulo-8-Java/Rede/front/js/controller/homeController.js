@@ -1,6 +1,10 @@
 angular.module('app')
     .controller('homeController', function ($scope, authService, $location, homeService, toastr, curtidaService, amigosService) {
         $scope.user = authService.getUsuario();
+
+            if(!authService.isAutenticado()){
+            $location.path("/login");
+        }
         console.log($scope.user);
         listar();
         $scope.curtido = false;

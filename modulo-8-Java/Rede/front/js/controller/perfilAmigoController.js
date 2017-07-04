@@ -1,6 +1,8 @@
 angular.module('app')
     .controller('perfilAmigoController', function ($scope, authService, $location, usuarioService, toastr, $routeParams, homeService) {
-       
+        if(!authService.isAutenticado()){
+            $location.path("/login");
+        }
         listar($routeParams.idusuario);
 
         function listar(idusuario) {

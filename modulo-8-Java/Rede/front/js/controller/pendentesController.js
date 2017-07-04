@@ -2,6 +2,9 @@ angular.module('app')
     .controller('pendentesController', function ($scope, $rootScope, $location, authService, amigosService, toastr) {
         $scope.user = authService.getUsuario();
         console.log($scope.user);
+         if(!authService.isAutenticado()){
+            $location.path("/login");
+        }
         listar();
 
         function listar() {
